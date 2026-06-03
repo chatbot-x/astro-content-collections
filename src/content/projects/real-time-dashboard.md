@@ -8,7 +8,6 @@ url: "https://dashboard.example.com"
 repo: "https://github.com/example/realtime-dashboard"
 techStack: ["Astro", "React", "D3.js", "WebSocket", "TailwindCSS"]
 featured: true
-heroImage: ""
 ---
 
 ## Project Overview

@@ -15,6 +15,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
+    "@flowershow/remark-wiki-link": "^3.4.0",
     "@jdevalk/astro-seo-graph": "^2.0.0",
     "@jdevalk/seo-graph-core": "^0.6.2",
     "@tailwindcss/typography": "^0.5.19",
@@ -36,8 +37,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.60.1",
+    "@typescript-eslint/parser": "^8.60.1",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2"
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "remark-html": "^16.0.1"
   }
 }

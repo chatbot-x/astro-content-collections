@@ -7,7 +7,6 @@ status: "completed"
 url: "https://docs-gen.example.com"
 techStack: ["Astro", "MDX", "Shiki", "TailwindCSS", "Node.js"]
 featured: false
-heroImage: ""
 ---
 
 ## Project Overview

@@ -8,7 +8,7 @@ import { computeReadingTime } from '../../utils/readingTime';
 import '../../styles/global.css';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = await getCollection('blog', ({ data }) => !data.draft);
   return blogEntries.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },

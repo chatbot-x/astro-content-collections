@@ -7,7 +7,6 @@ url: "https://example.com"
 repo: "https://github.com/example/astro-project-hub"
 techStack: ["Astro", "TailwindCSS", "TypeScript", "Vite"]
 featured: true
-heroImage: ""
 ---
 
 ## Project Overview

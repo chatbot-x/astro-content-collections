@@ -5,6 +5,9 @@
  * Triggered by search buttons in the Navbar (both desktop and mobile).
  * Includes prominent Cancel/Close button for mobile devices.
  */
+
+// Track active listeners so we don't accumulate duplicates on View Transitions
+let keydownHandler: ((e: KeyboardEvent) => void) | null = null;
 ---
 
 <div id="search-modal" class="hidden">
@@ -84,31 +87,39 @@
       if (results) results.innerHTML = '';
     }
 
+    // Remove old click listeners by replacing the search modal's DOM clone trick won't work,
+    // so we use AbortController for clean listener management
+    const controller = new AbortController();
+
     // Desktop search button
     if (searchBtnDesktop) {
-      searchBtnDesktop.addEventListener('click', openSearch);
+      searchBtnDesktop.addEventListener('click', openSearch, { signal: controller.signal });
     }
 
-    // Mobile search button — direct trigger (no forwarding to hidden button)
+    // Mobile search button
     if (searchBtnMobile) {
-      searchBtnMobile.addEventListener('click', openSearch);
+      searchBtnMobile.addEventListener('click', openSearch, { signal: controller.signal });
     }
 
     // Backdrop click to close
-    searchBackdrop.addEventListener('click', closeSearch);
+    searchBackdrop.addEventListener('click', closeSearch, { signal: controller.signal });
 
     // Close button (X) — visible on all screen sizes
     if (searchCloseBtn) {
-      searchCloseBtn.addEventListener('click', closeSearch);
+      searchCloseBtn.addEventListener('click', closeSearch, { signal: controller.signal });
     }
 
     // Cancel button — mobile only, prominent
     if (searchCancelBtn) {
-      searchCancelBtn.addEventListener('click', closeSearch);
+      searchCancelBtn.addEventListener('click', closeSearch, { signal: controller.signal });
     }
 
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
+    // Keyboard shortcuts — remove previous handler to prevent duplicates
+    const win = window as Window & { __searchKeydownHandler?: ((e: KeyboardEvent) => void) | null };
+    if (win.__searchKeydownHandler) {
+      document.removeEventListener('keydown', win.__searchKeydownHandler);
+    }
+    const keydownHandler = (e: KeyboardEvent) => {
       // Cmd/Ctrl + K to open/toggle
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
@@ -122,7 +133,18 @@
       if (e.key === 'Escape' && !searchModal.classList.contains('hidden')) {
         closeSearch();
       }
-    });
+    };
+    document.addEventListener('keydown', keydownHandler);
+    win.__searchKeydownHandler = keydownHandler;
+
+    // Return cleanup function for View Transitions
+    return () => {
+      controller.abort();
+      if (win.__searchKeydownHandler === keydownHandler) {
+        document.removeEventListener('keydown', keydownHandler);
+        win.__searchKeydownHandler = null;
+      }
+    };
   }
 
   initSearchModal();

@@ -4,7 +4,6 @@ description: "Discover how Astro's island architecture enables you to build fast
 pubDate: 2026-06-01
 author: "Astro Team"
 tags: ["astro", "islands", "performance"]
-heroImage: ""
 draft: false
 ---
 

@@ -8,6 +8,34 @@ import pagefind from 'astro-pagefind';
 import compressor from 'astro-compressor';
 import { unified } from '@astrojs/markdown-remark';
 import rehypeCallouts from 'rehype-callouts';
+import remarkWikiLink from '@flowershow/remark-wiki-link';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Build wiki-link file and permalink maps from content collections at config time
+// Recursively find all .md/.mdx files in the content directory
+function findContentFiles(dir, base = '') {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let files = [];
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relPath = base ? `${base}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      files = files.concat(findContentFiles(fullPath, relPath));
+    } else if (/\.(mdx?|md)$/.test(entry.name)) {
+      files.push(relPath);
+    }
+  }
+  return files;
+}
+
+const contentDir = './src/content';
+const contentFiles = findContentFiles(contentDir);
+const permalinks = {};
+for (const file of contentFiles) {
+  const slug = file.replace(/\.(mdx?|md)$/, '');
+  permalinks[file] = `/${slug}/`;
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,8 +62,11 @@ export default defineConfig({
         "connect-src 'self'",
         "frame-src 'none'",
       ],
+      scriptDirective: {
+        resources: ["'self'"], // Inline scripts auto-hashed by Astro via SHA-256 algorithm
+      },
       styleDirective: {
-        resources: ["'self'", "'unsafe-inline'"], // TailwindCSS needs unsafe-inline
+        resources: ["'self'", "'unsafe-inline'"], // TailwindCSS + Shiki syntax highlighting require unsafe-inline
       },
     },
   },
@@ -128,6 +159,19 @@ export default defineConfig({
   ],
 
   markdown: unified({
+    remarkPlugins: [
+      [remarkWikiLink, {
+        // Provide content file names so wiki-links resolve against actual content
+        files: contentFiles,
+        // Map file names to their Astro route URLs
+        permalinks,
+        format: 'shortestPossible',
+        caseInsensitive: true,
+        className: 'internal',
+        newClassName: 'unresolved',
+        aliasDivider: '|',
+      }],
+    ],
     rehypePlugins: [
       [rehypeCallouts, { theme: 'github', showIndicator: true }],
     ],

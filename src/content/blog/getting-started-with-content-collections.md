@@ -4,7 +4,6 @@ description: "Learn how to leverage Astro's type-safe content collections to man
 pubDate: 2026-05-20
 author: "Astro Team"
 tags: ["astro", "content-collections", "markdown"]
-heroImage: ""
 draft: false
 ---
 

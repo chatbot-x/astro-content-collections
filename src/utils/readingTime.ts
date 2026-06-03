@@ -17,7 +17,7 @@ export function computeReadingTime(body: string, wordsPerMinute = 200): ReadingT
   return {
     text: stats.text,
     minutes: Math.ceil(stats.minutes),
-    words: stats.words.total,
+    words: typeof stats.words === 'number' ? stats.words : (stats.words as { total: number }).total,
   };
 }
 

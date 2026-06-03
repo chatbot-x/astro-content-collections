@@ -4,7 +4,6 @@ description: "Explore how TailwindCSS v4 eliminates config files, embraces CSS-n
 pubDate: 2026-05-28
 author: "Astro Team"
 tags: ["tailwindcss", "css", "vite"]
-heroImage: ""
 draft: false
 ---
 
