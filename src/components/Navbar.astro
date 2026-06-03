@@ -32,7 +32,7 @@ import ThemeToggle from './ThemeToggle.astro';
             <span class="hidden md:inline">Search</span>
             <kbd class="hidden md:inline-flex items-center rounded border border-indigo-400/40 px-1.5 py-0.5 text-[10px] font-mono text-indigo-200">⌘K</kbd>
           </button>
-          <ThemeToggle />
+          <ThemeToggle mode="desktop" />
         </div>
       </div>
       <!-- Mobile: search + theme toggle + hamburger -->
@@ -47,7 +47,7 @@ import ThemeToggle from './ThemeToggle.astro';
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
         </button>
-        <ThemeToggle />
+        <ThemeToggle mode="mobile" />
         <button id="mobile-menu-btn" type="button" aria-label="Open menu" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-indigo-100 hover:text-white hover:bg-white/10 transition-colors">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -79,26 +79,7 @@ import ThemeToggle from './ThemeToggle.astro';
     });
   }
 
-  // Wire the mobile search button to the same search modal
-  function initMobileSearch() {
-    const mobileSearchBtn = document.getElementById('search-btn-mobile');
-    const desktopSearchBtn = document.getElementById('search-btn');
-
-    if (mobileSearchBtn && desktopSearchBtn) {
-      mobileSearchBtn.addEventListener('click', () => {
-        desktopSearchBtn.click();
-      });
-    }
-  }
-
   initMobileMenu();
-  initMobileSearch();
-  document.addEventListener('astro:after-swap', () => {
-    initMobileMenu();
-    initMobileSearch();
-  });
-  document.addEventListener('astro:page-load', () => {
-    initMobileMenu();
-    initMobileSearch();
-  });
+  document.addEventListener('astro:after-swap', initMobileMenu);
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
