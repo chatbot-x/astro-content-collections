@@ -13,9 +13,12 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
+    "@jdevalk/astro-seo-graph": "^2.0.0",
+    "@jdevalk/seo-graph-core": "^0.6.2",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.3",
+    "astro-ai-robots-txt": "^0.1.4",
     "tailwindcss": "^4.3.0"
   },
   "description": "Astro v6 project with TailwindCSS v4",

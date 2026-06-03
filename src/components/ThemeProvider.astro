@@ -1,0 +1,74 @@
+---
+/**
+ * ThemeProvider — inline script component for 3-mode dark mode (Light / Dark / System).
+ * Place in <head> before any content to prevent FOUC (Flash of Unstyled Content).
+ * Sets `data-theme` attribute and `dark`/`light` class on <html>.
+ * Respects localStorage persistence, OS preference, and cross-tab sync.
+ */
+interface Props {
+  defaultTheme?: 'light' | 'dark' | 'system';
+  storageKey?: string;
+}
+
+const {
+  defaultTheme = 'system',
+  storageKey = 'theme',
+} = Astro.props;
+---
+
+<script is:inline define:vars={{ defaultTheme, storageKey }}>
+  (function() {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getTheme() {
+      return localStorage.getItem(storageKey) || defaultTheme;
+    }
+
+    function getResolvedTheme(theme) {
+      if (theme === 'system') {
+        return prefersDark.matches ? 'dark' : 'light';
+      }
+      return theme;
+    }
+
+    function applyTheme(theme) {
+      const resolved = getResolvedTheme(theme);
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(resolved);
+      document.documentElement.setAttribute('data-theme', resolved);
+      document.documentElement.style.colorScheme = resolved;
+    }
+
+    // Apply immediately — before paint
+    applyTheme(getTheme());
+
+    // Listen for OS preference changes (when in system mode)
+    prefersDark.addEventListener('change', function() {
+      if (getTheme() === 'system') {
+        applyTheme('system');
+      }
+    });
+
+    // Cross-tab sync via storage event
+    window.addEventListener('storage', function(e) {
+      if (e.key === storageKey) {
+        applyTheme(e.newValue || defaultTheme);
+      }
+    });
+
+    // Expose API on window for client scripts
+    window.__ASTRO_THEMES__ = {
+      get theme() { return getTheme(); },
+      get resolvedTheme() { return getResolvedTheme(getTheme()); },
+      get systemTheme() { return prefersDark.matches ? 'dark' : 'light'; },
+      setTheme: function(newTheme) {
+        localStorage.setItem(storageKey, newTheme);
+        applyTheme(newTheme);
+        window.dispatchEvent(new CustomEvent('astro-themes:change', {
+          detail: { theme: newTheme, resolvedTheme: getResolvedTheme(newTheme) }
+        }));
+      },
+      themes: ['light', 'dark', 'system'],
+    };
+  })();
+</script>

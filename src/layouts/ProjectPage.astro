@@ -18,9 +18,9 @@ const formattedStart = startDate.toLocaleDateString('en-US', { year: 'numeric', 
 const formattedEnd = endDate?.toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) || 'Present';
 
 const statusColors: Record<string, string> = {
-  active: 'bg-emerald-50 text-emerald-700 ring-emerald-100',
-  completed: 'bg-blue-50 text-blue-700 ring-blue-100',
-  archived: 'bg-gray-50 text-gray-600 ring-gray-200',
+  active: 'bg-emerald-50 text-emerald-700 ring-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 dark:ring-emerald-800',
+  completed: 'bg-blue-50 text-blue-700 ring-blue-100 dark:bg-blue-950 dark:text-blue-300 dark:ring-blue-800',
+  archived: 'bg-gray-50 text-gray-600 ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700',
 };
 
 const statusColor = statusColors[status] || statusColors.active;
@@ -39,24 +39,24 @@ const statusColor = statusColors[status] || statusColors.active;
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
       {featured && (
-        <span class="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-100">
+        <span class="inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-100 dark:bg-amber-950 dark:text-amber-300 dark:ring-amber-800">
           Featured
         </span>
       )}
     </div>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
       {title}
     </h1>
     {description && (
-      <p class="mt-4 text-xl text-gray-600 leading-relaxed">{description}</p>
+      <p class="mt-4 text-xl text-gray-600 dark:text-gray-400 leading-relaxed">{description}</p>
     )}
-    <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+    <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
       <span>{formattedStart} — {formattedEnd}</span>
     </div>
     {techStack.length > 0 && (
       <div class="mt-4 flex flex-wrap gap-2">
         {techStack.map((tech) => (
-          <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100">
+          <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:ring-purple-800">
             {tech}
           </span>
         ))}
@@ -65,13 +65,13 @@ const statusColor = statusColors[status] || statusColors.active;
     {(url || repo) && (
       <div class="mt-6 flex flex-wrap gap-3">
         {url && (
-          <a href={url} target="_blank" class="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700">
+          <a href={url} target="_blank" class="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
             Live Demo
           </a>
         )}
         {repo && (
-          <a href={repo} target="_blank" class="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50">
+          <a href={repo} target="_blank" class="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
             <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             Source Code
           </a>
@@ -80,7 +80,7 @@ const statusColor = statusColors[status] || statusColors.active;
     )}
   </header>
 
-  <div class="prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-300 max-w-none">
+  <div class="prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-300 max-w-none dark:prose-invert dark:prose-a:text-indigo-400 dark:prose-headings:text-white dark:prose-code:text-indigo-300 dark:prose-pre:bg-gray-900">
     <slot />
   </div>
 </article>

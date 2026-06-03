@@ -1,9 +1,38 @@
 ---
+import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
+import ThemeProvider from '../components/ThemeProvider.astro';
+import { buildSchemaGraph } from '../utils/schema';
+
 interface Props {
   title: string;
+  description?: string;
+  pageType?: 'home' | 'blogPost' | 'blogListing' | 'project' | 'projectListing' | 'about' | 'page';
+  publishDate?: Date;
+  updatedDate?: Date;
+  featureImageUrl?: string;
+  category?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'A modern static site built with Astro v6 and TailwindCSS v4, featuring type-safe Content Collections and AI-ready SEO.',
+  pageType = 'page',
+  publishDate,
+  updatedDate,
+  featureImageUrl,
+  category,
+} = Astro.props;
+
+const graph = buildSchemaGraph({
+  pageType,
+  url: Astro.url.href,
+  title,
+  description,
+  publishDate,
+  updatedDate,
+  featureImageUrl,
+  category,
+});
 ---
 
 <!doctype html>
@@ -11,11 +40,25 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Astro project with TailwindCSS" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <ThemeProvider defaultTheme="system" />
+    <Seo
+      title={`${title} | Astro + TailwindCSS`}
+      description={description}
+      canonical={Astro.url.href}
+      ogType={pageType === 'blogPost' ? 'article' : 'website'}
+      ogImage={featureImageUrl || 'https://example.com/og-default.jpg'}
+      ogImageAlt={title}
+      ogImageWidth={1200}
+      ogImageHeight={675}
+      siteName="Astro + TailwindCSS"
+      article={pageType === 'blogPost' && publishDate ? { publishedTime: publishDate, tags: category ? [category] : undefined } : undefined}
+      graph={graph}
+      extraLinks={[
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      ]}
+    />
   </head>
-  <body class="min-h-screen bg-white text-gray-900 antialiased">
+  <body class="min-h-screen bg-white text-gray-900 antialiased transition-colors duration-200 dark:bg-gray-950 dark:text-gray-100">
     <slot />
   </body>
 </html>

@@ -18,12 +18,17 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
-<Layout title={`${entry.data.title} — Projects`}>
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  pageType="project"
+  featureImageUrl={entry.data.heroImage || undefined}
+>
   <Navbar />
 
-  <div class="bg-gradient-to-br from-purple-50 via-white to-cyan-50 min-h-screen">
+  <div class="bg-gradient-to-br from-purple-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-950 dark:to-cyan-950/50 min-h-screen">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
-      <a href="/projects" class="inline-flex items-center gap-1.5 text-sm font-medium text-purple-600 hover:text-purple-800 transition-colors">
+      <a href="/projects/" class="inline-flex items-center gap-1.5 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors">
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>

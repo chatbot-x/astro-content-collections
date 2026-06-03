@@ -1,0 +1,7 @@
+# Base robots.txt for Astro Project
+# The astro-ai-robots-txt integration will prepend AI bot block rules
+
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap-index.xml
