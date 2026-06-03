@@ -12,6 +12,8 @@ const blog = defineCollection({
     author: z.string().default('Astro Team'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // Phase 2: Schema.org article type
+    articleType: z.enum(['Article', 'BlogPosting', 'TechArticle', 'NewsArticle', 'ScholarlyArticle', 'Report']).default('BlogPosting'),
   }),
 });
 

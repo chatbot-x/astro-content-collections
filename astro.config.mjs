@@ -3,6 +3,9 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import seoGraph from '@jdevalk/astro-seo-graph/integration';
 import astroAiRobotsTxt from 'astro-ai-robots-txt';
+import pagefind from 'astro-pagefind';
+import { unified } from '@astrojs/markdown-remark';
+import rehypeCallouts from 'rehype-callouts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,7 +37,13 @@ export default defineConfig({
       // },
     }),
     astroAiRobotsTxt(),
+    pagefind(),
   ],
+  markdown: unified({
+    rehypePlugins: [
+      [rehypeCallouts, { theme: 'github', showIndicator: true }],
+    ],
+  }),
   vite: {
     plugins: [tailwindcss()],
   },

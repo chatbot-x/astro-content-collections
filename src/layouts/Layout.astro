@@ -1,16 +1,24 @@
 ---
 import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import ThemeProvider from '../components/ThemeProvider.astro';
+import SearchModal from '../components/SearchModal.astro';
 import { buildSchemaGraph } from '../utils/schema';
+import type { SchemaGraphOpts } from '../utils/schema';
 
 interface Props {
   title: string;
   description?: string;
-  pageType?: 'home' | 'blogPost' | 'blogListing' | 'project' | 'projectListing' | 'about' | 'page';
+  pageType?: SchemaGraphOpts['pageType'];
   publishDate?: Date;
   updatedDate?: Date;
   featureImageUrl?: string;
   category?: string;
+  wordCount?: number;
+  articleType?: SchemaGraphOpts['articleType'];
+  techStack?: string[];
+  projectUrl?: string;
+  repoUrl?: string;
+  listingItems?: SchemaGraphOpts['listingItems'];
 }
 
 const {
@@ -21,6 +29,12 @@ const {
   updatedDate,
   featureImageUrl,
   category,
+  wordCount,
+  articleType,
+  techStack,
+  projectUrl,
+  repoUrl,
+  listingItems,
 } = Astro.props;
 
 const graph = buildSchemaGraph({
@@ -32,6 +46,12 @@ const graph = buildSchemaGraph({
   updatedDate,
   featureImageUrl,
   category,
+  wordCount,
+  articleType,
+  techStack,
+  projectUrl,
+  repoUrl,
+  listingItems,
 });
 ---
 
@@ -59,6 +79,7 @@ const graph = buildSchemaGraph({
     />
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased transition-colors duration-200 dark:bg-gray-950 dark:text-gray-100">
+    <SearchModal />
     <slot />
   </body>
 </html>

@@ -16,13 +16,19 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+// OG image URL for this project
+const ogImageUrl = `/og/projects/${entry.id}`;
 ---
 
 <Layout
   title={entry.data.title}
   description={entry.data.description}
   pageType="project"
-  featureImageUrl={entry.data.heroImage || undefined}
+  featureImageUrl={entry.data.heroImage || ogImageUrl}
+  techStack={entry.data.techStack}
+  projectUrl={entry.data.url}
+  repoUrl={entry.data.repo}
 >
   <Navbar />
 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Enable dark mode with @lpdsgn/astro-themes data-theme attribute */
+/* Enable dark mode with data-theme attribute */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* Theme CSS custom properties */
@@ -48,4 +48,174 @@ html {
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
+}
+
+/* ============================================
+   REHYPE-CALLOUTS — GitHub theme + dark mode
+   ============================================ */
+
+/* Base callout styles */
+.callout {
+  --rc-border-width: 0 0 0 4px;
+  --rc-border-style: solid;
+  --rc-border-radius: 6px;
+  --rc-padding: 16px;
+  --rc-title-size: 14px;
+  --rc-content-size: 14px;
+  border-color: var(--rc-color-light, #0969da);
+  background-color: var(--rc-bg-light, #ddf4ff);
+  color: var(--rc-text-light, #1f2328);
+  margin: 16px 0;
+  padding: var(--rc-padding);
+  border-width: var(--rc-border-width);
+  border-style: var(--rc-border-style);
+  border-radius: var(--rc-border-radius);
+}
+
+.callout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: var(--rc-title-size);
+  margin-bottom: 8px;
+  color: var(--rc-title-light, #0969da);
+}
+
+.callout-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.callout-content {
+  font-size: var(--rc-content-size);
+  line-height: 1.6;
+}
+
+.callout-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Per-type callout colors — Light */
+[data-callout='note'] {
+  --rc-color-light: #0969da;
+  --rc-bg-light: #ddf4ff;
+  --rc-title-light: #0969da;
+}
+
+[data-callout='tip'] {
+  --rc-color-light: #1a7f37;
+  --rc-bg-light: #dafbe1;
+  --rc-title-light: #1a7f37;
+}
+
+[data-callout='important'] {
+  --rc-color-light: #8250df;
+  --rc-bg-light: #fbefff;
+  --rc-title-light: #8250df;
+}
+
+[data-callout='warning'] {
+  --rc-color-light: #9a6700;
+  --rc-bg-light: #fff8c5;
+  --rc-title-light: #9a6700;
+}
+
+[data-callout='caution'] {
+  --rc-color-light: #cf222e;
+  --rc-bg-light: #ffebe9;
+  --rc-title-light: #cf222e;
+}
+
+/* Dark mode callout overrides */
+[data-theme='dark'] .callout {
+  border-color: var(--rc-color-dark, #58a6ff);
+  background-color: var(--rc-bg-dark, #0d2240);
+  color: var(--rc-text-dark, #e6edf3);
+}
+
+[data-theme='dark'] .callout-title {
+  color: var(--rc-title-dark, #58a6ff);
+}
+
+/* Per-type callout colors — Dark */
+[data-theme='dark'] [data-callout='note'] {
+  --rc-color-dark: #58a6ff;
+  --rc-bg-dark: #0d2240;
+  --rc-title-dark: #58a6ff;
+}
+
+[data-theme='dark'] [data-callout='tip'] {
+  --rc-color-dark: #3fb950;
+  --rc-bg-dark: #0d2818;
+  --rc-title-dark: #3fb950;
+}
+
+[data-theme='dark'] [data-callout='important'] {
+  --rc-color-dark: #a371f7;
+  --rc-bg-dark: #230d3a;
+  --rc-title-dark: #a371f7;
+}
+
+[data-theme='dark'] [data-callout='warning'] {
+  --rc-color-dark: #d29922;
+  --rc-bg-dark: #2a2006;
+  --rc-title-dark: #d29922;
+}
+
+[data-theme='dark'] [data-callout='caution'] {
+  --rc-color-dark: #f85149;
+  --rc-bg-dark: #3d0c0c;
+  --rc-title-dark: #f85149;
+}
+
+/* ============================================
+   PAGEFIND COMPONENT UI — Dark mode overrides
+   ============================================ */
+
+/* Light mode defaults */
+:root {
+  --pf-text: #1a1a1a;
+  --pf-text-secondary: #666;
+  --pf-text-muted: #767676;
+  --pf-background: #fff;
+  --pf-border: #e0e0e0;
+  --pf-border-focus: #6366f1;
+  --pf-skeleton: #eee;
+  --pf-skeleton-shine: #f5f5f5;
+  --pf-hover: #f5f5f5;
+  --pf-mark: #6366f1;
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.08);
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+  --pf-modal-backdrop: rgba(0, 0, 0, 0.5);
+  --pf-outline-focus: #6366f1;
+  --pf-outline-width: 2px;
+  --pf-outline-offset: 2px;
+  --pf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pf-input-height: 44px;
+  --pf-input-font-size: 16px;
+  --pf-border-radius: 8px;
+}
+
+/* Dark mode Pagefind */
+[data-theme='dark'] {
+  --pf-text: #e4e4e7;
+  --pf-text-secondary: #a1a1aa;
+  --pf-text-muted: #71717a;
+  --pf-background: #18181b;
+  --pf-border: #3f3f46;
+  --pf-border-focus: #6366f1;
+  --pf-skeleton: #27272a;
+  --pf-skeleton-shine: #3f3f46;
+  --pf-hover: #27272a;
+  --pf-mark: #a5b4fc;
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.3);
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --pf-modal-backdrop: rgba(0, 0, 0, 0.8);
+  --pf-outline-focus: #6366f1;
 }

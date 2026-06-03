@@ -5,6 +5,8 @@ import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import '../../styles/global.css';
 
+const SITE_URL = 'https://example.com';
+
 const allProjects = (await getCollection('projects'))
   .sort((a, b) => {
     // Featured first, then by start date descending
@@ -12,6 +14,12 @@ const allProjects = (await getCollection('projects'))
     if (!a.data.featured && b.data.featured) return 1;
     return b.data.startDate.valueOf() - a.data.startDate.valueOf();
   });
+
+// Build listing items for schema ItemList
+const listingItems = allProjects.map((project) => ({
+  title: project.data.title,
+  url: `${SITE_URL}/projects/${project.id}/`,
+}));
 
 const statusColors: Record<string, string> = {
   active: 'bg-emerald-50 text-emerald-700 ring-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 dark:ring-emerald-800',
@@ -24,6 +32,7 @@ const statusColors: Record<string, string> = {
   title="Projects"
   description="A showcase of projects built with Astro and the modern web stack. Explore each project's architecture and features."
   pageType="projectListing"
+  listingItems={listingItems}
 >
   <Navbar />
 

@@ -26,7 +26,7 @@ const statusColors: Record<string, string> = {
 const statusColor = statusColors[status] || statusColors.active;
 ---
 
-<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12" data-pagefind-body>
   {heroImage && (
     <div class="mb-8 rounded-2xl overflow-hidden">
       <img src={heroImage} alt={title} class="w-full h-64 object-cover" />
@@ -44,7 +44,7 @@ const statusColor = statusColors[status] || statusColors.active;
         </span>
       )}
     </div>
-    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight" data-pagefind-meta="title">
       {title}
     </h1>
     {description && (
@@ -56,7 +56,7 @@ const statusColor = statusColors[status] || statusColors.active;
     {techStack.length > 0 && (
       <div class="mt-4 flex flex-wrap gap-2">
         {techStack.map((tech) => (
-          <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:ring-purple-800">
+          <span class="inline-flex items-center rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:ring-purple-800" data-pagefind-filter="tech">
             {tech}
           </span>
         ))}

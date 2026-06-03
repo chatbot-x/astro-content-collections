@@ -1,0 +1,75 @@
+---
+/**
+ * SearchModal — Pagefind Component UI integration.
+ * Loads Pagefind CSS + JS and provides a modal search dialog.
+ * Triggered by the search button in the Navbar.
+ */
+---
+
+<div id="search-modal" class="hidden">
+  <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet" />
+  <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+
+  <!-- Backdrop -->
+  <div
+    id="search-backdrop"
+    class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity"
+  ></div>
+
+  <!-- Modal container -->
+  <div class="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4">
+    <div class="w-full max-w-2xl rounded-xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <pagefind-searchbox id="search-searchbox"></pagefind-searchbox>
+      <pagefind-results id="search-results" class="max-h-[60vh] overflow-y-auto"></pagefind-results>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initSearchModal() {
+    const searchBtn = document.getElementById('search-btn');
+    const searchModal = document.getElementById('search-modal');
+    const searchBackdrop = document.getElementById('search-backdrop');
+
+    if (!searchBtn || !searchModal || !searchBackdrop) return;
+
+    function openSearch() {
+      searchModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      // Focus the Pagefind input after a small delay for web component to render
+      setTimeout(() => {
+        const input = searchModal.querySelector('input');
+        if (input) input.focus();
+      }, 100);
+    }
+
+    function closeSearch() {
+      searchModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    searchBtn.addEventListener('click', openSearch);
+    searchBackdrop.addEventListener('click', closeSearch);
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Cmd/Ctrl + K to open
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        if (searchModal.classList.contains('hidden')) {
+          openSearch();
+        } else {
+          closeSearch();
+        }
+      }
+      // Escape to close
+      if (e.key === 'Escape' && !searchModal.classList.contains('hidden')) {
+        closeSearch();
+      }
+    });
+  }
+
+  initSearchModal();
+  document.addEventListener('astro:after-swap', initSearchModal);
+  document.addEventListener('astro:page-load', initSearchModal);
+</script>

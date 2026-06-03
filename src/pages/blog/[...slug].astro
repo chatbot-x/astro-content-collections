@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { getCollection, render } from 'astro:content';
+import { computeReadingTime } from '../../utils/readingTime';
 import '../../styles/global.css';
 
 export async function getStaticPaths() {
@@ -16,6 +17,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+// Compute reading time from raw body
+const readingStats = entry.body ? computeReadingTime(entry.body) : null;
+
+// OG image URL for this post
+const ogImageUrl = `/og/blog/${entry.id}`;
 ---
 
 <Layout
@@ -24,8 +31,10 @@ const { Content } = await render(entry);
   pageType="blogPost"
   publishDate={entry.data.pubDate}
   updatedDate={entry.data.updatedDate}
-  featureImageUrl={entry.data.heroImage || undefined}
+  featureImageUrl={entry.data.heroImage || ogImageUrl}
   category={entry.data.tags?.[0]}
+  wordCount={readingStats?.words}
+  articleType={entry.data.articleType}
 >
   <Navbar />
 
@@ -47,6 +56,8 @@ const { Content } = await render(entry);
       author={entry.data.author}
       tags={entry.data.tags}
       heroImage={entry.data.heroImage}
+      readingTime={readingStats?.text}
+      wordCount={readingStats?.words}
     >
       <Content />
     </BlogPost>

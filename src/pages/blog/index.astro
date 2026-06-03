@@ -3,16 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import { computeReadingTime } from '../../utils/readingTime';
 import '../../styles/global.css';
+
+const SITE_URL = 'https://example.com';
 
 const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Build listing items for schema ItemList
+const listingItems = allPosts.map((post) => ({
+  title: post.data.title,
+  url: `${SITE_URL}/blog/${post.id}/`,
+}));
 ---
 
 <Layout
   title="Blog — Articles & Tutorials"
   description="Thoughts, tutorials, and insights about Astro, TailwindCSS, and modern web development."
   pageType="blogListing"
+  listingItems={listingItems}
 >
   <Navbar />
 
@@ -35,6 +45,8 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
             day: 'numeric',
           });
 
+          const readingStats = post.body ? computeReadingTime(post.body) : null;
+
           return (
             <a href={`/blog/${post.id}/`} class="group">
               <article class="h-full rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -42,6 +54,12 @@ const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
                   <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
                   <span class="text-gray-300 dark:text-gray-600">·</span>
                   <span>{post.data.author}</span>
+                  {readingStats && (
+                    <>
+                      <span class="text-gray-300 dark:text-gray-600">·</span>
+                      <span>{readingStats.text}</span>
+                    </>
+                  )}
                 </div>
                 <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                   {post.data.title}
