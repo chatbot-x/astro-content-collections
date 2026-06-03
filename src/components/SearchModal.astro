@@ -5,9 +5,6 @@
  * Triggered by search buttons in the Navbar (both desktop and mobile).
  * Includes prominent Cancel/Close button for mobile devices.
  */
-
-// Track active listeners so we don't accumulate duplicates on View Transitions
-let keydownHandler: ((e: KeyboardEvent) => void) | null = null;
 ---
 
 <div id="search-modal" class="hidden">

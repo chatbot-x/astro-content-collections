@@ -9,16 +9,22 @@ import {
   buildImageObject,
   buildSiteNavigationElement,
 } from '@jdevalk/seo-graph-core';
+import type { GraphEntity } from '@jdevalk/seo-graph-core';
 import type { Person, Blog, SoftwareApplication, ItemList } from 'schema-dts';
 
 const SITE_URL = 'https://example.com';
 export const ids = makeIds({ siteUrl: SITE_URL, personUrl: `${SITE_URL}/about/` });
 const blogId = `${SITE_URL}/blog/#blog`;
 
+// Helper to cast builder results to GraphEntity (builders always include @type at runtime)
+function asGraphEntity(entity: Record<string, unknown>): GraphEntity {
+  return entity as unknown as GraphEntity;
+}
+
 // Site-wide entities — included on every page
-function siteWideEntities() {
+function siteWideEntities(): GraphEntity[] {
   return [
-    buildWebSite(
+    asGraphEntity(buildWebSite(
       {
         url: `${SITE_URL}/`,
         name: 'Astro + TailwindCSS',
@@ -31,16 +37,21 @@ function siteWideEntities() {
             '@type': 'EntryPoint',
             urlTemplate: `${SITE_URL}/blog/?q={search_term_string}`,
           },
-          'query-input': {
-            '@type': 'PropertyValueSpecification',
-            valueRequired: true,
-            valueName: 'search_term_string',
-          },
+          // 'query-input' is a Google-specific extension for sitelinks search.
+          // It is not in the schema-dts type definitions, so we build the object
+          // separately and cast it to bypass the strict type check.
+          ...({
+            'query-input': {
+              '@type': 'PropertyValueSpecification',
+              valueRequired: true,
+              valueName: 'search_term_string',
+            },
+          } as Record<string, unknown>),
         },
       },
       ids,
-    ),
-    buildPiece<Person>({
+    )),
+    asGraphEntity(buildPiece<Person>({
       '@type': 'Person',
       '@id': ids.person,
       name: 'Astro Team',
@@ -52,12 +63,12 @@ function siteWideEntities() {
       ],
       knowsAbout: ['Web Development', 'Astro', 'TypeScript', 'TailwindCSS', 'SEO'],
       jobTitle: 'Web Developer',
-    }),
-    buildImageObject(
+    })),
+    asGraphEntity(buildImageObject(
       { id: ids.personImage, url: `${SITE_URL}/favicon.svg`, width: 400, height: 400 },
       ids,
-    ),
-    buildSiteNavigationElement(
+    )),
+    asGraphEntity(buildSiteNavigationElement(
       {
         name: 'Main navigation',
         isPartOf: { '@id': ids.website },
@@ -69,16 +80,16 @@ function siteWideEntities() {
         ],
       },
       ids,
-    ),
+    )),
     // Blog container entity — BlogPosting entries link to this
-    buildPiece<Blog>({
+    asGraphEntity(buildPiece<Blog>({
       '@type': 'Blog',
       '@id': blogId,
       name: 'Blog',
       url: `${SITE_URL}/blog/`,
       publisher: { '@id': ids.person },
       inLanguage: 'en-US',
-    }),
+    })),
   ];
 }
 
@@ -105,14 +116,14 @@ export interface SchemaGraphOpts {
 
 // Page-specific graph builder
 export function buildSchemaGraph(opts: SchemaGraphOpts) {
-  const pieces = [...siteWideEntities()];
+  const pieces: GraphEntity[] = [...siteWideEntities()];
   const { url, title, description, publishDate, updatedDate, featureImageUrl, category, wordCount } = opts;
 
   switch (opts.pageType) {
     case 'blogPost': {
       const articleType = opts.articleType || 'BlogPosting';
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -123,11 +134,13 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             primaryImage: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
           },
           ids,
-        ),
-        buildArticle(
+        )),
+        asGraphEntity(buildArticle(
           {
             url,
-            isPartOf: [{ '@id': ids.webPage(url) }, { '@id': blogId }],
+            // Article isPartOf only accepts a single Reference (the primary parent page).
+            // The blog container is linked separately via the Blog entity's @id.
+            isPartOf: { '@id': ids.webPage(url) },
             author: { '@id': ids.person },
             publisher: { '@id': ids.person },
             headline: title,
@@ -140,8 +153,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
           articleType,
-        ),
-        buildBreadcrumbList(
+        )),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -151,14 +164,14 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
       if (featureImageUrl) {
         pieces.push(
-          buildImageObject(
+          asGraphEntity(buildImageObject(
             { pageUrl: url, url: featureImageUrl, width: 1200, height: 630 },
             ids,
-          ),
+          )),
         );
       }
       break;
@@ -166,7 +179,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
 
     case 'blogListing':
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -175,8 +188,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
           'CollectionPage',
-        ),
-        buildBreadcrumbList(
+        )),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -185,12 +198,12 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
       // ItemList for blog listing
       if (opts.listingItems && opts.listingItems.length > 0) {
         pieces.push(
-          buildPiece<ItemList>({
+          asGraphEntity(buildPiece<ItemList>({
             '@type': 'ItemList',
             '@id': `${url}#itemlist`,
             name: 'Blog Posts',
@@ -201,14 +214,14 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
               url: item.url,
               name: item.title,
             })),
-          }),
+          })),
         );
       }
       break;
 
     case 'project': {
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -217,9 +230,9 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             primaryImage: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
           },
           ids,
-        ),
+        )),
         // SoftwareApplication for project pages
-        buildPiece<SoftwareApplication>({
+        asGraphEntity(buildPiece<SoftwareApplication>({
           '@type': 'SoftwareApplication',
           '@id': `${url}#software`,
           name: title,
@@ -236,8 +249,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             priceCurrency: 'USD',
           },
           author: { '@id': ids.person },
-        }),
-        buildBreadcrumbList(
+        })),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -247,14 +260,14 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
       if (featureImageUrl) {
         pieces.push(
-          buildImageObject(
+          asGraphEntity(buildImageObject(
             { pageUrl: url, url: featureImageUrl, width: 1200, height: 630 },
             ids,
-          ),
+          )),
         );
       }
       break;
@@ -262,7 +275,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
 
     case 'projectListing':
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -271,8 +284,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
           'CollectionPage',
-        ),
-        buildBreadcrumbList(
+        )),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -281,12 +294,12 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
       // ItemList for project listing
       if (opts.listingItems && opts.listingItems.length > 0) {
         pieces.push(
-          buildPiece<ItemList>({
+          asGraphEntity(buildPiece<ItemList>({
             '@type': 'ItemList',
             '@id': `${url}#itemlist`,
             name: 'Projects',
@@ -297,14 +310,14 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
               url: item.url,
               name: item.title,
             })),
-          }),
+          })),
         );
       }
       break;
 
     case 'about':
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -314,8 +327,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
           'ProfilePage',
-        ),
-        buildBreadcrumbList(
+        )),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -324,13 +337,13 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
       break;
 
     default:
       pieces.push(
-        buildWebPage(
+        asGraphEntity(buildWebPage(
           {
             url,
             name: title,
@@ -338,8 +351,8 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             breadcrumb: { '@id': ids.breadcrumb(url) },
           },
           ids,
-        ),
-        buildBreadcrumbList(
+        )),
+        asGraphEntity(buildBreadcrumbList(
           {
             url,
             items: [
@@ -348,7 +361,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             ],
           },
           ids,
-        ),
+        )),
       );
   }
 

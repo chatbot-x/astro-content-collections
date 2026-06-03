@@ -1,7 +1,6 @@
 import astro from 'eslint-plugin-astro';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import tseslint from 'typescript-eslint';
 
 export default [
   // Base Astro recommended rules
@@ -28,15 +27,17 @@ export default [
     },
   },
 
-  // TypeScript files — use @typescript-eslint/parser
+  // TypeScript files — use typescript-eslint flat config
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ['**/*.{js,ts,mjs}'],
+  })),
+
+  // Custom TypeScript rules
   {
     files: ['**/*.{js,ts,mjs}'],
-    languageOptions: {
-      parser: tsParser,
-    },
     plugins: {
       'jsx-a11y': jsxA11y,
-      '@typescript-eslint': tseslint,
     },
     rules: {
       ...jsxA11y.configs.recommended.rules,

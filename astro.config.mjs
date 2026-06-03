@@ -11,31 +11,42 @@ import rehypeCallouts from 'rehype-callouts';
 import remarkWikiLink from '@flowershow/remark-wiki-link';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { EnumChangefreq } from 'sitemap';
+
+// Resolve paths relative to this config file, not CWD
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Build wiki-link file and permalink maps from content collections at config time
 // Recursively find all .md/.mdx files in the content directory
-function findContentFiles(dir, base = '') {
+function findContentFiles(/** @type {string} */ dir, /** @type {string} */ base = '') {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  let files = [];
+  let files = /** @type {string[]} */ ([]);
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     const relPath = base ? `${base}/${entry.name}` : entry.name;
     if (entry.isDirectory()) {
       files = files.concat(findContentFiles(fullPath, relPath));
-    } else if (/\.(mdx?|md)$/.test(entry.name)) {
+    } else if (/\.mdx?$/.test(entry.name)) {
       files.push(relPath);
     }
   }
   return files;
 }
 
-const contentDir = './src/content';
+const contentDir = path.join(__dirname, 'src/content');
 const contentFiles = findContentFiles(contentDir);
-const permalinks = {};
+const permalinks = /** @type {Record<string, string>} */ ({});
 for (const file of contentFiles) {
-  const slug = file.replace(/\.(mdx?|md)$/, '');
+  const slug = file.replace(/\.mdx?$/, '');
   permalinks[file] = `/${slug}/`;
 }
+
+// Sitemap changefreq values — using EnumChangefreq from the sitemap package for type safety
+const CHANGEFREQ_DAILY = EnumChangefreq.DAILY;
+const CHANGEFREQ_WEEKLY = EnumChangefreq.WEEKLY;
+const CHANGEFREQ_MONTHLY = EnumChangefreq.MONTHLY;
 
 // https://astro.build/config
 export default defineConfig({
@@ -48,7 +59,6 @@ export default defineConfig({
   prefetch: {
     prefetchAll: false,
     defaultStrategy: 'hover',
-    ignoreSlowConnection: true,
   },
 
   // Phase 3: Content Security Policy
@@ -85,31 +95,31 @@ export default defineConfig({
         if (page.includes('101ca11c95314d7094344c49eea380f9')) return false;
         return true;
       },
-      changefreq: 'weekly',
-      priority: 0.7,
       lastmod: new Date(),
       serialize(item) {
+        /** @type {import('@astrojs/sitemap').SitemapItem} */
+        let result = item;
         // Homepage: highest priority
         if (item.url === 'https://example.com/' || item.url === 'https://example.com') {
-          return { ...item, priority: 1.0, changefreq: 'daily' };
+          result = { ...item, priority: 1.0, changefreq: CHANGEFREQ_DAILY };
         }
         // Blog listing: high priority, frequently updated
-        if (item.url === 'https://example.com/blog/') {
-          return { ...item, priority: 0.9, changefreq: 'daily' };
+        else if (item.url === 'https://example.com/blog/') {
+          result = { ...item, priority: 0.9, changefreq: CHANGEFREQ_DAILY };
         }
         // Blog posts: high priority
-        if (item.url.includes('/blog/') && !item.url.endsWith('/blog/')) {
-          return { ...item, priority: 0.8, changefreq: 'weekly' };
+        else if (item.url.includes('/blog/') && !item.url.endsWith('/blog/')) {
+          result = { ...item, priority: 0.8, changefreq: CHANGEFREQ_WEEKLY };
         }
         // Projects: medium priority
-        if (item.url.includes('/projects/')) {
-          return { ...item, priority: 0.7, changefreq: 'monthly' };
+        else if (item.url.includes('/projects/')) {
+          result = { ...item, priority: 0.7, changefreq: CHANGEFREQ_MONTHLY };
         }
         // About: lower priority, rarely changes
-        if (item.url.includes('/about')) {
-          return { ...item, priority: 0.5, changefreq: 'monthly' };
+        else if (item.url.includes('/about')) {
+          result = { ...item, priority: 0.5, changefreq: CHANGEFREQ_MONTHLY };
         }
-        return item;
+        return result;
       },
       namespaces: {
         news: false,   // Not a news site
@@ -158,6 +168,8 @@ export default defineConfig({
     compressor(),
   ],
 
+  // @ts-expect-error — unified() returns MarkdownProcessor which Astro accepts at runtime
+  // but the type definition only declares the object form for `markdown`.
   markdown: unified({
     remarkPlugins: [
       [remarkWikiLink, {

@@ -2,7 +2,7 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 @plugin "@tailwindcss/typography";
 
-/* Theme CSS custom properties */
+/* Theme CSS custom properties + Pagefind light mode defaults */
 :root {
   --color-bg: #ffffff;
   --color-bg-secondary: #f9fafb;
@@ -12,6 +12,30 @@
   --color-primary: #4f46e5;
   --color-primary-hover: #4338ca;
   --color-accent: #7c3aed;
+
+  /* Pagefind Component UI — Light mode */
+  --pf-text: #1a1a1a;
+  --pf-text-secondary: #666;
+  --pf-text-muted: #767676;
+  --pf-background: #fff;
+  --pf-border: #e0e0e0;
+  --pf-border-focus: #6366f1;
+  --pf-skeleton: #eee;
+  --pf-skeleton-shine: #f5f5f5;
+  --pf-hover: #f5f5f5;
+  --pf-mark: #6366f1;
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.08);
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
+  --pf-modal-backdrop: rgba(0, 0, 0, 0.5);
+  --pf-outline-focus: #6366f1;
+  --pf-outline-width: 2px;
+  --pf-outline-offset: 2px;
+  --pf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --pf-input-height: 44px;
+  --pf-input-font-size: 16px;
+  --pf-border-radius: 8px;
 }
 
 [data-theme='dark'] {
@@ -23,6 +47,24 @@
   --color-primary: #6366f1;
   --color-primary-hover: #818cf8;
   --color-accent: #a78bfa;
+
+  /* Pagefind Component UI — Dark mode */
+  --pf-text: #e4e4e7;
+  --pf-text-secondary: #a1a1aa;
+  --pf-text-muted: #71717a;
+  --pf-background: #18181b;
+  --pf-border: #3f3f46;
+  --pf-border-focus: #6366f1;
+  --pf-skeleton: #27272a;
+  --pf-skeleton-shine: #3f3f46;
+  --pf-hover: #27272a;
+  --pf-mark: #a5b4fc;
+  --pf-scroll-shadow: rgba(0, 0, 0, 0.3);
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --pf-modal-backdrop: rgba(0, 0, 0, 0.8);
+  --pf-outline-focus: #6366f1;
 }
 
 /* Smooth transitions for theme changes */
@@ -166,54 +208,4 @@ html {
   --rc-color-dark: #f85149;
   --rc-bg-dark: #3d0c0c;
   --rc-title-dark: #f85149;
-}
-
-/* ============================================
-   PAGEFIND COMPONENT UI — Dark mode overrides
-   ============================================ */
-
-/* Light mode defaults */
-:root {
-  --pf-text: #1a1a1a;
-  --pf-text-secondary: #666;
-  --pf-text-muted: #767676;
-  --pf-background: #fff;
-  --pf-border: #e0e0e0;
-  --pf-border-focus: #6366f1;
-  --pf-skeleton: #eee;
-  --pf-skeleton-shine: #f5f5f5;
-  --pf-hover: #f5f5f5;
-  --pf-mark: #6366f1;
-  --pf-scroll-shadow: rgba(0, 0, 0, 0.08);
-  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.2);
-  --pf-modal-backdrop: rgba(0, 0, 0, 0.5);
-  --pf-outline-focus: #6366f1;
-  --pf-outline-width: 2px;
-  --pf-outline-offset: 2px;
-  --pf-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --pf-input-height: 44px;
-  --pf-input-font-size: 16px;
-  --pf-border-radius: 8px;
-}
-
-/* Dark mode Pagefind */
-[data-theme='dark'] {
-  --pf-text: #e4e4e7;
-  --pf-text-secondary: #a1a1aa;
-  --pf-text-muted: #71717a;
-  --pf-background: #18181b;
-  --pf-border: #3f3f46;
-  --pf-border-focus: #6366f1;
-  --pf-skeleton: #27272a;
-  --pf-skeleton-shine: #3f3f46;
-  --pf-hover: #27272a;
-  --pf-mark: #a5b4fc;
-  --pf-scroll-shadow: rgba(0, 0, 0, 0.3);
-  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --pf-modal-backdrop: rgba(0, 0, 0, 0.8);
-  --pf-outline-focus: #6366f1;
 }

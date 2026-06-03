@@ -36,7 +36,7 @@ export const GET: APIRoute = async ({ props }) => {
       title: {
         color: [255, 255, 255],
         size: 52,
-        weight: 'bold',
+        weight: 'Bold',
         families: ['system-ui', 'sans-serif'],
       },
       description: {
