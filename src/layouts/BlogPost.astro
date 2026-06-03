@@ -1,0 +1,70 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  tags?: string[];
+  heroImage?: string;
+}
+
+const { title, description, pubDate, updatedDate, author = 'Astro Team', tags = [], heroImage } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+  {heroImage && (
+    <div class="mb-8 rounded-2xl overflow-hidden">
+      <img src={heroImage} alt={title} class="w-full h-64 object-cover" />
+    </div>
+  )}
+
+  <header class="mb-10">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+      {title}
+    </h1>
+    {description && (
+      <p class="mt-4 text-xl text-gray-600 leading-relaxed">{description}</p>
+    )}
+    <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center gap-2">
+        <div class="h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold">
+          {author.charAt(0).toUpperCase()}
+        </div>
+        <span class="font-medium text-gray-700">{author}</span>
+      </div>
+      <span class="text-gray-300">|</span>
+      <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+      {updatedDate && (
+        <span class="text-gray-400">
+          (Updated: <time datetime={updatedDate.toISOString()}>{formattedUpdatedDate}</time>)
+        </span>
+      )}
+    </div>
+    {tags.length > 0 && (
+      <div class="mt-4 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+          <span class="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-100">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </header>
+
+  <div class="prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-300 max-w-none">
+    <slot />
+  </div>
+</article>

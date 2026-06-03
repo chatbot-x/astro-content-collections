@@ -1,0 +1,29 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  color: string;
+}
+
+const { icon, title, description, color } = Astro.props;
+
+const colorMap: Record<string, { bg: string; iconBg: string; border: string }> = {
+  indigo: { bg: 'bg-indigo-50', iconBg: 'bg-indigo-100 text-indigo-600', border: 'border-indigo-100' },
+  purple: { bg: 'bg-purple-50', iconBg: 'bg-purple-100 text-purple-600', border: 'border-purple-100' },
+  cyan: { bg: 'bg-cyan-50', iconBg: 'bg-cyan-100 text-cyan-600', border: 'border-cyan-100' },
+  emerald: { bg: 'bg-emerald-50', iconBg: 'bg-emerald-100 text-emerald-600', border: 'border-emerald-100' },
+  rose: { bg: 'bg-rose-50', iconBg: 'bg-rose-100 text-rose-600', border: 'border-rose-100' },
+  amber: { bg: 'bg-amber-50', iconBg: 'bg-amber-100 text-amber-600', border: 'border-amber-100' },
+};
+
+const colors = colorMap[color] || colorMap.indigo;
+---
+
+<div class={`group rounded-2xl border ${colors.border} ${colors.bg} p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}>
+  <div class={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${colors.iconBg}`}>
+    <Fragment set:html={icon} />
+  </div>
+  <h3 class="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+  <p class="text-gray-600 leading-relaxed">{description}</p>
+</div>
