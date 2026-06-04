@@ -16,7 +16,7 @@ import path from 'node:path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const siteConfigPath = path.join(__dirname, '../../site.config.json');
 
-let siteUrl = 'https://example.com'; // fallback
+let siteUrl = 'https://astro-content-collections.pages.dev'; // fallback
 try {
   const siteConfig = JSON.parse(readFileSync(siteConfigPath, 'utf-8'));
   siteUrl = siteConfig.siteUrl || siteUrl;

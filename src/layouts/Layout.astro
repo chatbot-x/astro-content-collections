@@ -62,6 +62,29 @@ const {
 // Relative URLs (e.g., '/og/blog/slug.png') are invalid in og:image and Schema.org image objects.
 const absoluteFeatureImageUrl = resolveAbsoluteUrl(featureImageUrl);
 
+// FIX: Smart title formatting to avoid redundancy and excessive length.
+// - Homepage: "Astro + TailwindCSS" (no redundant suffix)
+// - Pages with short titles: "Page Title | Astro + TailwindCSS"
+// - Blog posts with long titles (>60 chars with suffix): omit suffix
+//   to prevent truncation in SERPs. Google displays ~60 chars.
+const siteName = 'Astro + TailwindCSS';
+const SEPARATOR = ' | ';
+const MAX_TITLE_LENGTH = 60;
+let formattedTitle: string;
+if (title === siteName) {
+  // Homepage: avoid "Astro + TailwindCSS | Astro + TailwindCSS"
+  formattedTitle = title;
+} else {
+  const titleWithSuffix = `${title}${SEPARATOR}${siteName}`;
+  formattedTitle = titleWithSuffix.length > MAX_TITLE_LENGTH
+    ? title  // Long titles: omit suffix to stay within SERP limits
+    : titleWithSuffix;
+}
+
+// FIX: Resolve featureImageUrl to absolute URL for Twitter Card image.
+// Twitter Cards require absolute URLs for twitter:image.
+const twitterImageUrl = absoluteFeatureImageUrl || `${SITE_URL}/og-default.jpg`;
+
 const graph = buildSchemaGraph({
   pageType,
   url: Astro.url.href,
@@ -88,7 +111,7 @@ const graph = buildSchemaGraph({
     <ClientRouter />
     <ThemeProvider defaultTheme="system" />
     <Seo
-      title={`${title} | Astro + TailwindCSS`}
+      title={formattedTitle}
       description={description}
       canonical={Astro.url.href}
       ogType={pageType === 'blogPost' ? 'article' : 'website'}
@@ -96,7 +119,7 @@ const graph = buildSchemaGraph({
       ogImageAlt={title}
       ogImageWidth={1200}
       ogImageHeight={675}
-      siteName="Astro + TailwindCSS"
+      siteName={siteName}
       article={pageType === 'blogPost' && publishDate ? { publishedTime: publishDate, tags: category ? [category] : undefined } : undefined}
       graph={graph}
       extraLinks={[
@@ -107,8 +130,22 @@ const graph = buildSchemaGraph({
         // FIX: RSS auto-discovery — enables RSS readers and browsers to find the feed
         // at /blog/rss.xml without the user needing to know the URL.
         { rel: 'alternate', type: 'application/rss+xml', title: 'Astro + TailwindCSS Blog', href: '/blog/rss.xml' },
+        // FIX: Preconnect resource hints — allow the browser to proactively
+        // establish connections to external domains before they are needed,
+        // reducing latency for critical resources (fonts, analytics, etc.).
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
       ]}
     />
+    {/* FIX: Twitter Card meta tags — essential for rich tweet previews.
+        These tags are required by Twitter/X, LinkedIn, and other social
+        platforms that use Twitter Card markup for link previews.
+        While Open Graph covers Facebook, Twitter Cards are a separate
+        standard and are widely supported across platforms. */}
+    <meta name="twitter:card" content={pageType === 'blogPost' ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={formattedTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={twitterImageUrl} />
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased transition-colors duration-200 dark:bg-gray-950 dark:text-gray-100">
     <!-- Skip navigation link for accessibility -->
@@ -116,9 +153,13 @@ const graph = buildSchemaGraph({
       Skip to main content
     </a>
     <SearchModal />
-    <!-- FIX: Moved Navbar out of #main-content so the skip link correctly
-         skips past navigation to the actual page content. -->
-    <Navbar />
+    <!-- FIX: Wrapped Navbar in <header> element for proper semantic HTML.
+         The <header> element provides the banner landmark, which helps
+         screen reader users navigate page sections via landmark navigation.
+         Previously, the nav was present but lacked the enclosing banner landmark. -->
+    <header>
+      <Navbar />
+    </header>
     <main id="main-content">
       <slot />
     </main>

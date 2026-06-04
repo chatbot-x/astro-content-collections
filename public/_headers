@@ -1,0 +1,17 @@
+# Cloudflare Pages security headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# Apply security headers to all pages
+/*
+  # Content Security Policy — mirrors the CSP in astro.config.mjs
+  # The Astro built-in CSP handles meta tag injection, but this HTTP header
+  # provides defense-in-depth for browsers that support both mechanisms.
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; worker-src 'self'; frame-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline'
+  # Prevent clickjacking — the site should not be embedded in iframes
+  X-Frame-Options: DENY
+  # Prevent MIME-type sniffing
+  X-Content-Type-Options: nosniff
+  # Referrer policy — only send origin to external sites
+  Referrer-Policy: strict-origin-when-cross-origin
+  # Permissions policy — disable features not used by this site
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

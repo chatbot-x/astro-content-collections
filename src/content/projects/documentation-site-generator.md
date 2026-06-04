@@ -4,7 +4,7 @@ description: "A CLI tool and template system for generating beautiful documentat
 startDate: 2025-08-01
 endDate: 2025-10-30
 status: "completed"
-url: "https://docs-gen.example.com"
+url: "https://docs-astro-content-collections.pages.dev"
 techStack: ["Astro", "MDX", "Shiki", "TailwindCSS", "Node.js"]
 featured: false
 ---

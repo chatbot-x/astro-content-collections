@@ -3,8 +3,8 @@ title: "Astro Project Hub"
 description: "A modern content-driven website built with Astro v6 and TailwindCSS v4, featuring type-safe content collections and island architecture."
 startDate: 2026-05-15
 status: "active"
-url: "https://example.com"
-repo: "https://github.com/example/astro-project-hub"
+url: "https://astro-content-collections.pages.dev"
+repo: "https://github.com/chatbot-x/astro-content-collections"
 techStack: ["Astro", "TailwindCSS", "TypeScript", "Vite"]
 featured: true
 ---

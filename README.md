@@ -83,7 +83,7 @@ description: "Project description"
 startDate: 2026-01-01
 endDate: 2026-06-01        # optional
 status: "active"            # active | completed | archived
-url: "https://example.com" # optional
+url: "https://your-project.pages.dev" # optional
 repo: "https://github.com/..." # optional
 techStack: ["Astro", "TypeScript"]
 featured: false             # optional, defaults to false

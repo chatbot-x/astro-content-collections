@@ -4,8 +4,8 @@ description: "An interactive analytics dashboard with real-time data visualizati
 startDate: 2025-11-01
 endDate: 2026-02-15
 status: "completed"
-url: "https://dashboard.example.com"
-repo: "https://github.com/example/realtime-dashboard"
+url: "https://dashboard-astro-content-collections.pages.dev"
+repo: "https://github.com/chatbot-x/astro-content-collections"
 techStack: ["Astro", "React", "D3.js", "WebSocket", "TailwindCSS"]
 featured: true
 ---

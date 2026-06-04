@@ -68,7 +68,7 @@ const CHANGEFREQ_MONTHLY = ChangeFreqEnum.MONTHLY;
 // independently defined in both files, creating a DRY violation that
 // could lead to inconsistent URLs across sitemap, Schema.org, RSS, etc.
 const siteConfigPath = path.join(__dirname, 'site.config.json');
-let SITE_URL = 'https://example.com'; // fallback
+let SITE_URL = 'https://astro-content-collections.pages.dev'; // fallback
 try {
   const siteConfig = JSON.parse(readFileSync(siteConfigPath, 'utf-8'));
   SITE_URL = siteConfig.siteUrl || SITE_URL;
@@ -193,7 +193,7 @@ export default defineConfig({
 
       // IndexNow — instant indexing on Bing/Yandex/Naver/Seznam/Yep
       // IMPORTANT: Deploy the key route FIRST before enabling this!
-      // Verify https://example.com/101ca11c95314d7094344c49eea380f9.txt loads, then uncomment:
+      // Verify https://astro-content-collections.pages.dev/101ca11c95314d7094344c49eea380f9.txt loads, then uncomment:
       // FIX: Removed TypeScript non-null assertion (!) which is invalid in .mjs files.
       // Also conditionally enable IndexNow only when the key is actually set.
       ...(process.env.INDEXNOW_KEY
