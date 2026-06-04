@@ -65,7 +65,7 @@ function siteWideEntities(): GraphEntity[] {
       jobTitle: 'Web Developer',
     })),
     asGraphEntity(buildImageObject(
-      { id: ids.personImage, url: `${SITE_URL}/favicon.svg`, width: 400, height: 400 },
+      { id: ids.personImage, url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 675 },
       ids,
     )),
     asGraphEntity(buildSiteNavigationElement(

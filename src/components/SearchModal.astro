@@ -144,7 +144,15 @@
     };
   }
 
-  initSearchModal();
-  document.addEventListener('astro:after-swap', initSearchModal);
-  document.addEventListener('astro:page-load', initSearchModal);
+  // Store cleanup function to prevent listener leaks on View Transitions
+  let cleanup: (() => void) | undefined;
+
+  function reInitSearchModal() {
+    cleanup?.();
+    cleanup = initSearchModal();
+  }
+
+  reInitSearchModal();
+  document.addEventListener('astro:after-swap', reInitSearchModal);
+  document.addEventListener('astro:page-load', reInitSearchModal);
 </script>

@@ -66,7 +66,7 @@ const graph = buildSchemaGraph({
       description={description}
       canonical={Astro.url.href}
       ogType={pageType === 'blogPost' ? 'article' : 'website'}
-      ogImage={featureImageUrl || 'https://example.com/og-default.jpg'}
+      ogImage={featureImageUrl || '/og-default.jpg'}
       ogImageAlt={title}
       ogImageWidth={1200}
       ogImageHeight={675}
@@ -74,7 +74,10 @@ const graph = buildSchemaGraph({
       article={pageType === 'blogPost' && publishDate ? { publishedTime: publishDate, tags: category ? [category] : undefined } : undefined}
       graph={graph}
       extraLinks={[
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       ]}
     />
   </head>
