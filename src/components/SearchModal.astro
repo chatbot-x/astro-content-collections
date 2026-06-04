@@ -152,10 +152,9 @@
     cleanup = initSearchModal();
   }
 
-  reInitSearchModal();
   // FIX: Only use astro:page-load which fires on both initial load AND after
-  // View Transitions swaps. Using both astro:after-swap and astro:page-load
-  // causes double initialization after each navigation, adding duplicate
-  // event listeners (memory leak) despite the AbortController cleanup.
+  // View Transitions swaps. Previously, calling reInitSearchModal() directly
+  // AND listening to astro:page-load caused double initialization on first
+  // page load, adding duplicate event listeners (memory leak).
   document.addEventListener('astro:page-load', reInitSearchModal);
 </script>

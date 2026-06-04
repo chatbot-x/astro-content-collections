@@ -70,15 +70,17 @@ export default defineConfig({
         "default-src 'self'",
         "img-src 'self' data: https:",
         "font-src 'self'",
-        // FIX: Pagefind fetches search index JSON from /pagefind/ — 'self' covers this,
-        // but we must allow the Pagefind module script to load.
+        // FIX: Pagefind fetches search index JSON from /pagefind/ — 'self' covers this.
+        // Worker-src 'self' allows Pagefind's Web Worker to load.
         "connect-src 'self'",
+        "worker-src 'self'",
         "frame-src 'none'",
       ],
       scriptDirective: {
         // FIX: Pagefind loads JS modules from /pagefind/ which is same-origin ('self').
         // Astro auto-hashes inline scripts via SHA-256 algorithm.
-        resources: ["'self'"],
+        // 'unsafe-eval' is required by Pagefind's internal search engine (wasmd).
+        resources: ["'self'", "'unsafe-eval'"],
       },
       styleDirective: {
         // TailwindCSS + Shiki syntax highlighting + Pagefind CSS require unsafe-inline
@@ -157,7 +159,7 @@ export default defineConfig({
       // IMPORTANT: Deploy the key route FIRST before enabling this!
       // Verify https://example.com/101ca11c95314d7094344c49eea380f9.txt loads, then uncomment:
       indexNow: {
-        key: process.env.INDEXNOW_KEY || '101ca11c95314d7094344c49eea380f9',
+        key: process.env.INDEXNOW_KEY!,
         host: 'example.com',
         siteUrl: 'https://example.com',
       },

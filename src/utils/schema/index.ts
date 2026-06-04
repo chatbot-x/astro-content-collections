@@ -11,8 +11,7 @@ import {
 } from '@jdevalk/seo-graph-core';
 import type { GraphEntity } from '@jdevalk/seo-graph-core';
 import type { Person, Blog, SoftwareApplication, ItemList } from 'schema-dts';
-
-const SITE_URL = 'https://example.com';
+import { SITE_URL } from '../site';
 export const ids = makeIds({ siteUrl: SITE_URL, personUrl: `${SITE_URL}/about/` });
 const blogId = `${SITE_URL}/blog/#blog`;
 

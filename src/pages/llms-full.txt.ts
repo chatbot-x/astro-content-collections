@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-
-const SITE_URL = 'https://example.com';
+import { SITE_URL } from '../../utils/site';
 
 export const GET: APIRoute = async () => {
   const [blogPosts, projects] = await Promise.all([

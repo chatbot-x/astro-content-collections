@@ -36,11 +36,7 @@ export default [
   // Custom TypeScript rules
   {
     files: ['**/*.{js,ts,mjs}'],
-    plugins: {
-      'jsx-a11y': jsxA11y,
-    },
     rules: {
-      ...jsxA11y.configs.recommended.rules,
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn',
     },
