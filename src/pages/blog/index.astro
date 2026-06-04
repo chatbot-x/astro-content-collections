@@ -83,4 +83,32 @@ const listingItems = allPosts.map((post) => ({
       )}
     </div>
   </section>
+
+  <!-- FIX: Handle ?q= query parameter to support the Schema.org SearchAction.
+       When a user arrives via a Google sitelinks search, the query parameter
+       triggers the Pagefind search modal automatically. -->
+  <script>
+    function initBlogSearch() {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('q');
+      if (query) {
+        // Wait for Pagefind to be available, then trigger search
+        const searchBtn = document.getElementById('search-btn') || document.getElementById('search-btn-mobile');
+        if (searchBtn) {
+          searchBtn.click();
+          // After modal opens, set the search query
+          setTimeout(() => {
+            const input = document.querySelector('#search-modal input') as HTMLInputElement | null;
+            if (input) {
+              input.value = query;
+              input.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+          }, 300);
+        }
+        // Clean up the URL without reloading
+        window.history.replaceState({}, '', window.location.pathname + window.location.hash);
+      }
+    }
+    document.addEventListener('astro:page-load', initBlogSearch);
+  </script>
 </Layout>

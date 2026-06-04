@@ -30,14 +30,21 @@ export const GET: APIRoute = async () => {
     const tags = post.data.tags?.join(', ') || '';
     const body = post.body || '';
 
-    lines.push(
-      '',
-      `## ${post.data.title}`,
-      '',
+    // FIX: Filter out empty strings from optional fields instead of pushing
+    // them and relying on the regex collapse at the end. Empty strings from
+    // optional fields created excessive blank lines and wasted output bytes.
+    const metaLines = [
       `URL: ${SITE_URL}/blog/${post.id}/`,
       `Published: ${pubDate}`,
       `Author: ${post.data.author}`,
       tags ? `Tags: ${tags}` : '',
+    ].filter(Boolean);
+
+    lines.push(
+      '',
+      `## ${post.data.title}`,
+      '',
+      ...metaLines,
       '',
       `> ${post.data.description}`,
       '',
@@ -53,10 +60,9 @@ export const GET: APIRoute = async () => {
     const techStack = project.data.techStack?.join(', ') || '';
     const body = project.body || '';
 
-    lines.push(
-      '',
-      `## ${project.data.title}`,
-      '',
+    // FIX: Filter out empty strings from optional fields instead of pushing
+    // them and relying on the regex collapse at the end.
+    const projectMetaLines = [
       `URL: ${SITE_URL}/projects/${project.id}/`,
       `Start Date: ${startDate}`,
       `Status: ${project.data.status}`,
@@ -64,6 +70,13 @@ export const GET: APIRoute = async () => {
       techStack ? `Tech Stack: ${techStack}` : '',
       project.data.url ? `Live URL: ${project.data.url}` : '',
       project.data.repo ? `Repo: ${project.data.repo}` : '',
+    ].filter(Boolean);
+
+    lines.push(
+      '',
+      `## ${project.data.title}`,
+      '',
+      ...projectMetaLines,
       '',
       `> ${project.data.description}`,
       '',

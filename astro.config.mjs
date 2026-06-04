@@ -13,6 +13,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// Import SITE_URL from the shared module to avoid duplication.
+// astro.config.mjs is ESM, so we can use dynamic import for a TS module.
+// However, since this is a .mjs config file evaluated at build time,
+// we define the constant here and re-export it is not possible.
+// Instead, we keep a single definition here and import it in utils/site.ts
+// via a re-export pattern. BUT .mjs cannot import .ts directly.
+// Solution: Define SITE_URL here, and have utils/site.ts also define it.
+// To truly DRY this up, we create a shared JSON config.
+import { readFileSync } from 'node:fs';
+
 // Resolve paths relative to this config file, not CWD
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -52,8 +62,19 @@ const CHANGEFREQ_DAILY = ChangeFreqEnum.DAILY;
 const CHANGEFREQ_WEEKLY = ChangeFreqEnum.WEEKLY;
 const CHANGEFREQ_MONTHLY = ChangeFreqEnum.MONTHLY;
 
-// Site URL constant — single source of truth, used in both the config and sitemap serializer.
-const SITE_URL = 'https://example.com';
+// Site URL constant — single source of truth.
+// FIX: Load from a shared JSON file so both astro.config.mjs and
+// src/utils/site.ts read the same value. Previously, SITE_URL was
+// independently defined in both files, creating a DRY violation that
+// could lead to inconsistent URLs across sitemap, Schema.org, RSS, etc.
+const siteConfigPath = path.join(__dirname, 'site.config.json');
+let SITE_URL = 'https://example.com'; // fallback
+try {
+  const siteConfig = JSON.parse(readFileSync(siteConfigPath, 'utf-8'));
+  SITE_URL = siteConfig.siteUrl || SITE_URL;
+} catch {
+  // site.config.json not found — use default
+}
 
 // https://astro.build/config
 export default defineConfig({

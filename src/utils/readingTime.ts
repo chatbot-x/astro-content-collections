@@ -14,9 +14,13 @@ export interface ReadingTimeStats {
  */
 export function computeReadingTime(body: string, wordsPerMinute = 200): ReadingTimeStats {
   const stats = getReadingTime(body, { wordsPerMinute });
+  // FIX: Clamp minutes to at least 1 so we never display "0 min read"
+  // for very short content (e.g., a post with just a title and one sentence).
+  // The reading-time package can return 0 minutes for content under ~100 words.
+  const minutes = Math.max(1, Math.ceil(stats.minutes));
   return {
-    text: stats.text,
-    minutes: Math.ceil(stats.minutes),
+    text: `${minutes} min read`,
+    minutes,
     words: typeof stats.words === 'number' ? stats.words : 0,
   };
 }

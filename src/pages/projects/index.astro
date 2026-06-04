@@ -3,7 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { SITE_URL } from '../../utils/site';
 
+// FIX: Filter out archived projects from the listing page.
+// Archived projects are still accessible via direct URL but shouldn't
+// appear in the showcase listing. This is consistent with how the blog
+// listing filters out draft posts.
 const allProjects = (await getCollection('projects'))
+  .filter((project) => project.data.status !== 'archived')
   .sort((a, b) => {
     // Featured first, then by start date descending
     if (a.data.featured && !b.data.featured) return -1;
@@ -80,6 +85,12 @@ const statusColors: Record<string, string> = {
           );
         })}
       </div>
+
+      {allProjects.length === 0 && (
+        <div class="text-center py-20">
+          <p class="text-gray-500 dark:text-gray-400 text-lg">No projects yet. Check back soon!</p>
+        </div>
+      )}
     </div>
   </section>
 </Layout>

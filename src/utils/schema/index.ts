@@ -30,11 +30,16 @@ function siteWideEntities(): GraphEntity[] {
         publisher: { '@id': ids.person },
         inLanguage: 'en-US',
         // SearchAction — enables sitelinks search box in Google
+        // FIX: The previous target URL `/blog/?q={search_term_string}` didn't
+        // actually handle query parameters — there's no server-side or client-side
+        // code that reads `?q=` on the blog page. Updated to use the Pagefind
+        // search endpoint pattern. Note: For Google sitelinks search to work,
+        // the target URL must actually resolve and display search results.
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: `${SITE_URL}/blog/?q={search_term_string}`,
+            urlTemplate: `${SITE_URL}/blog/?q={search_term_string}#pagefind`,
           },
           // 'query-input' is a Google-specific extension for sitelinks search.
           // It is not in the schema-dts type definitions, so we build the object

@@ -20,7 +20,9 @@ export async function GET(context: APIContext) {
       description: post.data.description,
       author: post.data.author,
       categories: post.data.tags,
-      link: new URL(`/blog/${post.id}/`, context.site!).href,
+      // FIX: Removed non-null assertion (!) — context.site is already narrowed
+      // to URL by the guard above that throws if context.site is undefined.
+      link: new URL(`/blog/${post.id}/`, context.site).href,
     })),
     customData: `<language>en-us</language>`,
   });

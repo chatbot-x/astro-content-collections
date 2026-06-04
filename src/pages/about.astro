@@ -11,9 +11,15 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    heroImage: z.string().optional(),
     author: z.string().default('Astro Team'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    articleType: z.enum([
+      'Article', 'BlogPosting', 'TechArticle',
+      'NewsArticle', 'ScholarlyArticle', 'Report',
+    ]).default('BlogPosting'),
   }),
 });
 
@@ -23,9 +29,13 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     startDate: z.coerce.date(),
-    status: z.enum(['active', 'completed', 'archived']),
+    endDate: z.coerce.date().optional(),
+    status: z.enum(['active', 'completed', 'archived']).default('active'),
+    url: z.string().url().optional(),
+    repo: z.string().url().optional(),
     techStack: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
+    heroImage: z.string().optional(),
   }),
 });
 

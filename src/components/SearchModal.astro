@@ -7,9 +7,14 @@
  */
 ---
 
-<div id="search-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Search">
-  <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet" />
-  <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+<div id="search-modal" class="hidden" role="dialog" aria-modal="true" aria-label="Search" data-pagefind-ignore>
+  <!-- FIX: Pagefind CSS/JS were previously loaded eagerly inside the hidden modal,
+       causing unnecessary network requests on every page even when search is never used.
+       Now they are loaded lazily on first search open via the initSearchModal() script below.
+       The link/script tags remain here as fallback noscript content. -->
+  <noscript>
+    <link href="/pagefind/pagefind-component-ui.css" rel="stylesheet" />
+  </noscript>
 
   <!-- Backdrop -->
   <div
@@ -63,7 +68,32 @@
 
     if (!searchModal || !searchBackdrop) return;
 
+    // FIX: Lazy-load Pagefind CSS and JS on first search open.
+    // Previously, these resources were loaded eagerly via <link> and <script>
+    // tags inside the hidden modal, causing unnecessary network requests on
+    // every page even when the user never opens search.
+    let pagefindLoaded = false;
+    function loadPagefindResources() {
+      if (pagefindLoaded) return;
+      pagefindLoaded = true;
+      // Load Pagefind CSS
+      if (!document.querySelector('link[href="/pagefind/pagefind-component-ui.css"]')) {
+        const link = document.createElement('link');
+        link.href = '/pagefind/pagefind-component-ui.css';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+      // Load Pagefind JS module
+      if (!document.querySelector('script[src="/pagefind/pagefind-component-ui.js"]')) {
+        const script = document.createElement('script');
+        script.src = '/pagefind/pagefind-component-ui.js';
+        script.type = 'module';
+        document.head.appendChild(script);
+      }
+    }
+
     function openSearch() {
+      loadPagefindResources();
       searchModal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       // Focus the Pagefind input after a small delay for web component to render
