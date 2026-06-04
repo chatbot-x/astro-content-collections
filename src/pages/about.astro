@@ -131,7 +131,7 @@ const projectStructureCode = `astro-project/
             This project uses Astro's Content Layer API to manage structured content with type-safe schemas. Two collections are configured — <strong class="text-gray-800 dark:text-gray-200">Blog</strong> and <strong class="text-gray-800 dark:text-gray-200">Projects</strong> — each with Zod-validated frontmatter that provides TypeScript autocompletion and build-time validation.
           </p>
           <div class="bg-gray-900 dark:bg-gray-950 rounded-xl p-5 text-sm font-mono text-gray-300 overflow-x-auto">
-            <pre class="leading-relaxed" set:html={contentConfigCode} />
+            <pre class="leading-relaxed">{contentConfigCode}</pre>
           </div>
         </div>
 
@@ -173,7 +173,7 @@ const projectStructureCode = `astro-project/
             Project Structure
           </h2>
           <div class="bg-gray-900 dark:bg-gray-950 rounded-xl p-6 text-sm font-mono text-gray-300 overflow-x-auto">
-            <pre class="leading-relaxed" set:html={projectStructureCode} />
+            <pre class="leading-relaxed">{projectStructureCode}</pre>
           </div>
         </div>
       </div>

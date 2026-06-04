@@ -1,4 +1,5 @@
 ---
+import ClientRouter from 'astro/components/ClientRouter.astro';
 import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import ThemeProvider from '../components/ThemeProvider.astro';
 import SearchModal from '../components/SearchModal.astro';
@@ -60,9 +61,10 @@ const graph = buildSchemaGraph({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <ClientRouter />
     <ThemeProvider defaultTheme="system" />
     <Seo
-      title={`${title} | Astro + TailwindCSS`}
+      title={`${title} | Astro + Tailwind`}
       description={description}
       canonical={Astro.url.href}
       ogType={pageType === 'blogPost' ? 'article' : 'website'}

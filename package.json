@@ -28,6 +28,7 @@
     "astro-pagefind": "^2.0.0",
     "reading-time": "^1.5.0",
     "rehype-callouts": "^2.1.2",
+    "schema-dts": "^2.0.0",
     "tailwindcss": "^4.3.0"
   },
   "description": "Astro v6 project with TailwindCSS v4",
@@ -43,7 +44,6 @@
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "remark-html": "^16.0.1",
     "typescript-eslint": "^8.60.1"
   }
 }

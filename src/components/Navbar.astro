@@ -14,10 +14,10 @@ import ThemeToggle from './ThemeToggle.astro';
         <span class="text-xl font-bold text-white tracking-tight">Astro + TailwindCSS</span>
       </div>
       <div class="hidden sm:flex items-center gap-6">
-        <a href="/" data-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Home</a>
-        <a href="/blog/" data-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Blog</a>
-        <a href="/projects/" data-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Projects</a>
-        <a href="/about/" data-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">About</a>
+        <a href="/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Home</a>
+        <a href="/blog/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Blog</a>
+        <a href="/projects/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">Projects</a>
+        <a href="/about/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium">About</a>
         <a href="https://docs.astro.build" target="_blank" rel="noopener noreferrer" class="text-indigo-100 hover:text-white transition-colors font-medium">Docs</a>
         <div class="ml-2 border-l border-indigo-400/40 pl-4 flex items-center gap-2">
           <button
@@ -74,15 +74,23 @@ import ThemeToggle from './ThemeToggle.astro';
     const menu = document.getElementById('mobile-menu');
     if (!btn || !menu) return;
 
+    const controller = new AbortController();
     btn.addEventListener('click', () => {
       menu.classList.toggle('hidden');
-    });
+    }, { signal: controller.signal });
+
+    // Return cleanup function for View Transitions
+    return () => controller.abort();
   }
 
-  // FIX: Only use astro:page-load which fires on both initial load AND after
-  // View Transitions swaps. Using both astro:after-swap and astro:page-load
-  // causes double initialization after each navigation, adding duplicate
-  // event listeners that are never cleaned up (memory leak).
-  initMobileMenu();
-  document.addEventListener('astro:page-load', initMobileMenu);
+  // Store cleanup function to prevent listener leaks on View Transitions
+  let cleanup: (() => void) | undefined;
+
+  function reInitMobileMenu() {
+    cleanup?.();
+    cleanup = initMobileMenu();
+  }
+
+  // astro:page-load fires on both initial load AND after View Transitions swaps
+  document.addEventListener('astro:page-load', reInitMobileMenu);
 </script>

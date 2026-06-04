@@ -101,7 +101,6 @@ export default defineConfig({
         if (page.includes('101ca11c95314d7094344c49eea380f9')) return false;
         return true;
       },
-      lastmod: new Date(),
       serialize(item) {
         /** @type {import('@astrojs/sitemap').SitemapItem} */
         let result = item;
@@ -174,31 +173,29 @@ export default defineConfig({
     compressor(),
   ],
 
-  // FIX: Using unified() from @astrojs/markdown-remark (which IS a dependency)
-  // instead of the deprecated markdown.remarkPlugins/rehypePlugins object form.
-  // The @ts-expect-error is needed because Astro's type definitions only declare
-  // the object form for `markdown`, but unified() returns a MarkdownProcessor
-  // which Astro accepts at runtime.
-  // @ts-expect-error — unified() returns MarkdownProcessor which Astro accepts at runtime
-  // but the type definition only declares the object form for `markdown`.
-  markdown: unified({
-    remarkPlugins: [
-      [remarkWikiLink, {
-        // Provide content file names so wiki-links resolve against actual content
-        files: contentFiles,
-        // Map file names to their Astro route URLs
-        permalinks,
-        format: 'shortestPossible',
-        caseInsensitive: true,
-        className: 'internal',
-        newClassName: 'unresolved',
-        aliasDivider: '|',
-      }],
-    ],
-    rehypePlugins: [
-      [rehypeCallouts, { theme: 'github', showIndicator: true }],
-    ],
-  }),
+  // Astro v6 Content Layer markdown configuration using the processor API.
+  // The `unified()` function from @astrojs/markdown-remark returns a
+  // MarkdownProcessor that Astro accepts at runtime via the `processor` key.
+  markdown: {
+    processor: unified({
+      remarkPlugins: [
+        [remarkWikiLink, {
+          // Provide content file names so wiki-links resolve against actual content
+          files: contentFiles,
+          // Map file names to their Astro route URLs
+          permalinks,
+          format: 'shortestPossible',
+          caseInsensitive: true,
+          className: 'internal',
+          newClassName: 'unresolved',
+          aliasDivider: '|',
+        }],
+      ],
+      rehypePlugins: [
+        [rehypeCallouts, { theme: 'github', showIndicator: true }],
+      ],
+    }),
+  },
 
   vite: {
     plugins: [tailwindcss()],
