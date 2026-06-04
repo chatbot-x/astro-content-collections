@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { getCollection, render } from 'astro:content';
@@ -39,8 +38,6 @@ const ogImageUrl = `/og/blog/${entry.id}.png`;
   wordCount={readingStats?.words}
   articleType={entry.data.articleType}
 >
-  <Navbar />
-
   <div class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/50 min-h-screen">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
       <a href="/blog/" class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors">

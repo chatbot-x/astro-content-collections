@@ -58,10 +58,13 @@ import ThemeToggle from './ThemeToggle.astro';
     <!-- Mobile menu -->
     <div id="mobile-menu" class="hidden sm:hidden pb-4">
       <div class="flex flex-col gap-2">
-        <a href="/" class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Home</a>
-        <a href="/blog/" class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Blog</a>
-        <a href="/projects/" class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Projects</a>
-        <a href="/about/" class="text-indigo-100 hover:text-white transition-colors font-medium py-2">About</a>
+        <!-- FIX: Added data-astro-prefetch to mobile nav links for consistency
+             with desktop links, so mobile users on slower connections also benefit
+             from prefetching. -->
+        <a href="/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Home</a>
+        <a href="/blog/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Blog</a>
+        <a href="/projects/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Projects</a>
+        <a href="/about/" data-astro-prefetch class="text-indigo-100 hover:text-white transition-colors font-medium py-2">About</a>
         <a href="https://docs.astro.build" target="_blank" rel="noopener noreferrer" class="text-indigo-100 hover:text-white transition-colors font-medium py-2">Docs</a>
       </div>
     </div>

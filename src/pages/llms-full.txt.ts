@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { SITE_URL } from '../../utils/site';
+// FIX: Corrected import path — file is in src/pages/, so only one level up to src/utils/.
+import { SITE_URL } from '../utils/site';
 
 export const GET: APIRoute = async () => {
   const [blogPosts, projects] = await Promise.all([

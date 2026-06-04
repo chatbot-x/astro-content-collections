@@ -119,6 +119,36 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
   const { url, title, description, publishDate, updatedDate, featureImageUrl, category, wordCount } = opts;
 
   switch (opts.pageType) {
+    // FIX: Added explicit 'home' case for proper homepage schema.
+    // Previously, the homepage fell through to the generic 'default' case,
+    // generating a redundant BreadcrumbList ("Home > Astro + TailwindCSS")
+    // which links the homepage to itself — an anti-pattern in Schema.org.
+    // The homepage now gets a proper WebPage with representativeOfPage
+    // and no self-referential breadcrumb.
+    case 'home': {
+      pieces.push(
+        asGraphEntity(buildWebPage(
+          {
+            url,
+            name: title,
+            isPartOf: { '@id': ids.website },
+            representativeOfPage: true,
+            primaryImage: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
+          },
+          ids,
+        )),
+      );
+      if (featureImageUrl) {
+        pieces.push(
+          asGraphEntity(buildImageObject(
+            { pageUrl: url, url: featureImageUrl, width: 1200, height: 630 },
+            ids,
+          )),
+        );
+      }
+      break;
+    }
+
     case 'blogPost': {
       const articleType = opts.articleType || 'BlogPosting';
       pieces.push(
@@ -144,7 +174,10 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             publisher: { '@id': ids.person },
             headline: title,
             description,
-            datePublished: publishDate!,
+            // FIX: Removed non-null assertion on optional publishDate.
+            // If publishDate is undefined, omit it from the schema rather than
+            // passing undefined which produces invalid JSON-LD.
+            datePublished: publishDate,
             dateModified: updatedDate,
             image: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
             articleSection: category,

@@ -1,3 +1,4 @@
+import type { APIRoute } from 'astro';
 import { createIndexNowKeyRoute } from '@jdevalk/astro-seo-graph';
 
 /**
@@ -11,7 +12,21 @@ import { createIndexNowKeyRoute } from '@jdevalk/astro-seo-graph';
  *
  * SECURITY: The key must be provided via the INDEXNOW_KEY environment variable.
  * Never commit the actual key value to source control.
+ *
+ * FIX: When INDEXNOW_KEY is not set, return 404 instead of passing an empty
+ * string to createIndexNowKeyRoute which would fail validation (requires 8-128 chars).
  */
-export const GET = createIndexNowKeyRoute({
-  key: process.env.INDEXNOW_KEY!,
-});
+
+const indexNowKey = process.env.INDEXNOW_KEY;
+
+// Only use the IndexNow route handler when the key is actually configured
+const indexNowHandler = indexNowKey
+  ? createIndexNowKeyRoute({ key: indexNowKey })
+  : undefined;
+
+export const GET: APIRoute = async (ctx) => {
+  if (!indexNowHandler) {
+    return new Response('IndexNow key not configured', { status: 404 });
+  }
+  return indexNowHandler(ctx);
+};

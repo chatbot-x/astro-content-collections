@@ -2,6 +2,7 @@
 import ClientRouter from 'astro/components/ClientRouter.astro';
 import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import ThemeProvider from '../components/ThemeProvider.astro';
+import Navbar from '../components/Navbar.astro';
 import SearchModal from '../components/SearchModal.astro';
 import { buildSchemaGraph } from '../utils/schema';
 import type { SchemaGraphOpts } from '../utils/schema';
@@ -89,8 +90,11 @@ const graph = buildSchemaGraph({
       Skip to main content
     </a>
     <SearchModal />
-    <div id="main-content">
+    <!-- FIX: Moved Navbar out of #main-content so the skip link correctly
+         skips past navigation to the actual page content. -->
+    <Navbar />
+    <main id="main-content">
       <slot />
-    </div>
+    </main>
   </body>
 </html>

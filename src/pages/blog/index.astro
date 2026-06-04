@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import { computeReadingTime } from '../../utils/readingTime';
@@ -23,8 +22,6 @@ const listingItems = allPosts.map((post) => ({
   pageType="blogListing"
   listingItems={listingItems}
 >
-  <Navbar />
-
   <section class="py-16 sm:py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950/50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">

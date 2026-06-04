@@ -158,11 +158,17 @@ export default defineConfig({
       // IndexNow — instant indexing on Bing/Yandex/Naver/Seznam/Yep
       // IMPORTANT: Deploy the key route FIRST before enabling this!
       // Verify https://example.com/101ca11c95314d7094344c49eea380f9.txt loads, then uncomment:
-      indexNow: {
-        key: process.env.INDEXNOW_KEY!,
-        host: 'example.com',
-        siteUrl: 'https://example.com',
-      },
+      // FIX: Removed TypeScript non-null assertion (!) which is invalid in .mjs files.
+      // Also conditionally enable IndexNow only when the key is actually set.
+      ...(process.env.INDEXNOW_KEY
+        ? {
+            indexNow: {
+              key: process.env.INDEXNOW_KEY,
+              host: 'example.com',
+              siteUrl: 'https://example.com',
+            },
+          }
+        : {}),
     }),
 
     // 3. AI crawler blocking
