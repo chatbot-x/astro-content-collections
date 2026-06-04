@@ -3,15 +3,16 @@
 
 # Apply security headers to all pages
 /*
-  # Content Security Policy — defense-in-depth alongside the meta-tag CSP in HTML.
-  # Must match the directives in astro.config.mjs security.csp section.
-  # Notes on trade-offs:
-  #   - 'unsafe-eval' is required by Pagefind's WASM engine (wasmd).
-  #     Monitor Pagefind releases for CSP-compatible initialization.
-  #   - 'unsafe-inline' is required by TailwindCSS v4 + Shiki syntax highlighting.
-  #     These generate inline style attributes at build time.
-  #   - 'unsafe-hashes' is required for Astro View Transitions inline scripts.
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; worker-src 'self'; frame-src 'none'; script-src 'self' 'unsafe-eval' 'unsafe-hashes'; style-src 'self' 'unsafe-inline'
+  # NOTE: Content Security Policy is NOT set here. Astro's security.csp
+  # configuration auto-generates a CSP meta tag in the HTML with SHA-256
+  # hashes for all inline scripts (ThemeProvider, View Transitions, etc.).
+  # Setting a CSP HTTP header WITHOUT those hashes would create a stricter
+  # second policy that blocks those same inline scripts, breaking:
+  #   - Theme toggle (depends on window.__ASTRO_THEMES__)
+  #   - Dark mode initialization (FOUC prevention)
+  #   - View Transitions (inline event handlers)
+  # The meta-tag CSP alone provides the same protection since CSP is
+  # enforced at the document level regardless of delivery mechanism.
   # Prevent clickjacking — the site should not be embedded in iframes
   X-Frame-Options: DENY
   # Prevent MIME-type sniffing
