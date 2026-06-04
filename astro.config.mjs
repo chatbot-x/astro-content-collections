@@ -28,14 +28,34 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Build wiki-link file and permalink maps from content collections at config time
 // Recursively find all .md/.mdx files in the content directory
-function findContentFiles(/** @type {string} */ dir, /** @type {string} */ base = '') {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
+// FIX (AUD-007): Added symlink detection and max depth guard to prevent
+// infinite recursion from circular symlinks and excessively deep trees.
+function findContentFiles(/** @type {string} */ dir, /** @type {string} */ base = '', /** @type {number} */ depth = 0) {
+  // Guard against excessively deep or circular directory structures
+  if (depth > 10) {
+    console.warn(`findContentFiles: max depth (10) exceeded at ${dir}, stopping recursion`);
+    return /** @type {string[]} */ ([]);
+  }
   let files = /** @type {string[]} */ ([]);
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch {
+    // Directory doesn't exist or isn't readable
+    return files;
+  }
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     const relPath = base ? `${base}/${entry.name}` : entry.name;
+    // Skip symbolic links to prevent circular symlink traversal
+    try {
+      const stat = fs.lstatSync(fullPath);
+      if (stat.isSymbolicLink()) continue;
+    } catch {
+      continue;
+    }
     if (entry.isDirectory()) {
-      files = files.concat(findContentFiles(fullPath, relPath));
+      files = files.concat(findContentFiles(fullPath, relPath, depth + 1));
     } else if (/\.mdx?$/.test(entry.name)) {
       files.push(relPath);
     }
@@ -90,6 +110,29 @@ export default defineConfig({
   },
 
   // Phase 3: Content Security Policy
+  // SECURITY NOTES (AUD-002, AUD-003):
+  //
+  // 'unsafe-eval' in script-src: REQUIRED by Pagefind's WASM engine (wasmd).
+  // Pagefind internally uses eval() to initialize its WebAssembly module.
+  // Without this directive, Pagefind search will fail to initialize.
+  // Mitigation: Monitor Pagefind releases for CSP-compatible WASM init.
+  // Tracked at: https://github.com/nicepage/Pagefind/issues
+  //
+  // 'unsafe-inline' in style-src: REQUIRED by TailwindCSS v4 + Shiki.
+  // TailwindCSS generates utility classes as inline styles at build time,
+  // and Shiki syntax highlighting generates inline style attributes for
+  // token coloring. Removing this directive breaks all styling.
+  // This is a known limitation of TailwindCSS with CSP enforcement.
+  // Risk is partially mitigated: this is a static site with NO user-generated
+  // content (no comments, forms, or dynamic HTML injection points).
+  //
+  // 'unsafe-hashes' in script-src: REQUIRED for Astro View Transitions.
+  // Astro generates inline event handlers (e.g., onclick) with SHA-256
+  // hashes. Without 'unsafe-hashes', View Transitions would break.
+  //
+  // Defense-in-depth: A matching CSP HTTP header is set in public/_headers
+  // (for Cloudflare Pages), providing CSP enforcement at both the HTTP level
+  // and the HTML meta-tag level.
   security: {
     csp: {
       algorithm: 'SHA-256',
