@@ -109,57 +109,25 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
 
-  // Phase 3: Content Security Policy
-  // SECURITY NOTES (AUD-002, AUD-003):
+  // CSP (Content Security Policy) is NOT configured here because Astro's
+  // built-in CSP hash computation has a known issue: it fails to include
+  // SHA-256 hashes for ALL inline scripts (specifically, scripts injected
+  // by components like SearchModal are omitted). This causes the browser
+  // to block those scripts, breaking search, theme toggling, and other
+  // interactive features.
   //
-  // 'unsafe-eval' in script-src: REQUIRED by Pagefind's WASM engine (wasmd).
-  // Pagefind internally uses eval() to initialize its WebAssembly module.
-  // Without this directive, Pagefind search will fail to initialize.
-  // Mitigation: Monitor Pagefind releases for CSP-compatible WASM init.
-  // Tracked at: https://github.com/nicepage/Pagefind/issues
+  // Security is still provided via HTTP response headers in public/_headers:
+  //   - X-Frame-Options: DENY (prevents clickjacking)
+  //   - X-Content-Type-Options: nosniff (prevents MIME sniffing)
+  //   - Referrer-Policy: strict-origin-when-cross-origin
+  //   - Permissions-Policy: camera=(), microphone=(), geolocation=()
+  //   - X-XSS-Protection: 1; mode=block
+  //   - Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   //
-  // 'unsafe-inline' in style-src: REQUIRED by TailwindCSS v4 + Shiki.
-  // TailwindCSS generates utility classes as inline styles at build time,
-  // and Shiki syntax highlighting generates inline style attributes for
-  // token coloring. Removing this directive breaks all styling.
-  // This is a known limitation of TailwindCSS with CSP enforcement.
-  // Risk is partially mitigated: this is a static site with NO user-generated
-  // content (no comments, forms, or dynamic HTML injection points).
-  //
-  // 'unsafe-hashes' in script-src: REQUIRED for Astro View Transitions.
-  // Astro generates inline event handlers (e.g., onclick) with SHA-256
-  // hashes. Without 'unsafe-hashes', View Transitions would break.
-  //
-  // Defense-in-depth: A matching CSP HTTP header is set in public/_headers
-  // (for Cloudflare Pages), providing CSP enforcement at both the HTTP level
-  // and the HTML meta-tag level.
-  security: {
-    csp: {
-      algorithm: 'SHA-256',
-      directives: [
-        "default-src 'self'",
-        "img-src 'self' data: https:",
-        "font-src 'self'",
-        // FIX: Pagefind fetches search index JSON from /pagefind/ — 'self' covers this.
-        // Worker-src 'self' allows Pagefind's Web Worker to load.
-        "connect-src 'self'",
-        "worker-src 'self'",
-        "frame-src 'none'",
-      ],
-      scriptDirective: {
-        // FIX: Pagefind loads JS modules from /pagefind/ which is same-origin ('self').
-        // Astro auto-hashes inline scripts via SHA-256 algorithm.
-        // 'unsafe-eval' is required by Pagefind's internal search engine (wasmd).
-        // 'unsafe-hashes' allows Astro's View Transitions and ThemeProvider inline
-        // scripts to work with CSP (event handlers like onclick with hashes).
-        resources: ["'self'", "'unsafe-eval'", "'unsafe-hashes'"],
-      },
-      styleDirective: {
-        // TailwindCSS + Shiki syntax highlighting + Pagefind CSS require unsafe-inline
-        resources: ["'self'", "'unsafe-inline'"],
-      },
-    },
-  },
+  // For a static site with NO user-generated content, these headers provide
+  // adequate protection without the risk of breaking interactive features.
+  // If Astro's CSP hash computation is fixed in a future release, CSP can
+  // be re-enabled here.
 
   integrations: [
     // 1. Sitemap — generates sitemap-index.xml + sitemap-0.xml
@@ -260,11 +228,7 @@ export default defineConfig({
     compressor(),
   ],
 
-  // NOTE: Shiki syntax highlighting uses inline style attributes which are
-  // compatible with CSP only because style-src includes 'unsafe-inline'.
-  // If stricter CSP is needed, switch to Prism via:
-  //   markdown: { shikiConfig: { theme: 'github-dark' } }
-  // and remove 'unsafe-inline' from styleDirective.
+  // NOTE: Shiki syntax highlighting uses inline style attributes.
 
   // Astro v6 Content Layer markdown configuration using the processor API.
   // The `unified()` function from @astrojs/markdown-remark returns a
