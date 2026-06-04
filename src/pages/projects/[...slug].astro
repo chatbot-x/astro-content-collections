@@ -1,9 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/Footer.astro';
 import ProjectPage from '../../layouts/ProjectPage.astro';
 import { getCollection, render } from 'astro:content';
-import '../../styles/global.css';
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -55,6 +53,4 @@ const ogImageUrl = `/og/projects/${entry.id}.png`;
       <Content />
     </ProjectPage>
   </div>
-
-  <Footer />
 </Layout>

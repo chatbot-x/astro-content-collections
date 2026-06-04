@@ -1,5 +1,8 @@
 # Base robots.txt for Astro Project
 # The astro-ai-robots-txt integration will prepend AI bot block rules
+# NOTE: The Sitemap URL below is a placeholder. The @astrojs/sitemap integration
+# generates the correct sitemap-index.xml at build time, and astro-ai-robots-txt
+# will update this file automatically. If you change SITE_URL, update it here too.
 
 User-agent: *
 Allow: /

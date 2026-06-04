@@ -1,9 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import { SITE_URL } from '../../utils/site';
-import '../../styles/global.css';
 
 const allProjects = (await getCollection('projects'))
   .sort((a, b) => {
@@ -84,6 +82,4 @@ const statusColors: Record<string, string> = {
       </div>
     </div>
   </section>
-
-  <Footer />
 </Layout>

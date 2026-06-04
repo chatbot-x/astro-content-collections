@@ -22,6 +22,7 @@ const colors = colorMap[color] || colorMap.indigo;
 
 <div class={`group rounded-2xl border ${colors.border} ${colors.bg} p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}>
   <div class={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl ${colors.iconBg}`}>
+    {/* NOTE: `icon` prop is set:html injected SVG — must only come from trusted sources (hardcoded in Features.astro). Never pass user-generated content here. */}
     <Fragment set:html={icon} />
   </div>
   <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>

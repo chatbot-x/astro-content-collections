@@ -167,10 +167,10 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
         )),
-        // FIX: Only pass datePublished when it is defined, because ArticleCoreFields
-        // declares it as required (`Date`, not `Date | undefined`). Passing undefined
-        // causes a TS2322 error and would produce invalid JSON-LD at runtime.
-        // We build the input object with a type assertion since we guard publishDate.
+        // FIX: Use current date as fallback instead of new Date(0) (Jan 1, 1970).
+        // A Unix epoch date in Schema.org JSON-LD is clearly wrong and may cause
+        // search engines to ignore the structured data. Using the build date is a
+        // more sensible fallback when the publish date is unknown.
         asGraphEntity(buildArticle(
           {
             url,
@@ -179,7 +179,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             publisher: { '@id': ids.person },
             headline: title,
             description,
-            datePublished: publishDate ?? new Date(0),
+            datePublished: publishDate ?? new Date(),
             dateModified: updatedDate,
             image: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
             articleSection: category,

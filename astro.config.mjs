@@ -86,7 +86,9 @@ export default defineConfig({
         // FIX: Pagefind loads JS modules from /pagefind/ which is same-origin ('self').
         // Astro auto-hashes inline scripts via SHA-256 algorithm.
         // 'unsafe-eval' is required by Pagefind's internal search engine (wasmd).
-        resources: ["'self'", "'unsafe-eval'"],
+        // 'unsafe-hashes' allows Astro's View Transitions and ThemeProvider inline
+        // scripts to work with CSP (event handlers like onclick with hashes).
+        resources: ["'self'", "'unsafe-eval'", "'unsafe-hashes'"],
       },
       styleDirective: {
         // TailwindCSS + Shiki syntax highlighting + Pagefind CSS require unsafe-inline
@@ -193,6 +195,12 @@ export default defineConfig({
     // 5. Pre-compress static files (gzip + brotli + zstd)
     compressor(),
   ],
+
+  // NOTE: Shiki syntax highlighting uses inline style attributes which are
+  // compatible with CSP only because style-src includes 'unsafe-inline'.
+  // If stricter CSP is needed, switch to Prism via:
+  //   markdown: { shikiConfig: { theme: 'github-dark' } }
+  // and remove 'unsafe-inline' from styleDirective.
 
   // Astro v6 Content Layer markdown configuration using the processor API.
   // The `unified()` function from @astrojs/markdown-remark returns a

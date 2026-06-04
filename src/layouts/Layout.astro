@@ -4,8 +4,27 @@ import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import ThemeProvider from '../components/ThemeProvider.astro';
 import Navbar from '../components/Navbar.astro';
 import SearchModal from '../components/SearchModal.astro';
+import Footer from '../components/Footer.astro';
 import { buildSchemaGraph } from '../utils/schema';
 import type { SchemaGraphOpts } from '../utils/schema';
+import { SITE_URL } from '../utils/site';
+import '../styles/global.css';
+
+/**
+ * Resolve a potentially relative URL to an absolute URL.
+ * Schema.org JSON-LD and Open Graph og:image require absolute URLs.
+ */
+function resolveAbsoluteUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  try {
+    // If already absolute, return as-is
+    new URL(url);
+    return url;
+  } catch {
+    // Relative URL — prepend SITE_URL
+    return `${SITE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+  }
+}
 
 interface Props {
   title: string;
@@ -39,6 +58,10 @@ const {
   listingItems,
 } = Astro.props;
 
+// FIX: Resolve featureImageUrl to absolute URL for Schema.org JSON-LD and Open Graph.
+// Relative URLs (e.g., '/og/blog/slug.png') are invalid in og:image and Schema.org image objects.
+const absoluteFeatureImageUrl = resolveAbsoluteUrl(featureImageUrl);
+
 const graph = buildSchemaGraph({
   pageType,
   url: Astro.url.href,
@@ -46,7 +69,7 @@ const graph = buildSchemaGraph({
   description,
   publishDate,
   updatedDate,
-  featureImageUrl,
+  featureImageUrl: absoluteFeatureImageUrl,
   category,
   wordCount,
   articleType,
@@ -69,7 +92,7 @@ const graph = buildSchemaGraph({
       description={description}
       canonical={Astro.url.href}
       ogType={pageType === 'blogPost' ? 'article' : 'website'}
-      ogImage={featureImageUrl || '/og-default.jpg'}
+      ogImage={absoluteFeatureImageUrl || `${SITE_URL}/og-default.jpg`}
       ogImageAlt={title}
       ogImageWidth={1200}
       ogImageHeight={675}
@@ -99,5 +122,6 @@ const graph = buildSchemaGraph({
     <main id="main-content">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

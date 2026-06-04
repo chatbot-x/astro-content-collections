@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/Footer.astro';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { getCollection, render } from 'astro:content';
 import { computeReadingTime } from '../../utils/readingTime';
-import '../../styles/global.css';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog', ({ data }) => !data.draft);
@@ -62,6 +60,4 @@ const ogImageUrl = `/og/blog/${entry.id}.png`;
       <Content />
     </BlogPost>
   </div>
-
-  <Footer />
 </Layout>
