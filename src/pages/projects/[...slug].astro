@@ -18,7 +18,8 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 
 // OG image URL for this project
-const ogImageUrl = `/og/projects/${entry.id}`;
+// FIX: Added .png extension so social media crawlers recognize it as an image.
+const ogImageUrl = `/og/projects/${entry.id}.png`;
 ---
 
 <Layout

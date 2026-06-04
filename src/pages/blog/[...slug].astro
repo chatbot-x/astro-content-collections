@@ -22,7 +22,10 @@ const { Content } = await render(entry);
 const readingStats = entry.body ? computeReadingTime(entry.body) : null;
 
 // OG image URL for this post
-const ogImageUrl = `/og/blog/${entry.id}`;
+// FIX: Added .png extension so social media crawlers recognize it as an image.
+// The OG image endpoint returns a PNG response but without .png extension,
+// some crawlers (e.g., Twitter/X card validator) may not detect it as an image.
+const ogImageUrl = `/og/blog/${entry.id}.png`;
 ---
 
 <Layout

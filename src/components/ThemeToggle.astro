@@ -93,11 +93,10 @@ const suffix = mode === 'mobile' ? '-mobile' : '';
   initThemeToggle('');
   initThemeToggle('-mobile');
 
-  // Re-init after View Transitions
-  document.addEventListener('astro:after-swap', () => {
-    initThemeToggle('');
-    initThemeToggle('-mobile');
-  });
+  // FIX: Only use astro:page-load which fires on both initial load AND after
+  // View Transitions swaps. Using both astro:after-swap and astro:page-load
+  // causes double initialization after each navigation, adding duplicate
+  // click event listeners that are never cleaned up (memory leak).
   document.addEventListener('astro:page-load', () => {
     initThemeToggle('');
     initThemeToggle('-mobile');

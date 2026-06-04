@@ -8,7 +8,9 @@ import { generateOpenGraphImage } from 'astro-og-canvas';
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   return posts.map((post) => ({
-    params: { route: post.id },
+    // FIX: Include .png extension in the route so the generated URL ends with .png,
+    // which helps social media crawlers recognize it as an image file.
+    params: { route: `${post.id}.png` },
     props: {
       title: post.data.title,
       description: post.data.description,

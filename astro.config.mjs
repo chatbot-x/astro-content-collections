@@ -13,8 +13,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { EnumChangefreq } from 'sitemap';
-
 // Resolve paths relative to this config file, not CWD
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -39,14 +37,17 @@ const contentDir = path.join(__dirname, 'src/content');
 const contentFiles = findContentFiles(contentDir);
 const permalinks = /** @type {Record<string, string>} */ ({});
 for (const file of contentFiles) {
+  // FIX: Map using the slug (without extension) as key, matching wiki-link resolution.
+  // Wiki-links resolve to the file name without extension, so the key must match.
   const slug = file.replace(/\.mdx?$/, '');
-  permalinks[file] = `/${slug}/`;
+  permalinks[slug] = `/${slug}/`;
 }
 
-// Sitemap changefreq values — using EnumChangefreq from the sitemap package for type safety
-const CHANGEFREQ_DAILY = EnumChangefreq.DAILY;
-const CHANGEFREQ_WEEKLY = EnumChangefreq.WEEKLY;
-const CHANGEFREQ_MONTHLY = EnumChangefreq.MONTHLY;
+// Sitemap changefreq string values — using plain strings instead of the
+// deprecated EnumChangefreq enum which was removed from the 'sitemap' package.
+const CHANGEFREQ_DAILY = 'daily';
+const CHANGEFREQ_WEEKLY = 'weekly';
+const CHANGEFREQ_MONTHLY = 'monthly';
 
 // https://astro.build/config
 export default defineConfig({
@@ -69,14 +70,19 @@ export default defineConfig({
         "default-src 'self'",
         "img-src 'self' data: https:",
         "font-src 'self'",
+        // FIX: Pagefind fetches search index JSON from /pagefind/ — 'self' covers this,
+        // but we must allow the Pagefind module script to load.
         "connect-src 'self'",
         "frame-src 'none'",
       ],
       scriptDirective: {
-        resources: ["'self'"], // Inline scripts auto-hashed by Astro via SHA-256 algorithm
+        // FIX: Pagefind loads JS modules from /pagefind/ which is same-origin ('self').
+        // Astro auto-hashes inline scripts via SHA-256 algorithm.
+        resources: ["'self'"],
       },
       styleDirective: {
-        resources: ["'self'", "'unsafe-inline'"], // TailwindCSS + Shiki syntax highlighting require unsafe-inline
+        // TailwindCSS + Shiki syntax highlighting + Pagefind CSS require unsafe-inline
+        resources: ["'self'", "'unsafe-inline'"],
       },
     },
   },
@@ -168,6 +174,11 @@ export default defineConfig({
     compressor(),
   ],
 
+  // FIX: Using unified() from @astrojs/markdown-remark (which IS a dependency)
+  // instead of the deprecated markdown.remarkPlugins/rehypePlugins object form.
+  // The @ts-expect-error is needed because Astro's type definitions only declare
+  // the object form for `markdown`, but unified() returns a MarkdownProcessor
+  // which Astro accepts at runtime.
   // @ts-expect-error — unified() returns MarkdownProcessor which Astro accepts at runtime
   // but the type definition only declares the object form for `markdown`.
   markdown: unified({

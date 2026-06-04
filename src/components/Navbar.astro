@@ -79,7 +79,10 @@ import ThemeToggle from './ThemeToggle.astro';
     });
   }
 
+  // FIX: Only use astro:page-load which fires on both initial load AND after
+  // View Transitions swaps. Using both astro:after-swap and astro:page-load
+  // causes double initialization after each navigation, adding duplicate
+  // event listeners that are never cleaned up (memory leak).
   initMobileMenu();
-  document.addEventListener('astro:after-swap', initMobileMenu);
   document.addEventListener('astro:page-load', initMobileMenu);
 </script>
