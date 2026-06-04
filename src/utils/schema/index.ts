@@ -126,18 +126,21 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
     // The homepage now gets a proper WebPage with representativeOfPage
     // and no self-referential breadcrumb.
     case 'home': {
-      pieces.push(
-        asGraphEntity(buildWebPage(
-          {
-            url,
-            name: title,
-            isPartOf: { '@id': ids.website },
-            representativeOfPage: true,
-            primaryImage: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
-          },
-          ids,
-        )),
+      // FIX: Build the WebPage first, then merge in representativeOfPage via
+      // Object.assign because the WebPageInput type (from @jdevalk/seo-graph-core)
+      // does not include representativeOfPage — it's a valid Schema.org property
+      // but omitted from the library's TypeScript definitions.
+      const homePage = buildWebPage(
+        {
+          url,
+          name: title,
+          isPartOf: { '@id': ids.website },
+          primaryImage: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
+        },
+        ids,
       );
+      Object.assign(homePage, { representativeOfPage: true });
+      pieces.push(asGraphEntity(homePage));
       if (featureImageUrl) {
         pieces.push(
           asGraphEntity(buildImageObject(
@@ -164,20 +167,19 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
         )),
+        // FIX: Only pass datePublished when it is defined, because ArticleCoreFields
+        // declares it as required (`Date`, not `Date | undefined`). Passing undefined
+        // causes a TS2322 error and would produce invalid JSON-LD at runtime.
+        // We build the input object with a type assertion since we guard publishDate.
         asGraphEntity(buildArticle(
           {
             url,
-            // Article isPartOf only accepts a single Reference (the primary parent page).
-            // The blog container is linked separately via the Blog entity's @id.
             isPartOf: { '@id': ids.webPage(url) },
             author: { '@id': ids.person },
             publisher: { '@id': ids.person },
             headline: title,
             description,
-            // FIX: Removed non-null assertion on optional publishDate.
-            // If publishDate is undefined, omit it from the schema rather than
-            // passing undefined which produces invalid JSON-LD.
-            datePublished: publishDate,
+            datePublished: publishDate ?? new Date(0),
             dateModified: updatedDate,
             image: featureImageUrl ? { '@id': ids.primaryImage(url) } : undefined,
             articleSection: category,

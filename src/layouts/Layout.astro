@@ -65,7 +65,7 @@ const graph = buildSchemaGraph({
     <ClientRouter />
     <ThemeProvider defaultTheme="system" />
     <Seo
-      title={`${title} | Astro + Tailwind`}
+      title={`${title} | Astro + TailwindCSS`}
       description={description}
       canonical={Astro.url.href}
       ogType={pageType === 'blogPost' ? 'article' : 'website'}
@@ -81,6 +81,9 @@ const graph = buildSchemaGraph({
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        // FIX: RSS auto-discovery — enables RSS readers and browsers to find the feed
+        // at /blog/rss.xml without the user needing to know the URL.
+        { rel: 'alternate', type: 'application/rss+xml', title: 'Astro + TailwindCSS Blog', href: '/blog/rss.xml' },
       ]}
     />
   </head>
