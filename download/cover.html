@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Source+Serif+4:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 794px 1123px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 794px; height: 1123px; background: #f7f6f5; }
+  @media screen {
+    html { height: auto; display: flex; justify-content: center; }
+    body { transform-origin: top center; scale: min(1, calc(100vh / 1123)); margin: 0 auto; }
+  }
+
+  .cover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #f7f6f5;
+  }
+
+  /* Layer 1: Background */
+  .cover-bg-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(115,105,73,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(115,105,73,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Layer 2: Structure */
+  .cover-line-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+  .thick-line {
+    position: absolute;
+    left: 0.12 * 794px; /* ~95px */
+    top: 10%;
+    width: 6px;
+    height: 80%;
+    background: #736949;
+  }
+  .meta-line {
+    position: absolute;
+    left: 130px;
+    top: 73%;
+    width: 40%;
+    height: 1px;
+    background: rgba(115,105,73,0.4);
+  }
+
+  /* Layer 3: Content */
+  .cover-text-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+  }
+
+  .kicker {
+    position: absolute;
+    left: 145px;
+    top: 15%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: rgba(29,28,26,0.6);
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    position: absolute;
+    left: 145px;
+    top: 28%;
+    width: 65%;
+    font-family: 'Source Serif 4', serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #1d1c1a;
+  }
+
+  .summary-block {
+    position: absolute;
+    left: 145px;
+    top: 50%;
+    width: 55%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(29,28,26,0.85);
+  }
+
+  .meta-block {
+    position: absolute;
+    left: 145px;
+    top: 77%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2.0;
+    color: rgba(29,28,26,0.85);
+  }
+
+  .footer-block {
+    position: absolute;
+    left: 150px;
+    top: 91%;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: rgba(29,28,26,0.5);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <!-- Layer 1: Background -->
+  <div class="cover-bg-layer">
+    <div class="grid-pattern"></div>
+  </div>
+
+  <!-- Layer 2: Structure -->
+  <div class="cover-line-layer">
+    <div class="thick-line" style="left:95px;"></div>
+    <div class="meta-line" style="left:130px; top:73%;"></div>
+  </div>
+
+  <!-- Layer 3: Content -->
+  <div class="cover-text-layer">
+    <div class="kicker">SOURCE CODE AUDIT</div>
+    <div class="hero-title">Best Practices<br>Remediation Guide</div>
+    <div class="summary-block">Actionable best practices and remediation strategies for the 10 findings identified in the source code audit of the astro-content-collections project, covering security, code quality, and architecture dimensions.</div>
+    <div class="meta-block">
+      Project: astro-content-collections<br>
+      Auditor: Super Z (Z.ai)<br>
+      Date: 2026-06-05
+    </div>
+    <div class="footer-block">Confidential</div>
+  </div>
+</div>
+</body>
+</html>
