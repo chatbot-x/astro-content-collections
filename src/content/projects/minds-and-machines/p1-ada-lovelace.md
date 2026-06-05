@@ -12,6 +12,7 @@ part: "part-one"
 part_label: "Part I · The Pioneers"
 track: "profiles"
 tag: "Key Figure"
+connectsTo: ["a1-the-ancient-dream-of-artificial-life"]
 ---
 
 *London, June 1833. A dinner party at the home of Charles Babbage, the eccentric mathematician and inventor who had made his house on Dorset Street a gathering point for the most curious minds in England. Scientists, politicians, artists, and socialites mingled beneath crystal chandeliers, admiring the strange mechanical device that occupied one end of the room — a fragment of Babbage's great unfinished Difference Engine, a tower of brass gears and levers that could, its creator claimed, calculate mathematical tables automatically without human error.*

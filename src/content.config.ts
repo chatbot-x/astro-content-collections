@@ -53,6 +53,7 @@ const projects = defineCollection({
     part: z.string().optional(),
     partLabel: z.string().optional(),
     tag: z.string().optional(),
+    connectsTo: z.array(z.string()).optional(),
   }),
 });
 

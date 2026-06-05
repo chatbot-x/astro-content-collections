@@ -12,6 +12,7 @@ part: "part-one"
 part_label: "Part I · The Origins"
 track: "articles"
 tag: "Key Article"
+connectsTo: ["p1-ada-lovelace"]
 ---
 
 # The Ancient Dream of Artificial Life
