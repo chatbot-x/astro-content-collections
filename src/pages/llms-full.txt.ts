@@ -63,7 +63,7 @@ export const GET: APIRoute = async () => {
     // FIX: Filter out empty strings from optional fields instead of pushing
     // them and relying on the regex collapse at the end.
     const projectMetaLines = [
-      `URL: ${SITE_URL}/projects/${project.id}/`,
+      `URL: ${SITE_URL}/series/${project.id}/`,
       `Start Date: ${startDate}`,
       `Status: ${project.data.status}`,
       `Featured: ${project.data.featured ? 'Yes' : 'No'}`,

@@ -98,7 +98,7 @@ function siteWideEntities(): GraphEntity[] {
         items: [
           { name: 'Home', url: `${SITE_URL}/` },
           { name: 'Blog', url: `${SITE_URL}/blog/` },
-          { name: 'Series', url: `${SITE_URL}/projects/` },
+          { name: 'Series', url: `${SITE_URL}/series/` },
           { name: 'About', url: `${SITE_URL}/about/` },
         ],
       },
@@ -313,7 +313,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             url,
             items: [
               { name: 'Home', url: `${SITE_URL}/` },
-              { name: 'Series', url: `${SITE_URL}/projects/` },
+              { name: 'Series', url: `${SITE_URL}/series/` },
               { name: title, url },
             ],
           },

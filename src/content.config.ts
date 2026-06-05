@@ -24,12 +24,35 @@ const projects = defineCollection({
     description: z.string(),
     startDate: z.coerce.date(),
     endDate: z.coerce.date().optional(),
-    status: z.enum(['active', 'completed', 'archived']).default('active'),
+    status: z.enum(['active', 'completed', 'archived', 'upcoming']).default('active'),
     url: z.string().url().optional(),
     repo: z.string().url().optional(),
     techStack: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     heroImage: z.string().optional(),
+    // Series-specific fields
+    tagline: z.string().optional(),
+    hook: z.string().optional(),
+    articleCount: z.number().optional(),
+    wordCount: z.string().optional(),
+    tracks: z.array(z.object({
+      name: z.string(),
+      code: z.string(),
+      description: z.string(),
+    })).optional(),
+    acts: z.array(z.object({
+      name: z.string(),
+      roman: z.string(),
+      description: z.string(),
+    })).optional(),
+    // Article-specific fields (for individual posts inside series subfolders)
+    series: z.string().optional(),
+    track: z.string().optional(),
+    episodeNumber: z.number().optional(),
+    roman: z.string().optional(),
+    part: z.string().optional(),
+    partLabel: z.string().optional(),
+    tag: z.string().optional(),
   }),
 });
 

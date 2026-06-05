@@ -3,9 +3,38 @@ title: "Minds & Machines: The Story of AI"
 description: "A 75-article deep-dive into the full history of Artificial Intelligence — from the ancient myths of mechanical life to the large language models reshaping the world today. Written for a general audience with no technical background."
 startDate: 2026-01-15
 status: "active"
-url: "https://astro-content-collections.pages.dev/blog/"
 techStack: ["Articles", "Profiles", "Events"]
 featured: true
+tagline: "From ancient myth to modern intelligence"
+hook: "75 stories across three tracks — no code, just the human journey."
+articleCount: 75
+wordCount: "~600,000 words"
+tracks:
+  - name: "Articles"
+    code: "A-series"
+    description: "Narrative era overviews and thematic deep dives. From the ancient dream of artificial life to the ChatGPT moment and beyond."
+  - name: "Profiles"
+    code: "P-series"
+    description: "Biographical portraits of key figures. Ada Lovelace, Alan Turing, Geoffrey Hinton, Sam Altman, and the people who shaped the field."
+  - name: "Events"
+    code: "E-series"
+    description: "Deep dives into landmark moments. The Dartmouth Conference, the Turing Test, the AI winters, AlphaGo, the ChatGPT launch."
+acts:
+  - name: "The Dream"
+    roman: "I"
+    description: "Ancient myths, clockwork wonders, and the centuries-long quest to formalise thought — before computers even existed."
+  - name: "The Birth"
+    roman: "II"
+    description: "The Dartmouth Conference, the first AI programmes, and the intoxicating belief that intelligence was just a summer's work away."
+  - name: "The Comeback"
+    roman: "III"
+    description: "Neural networks return from the dead. Backpropagation, deep belief nets, and the researchers who never stopped believing."
+  - name: "The Revolution"
+    roman: "IV"
+    description: "ImageNet, AlexNet, and the deep learning breakthrough that rewrote the rules of what machines could do."
+  - name: "The Explosion"
+    roman: "V"
+    description: "Large language models, ChatGPT, and the present moment — when AI stopped being a laboratory curiosity and became a force in everyday life."
 ---
 
 ## About the Series
