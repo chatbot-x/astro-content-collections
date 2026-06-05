@@ -15,9 +15,9 @@ export const GET: APIRoute = async () => {
   );
 
   const lines: string[] = [
-    '# Astro + TailwindCSS',
+    '# isHistory',
     '',
-    '> A modern static site built with Astro v6, TailwindCSS v4, and type-safe Content Collections. Features blog posts, project showcases, dark mode, and AI-ready SEO with structured data and knowledge graphs.',
+    '> isHistory is a curated digital archive of the stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age without ever showing a single line of code. From the first bug to the last-minute Tech breakthrough, we document the How, Why and Who of computing history.',
     '',
     `Site: ${SITE_URL}`,
     '',

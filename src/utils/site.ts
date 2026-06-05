@@ -22,6 +22,6 @@
 const SITE_URL = import.meta.env.SITE || 'https://astro-content-collections.pages.dev';
 
 export { SITE_URL };
-export const SITE_NAME = 'Astro + TailwindCSS';
+export const SITE_NAME = 'isHistory';
 export const SITE_DESCRIPTION =
-  'A modern static site built with Astro v6, TailwindCSS v4, and type-safe Content Collections. Features blog posts, project showcases, dark mode, AI-ready SEO with structured data and knowledge graphs.';
+  'isHistory is a curated digital archive of the stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age without ever showing a single line of code. From the first bug to the last-minute Tech breakthrough, we document the How, Why and Who of computing history.';

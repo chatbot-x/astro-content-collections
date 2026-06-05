@@ -11,8 +11,8 @@ export async function GET(context: APIContext) {
   }
 
   return rss({
-    title: 'Astro + TailwindCSS Blog',
-    description: 'Thoughts, tutorials, and insights about Astro, TailwindCSS, and modern web development.',
+    title: 'isHistory Blog',
+    description: 'Stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age.',
     site: context.site,
     items: posts.map((post) => ({
       title: post.data.title,

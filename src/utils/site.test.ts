@@ -8,7 +8,7 @@ describe('site configuration', () => {
   });
 
   it('should export SITE_NAME', () => {
-    expect(SITE_NAME).toBe('Astro + TailwindCSS');
+    expect(SITE_NAME).toBe('isHistory');
   });
 
   it('should export SITE_DESCRIPTION', () => {

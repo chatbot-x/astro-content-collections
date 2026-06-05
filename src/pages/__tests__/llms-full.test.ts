@@ -60,8 +60,8 @@ vi.mock('astro:content', () => ({
 
 vi.mock('../../utils/site', () => ({
   SITE_URL: 'https://astro-content-collections.pages.dev',
-  SITE_NAME: 'Astro + TailwindCSS',
-  SITE_DESCRIPTION: 'A modern static site built with Astro v6, TailwindCSS v4.',
+  SITE_NAME: 'isHistory',
+  SITE_DESCRIPTION: 'isHistory is a curated digital archive of the stories behind technology.',
 }));
 
 import { GET } from '../llms-full.txt';
@@ -84,11 +84,11 @@ describe('llms-full.txt API route', () => {
   });
 
   it('should include the site name as markdown heading', () => {
-    expect(body).toContain('# Astro + TailwindCSS');
+    expect(body).toContain('# isHistory');
   });
 
   it('should include the site description as blockquote', () => {
-    expect(body).toContain('> A modern static site built with Astro v6');
+    expect(body).toContain('> isHistory is a curated digital archive');
   });
 
   it('should include the site URL', () => {

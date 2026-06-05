@@ -44,7 +44,7 @@ interface Props {
 
 const {
   title,
-  description = 'A modern static site built with Astro v6 and TailwindCSS v4, featuring type-safe Content Collections and AI-ready SEO.',
+  description = 'isHistory is a curated digital archive of the stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age without ever showing a single line of code.',
   pageType = 'page',
   publishDate,
   updatedDate,
@@ -63,16 +63,16 @@ const {
 const absoluteFeatureImageUrl = resolveAbsoluteUrl(featureImageUrl);
 
 // FIX: Smart title formatting to avoid redundancy and excessive length.
-// - Homepage: "Astro + TailwindCSS" (no redundant suffix)
-// - Pages with short titles: "Page Title | Astro + TailwindCSS"
+// - Homepage: "isHistory" (no redundant suffix)
+// - Pages with short titles: "Page Title | isHistory"
 // - Blog posts with long titles (>60 chars with suffix): omit suffix
 //   to prevent truncation in SERPs. Google displays ~60 chars.
-const siteName = 'Astro + TailwindCSS';
+const siteName = 'isHistory';
 const SEPARATOR = ' | ';
 const MAX_TITLE_LENGTH = 60;
 let formattedTitle: string;
 if (title === siteName) {
-  // Homepage: avoid "Astro + TailwindCSS | Astro + TailwindCSS"
+  // Homepage: avoid "isHistory | isHistory"
   formattedTitle = title;
 } else {
   const titleWithSuffix = `${title}${SEPARATOR}${siteName}`;
@@ -129,7 +129,7 @@ const graph = buildSchemaGraph({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         // FIX: RSS auto-discovery — enables RSS readers and browsers to find the feed
         // at /blog/rss.xml without the user needing to know the URL.
-        { rel: 'alternate', type: 'application/rss+xml', title: 'Astro + TailwindCSS Blog', href: '/blog/rss.xml' },
+        { rel: 'alternate', type: 'application/rss+xml', title: 'isHistory Blog', href: '/blog/rss.xml' },
         // NOTE: Preconnect hints for Google Fonts were removed (AUD-013).
         // This project uses system font stacks, not Google Fonts.
         // Re-add if Google Fonts are introduced in the future.

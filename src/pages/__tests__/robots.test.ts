@@ -3,8 +3,8 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 // Mock the SITE_URL module before importing the route
 vi.mock('../../utils/site', () => ({
   SITE_URL: 'https://astro-content-collections.pages.dev',
-  SITE_NAME: 'Astro + TailwindCSS',
-  SITE_DESCRIPTION: 'A modern static site built with Astro v6, TailwindCSS v4.',
+  SITE_NAME: 'isHistory',
+  SITE_DESCRIPTION: 'isHistory is a curated digital archive of the stories behind technology.',
 }));
 
 // Import after mock is set up

@@ -86,7 +86,7 @@ describe('RSS feed API route', () => {
     });
 
     it('should include the feed title', () => {
-      expect(body).toContain('Astro + TailwindCSS Blog');
+      expect(body).toContain('isHistory Blog');
     });
 
     it('should include the feed description', () => {

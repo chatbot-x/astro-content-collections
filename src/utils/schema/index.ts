@@ -45,7 +45,7 @@ function siteWideEntities(): GraphEntity[] {
     asGraphEntity(buildWebSite(
       {
         url: `${SITE_URL}/`,
-        name: 'Astro + TailwindCSS',
+        name: 'isHistory',
         publisher: { '@id': ids.person },
         inLanguage: 'en-US',
         // SearchAction — enables sitelinks search box in Google
@@ -145,7 +145,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
   switch (opts.pageType) {
     // FIX: Added explicit 'home' case for proper homepage schema.
     // Previously, the homepage fell through to the generic 'default' case,
-    // generating a redundant BreadcrumbList ("Home > Astro + TailwindCSS")
+    // generating a redundant BreadcrumbList ("Home > isHistory")
     // which links the homepage to itself — an anti-pattern in Schema.org.
     // The homepage now gets a proper WebPage with representativeOfPage
     // and no self-referential breadcrumb.
