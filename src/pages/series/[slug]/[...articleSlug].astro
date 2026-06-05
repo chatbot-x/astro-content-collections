@@ -23,15 +23,59 @@ const { article, seriesEntry, allEntries } = Astro.props;
 const { Content } = await render(article);
 
 const seriesSlug = article.id.split('/')[0];
+const currentTrack = article.data.track || 'articles';
 
-// Find sibling articles in the same series for prev/next navigation
-const siblingArticles = allEntries
+// All articles in this series
+const allSeriesArticles = allEntries
   .filter((e: any) => e.id.startsWith(`${seriesSlug}/`) && e.id.includes('/'))
   .sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
 
-const currentIndex = siblingArticles.findIndex((e: any) => e.id === article.id);
-const prevArticle = currentIndex > 0 ? siblingArticles[currentIndex - 1] : null;
-const nextArticle = currentIndex < siblingArticles.length - 1 ? siblingArticles[currentIndex + 1] : null;
+// Group by track
+const articlesByTrack: Record<string, typeof allSeriesArticles> = {};
+for (const entry of allSeriesArticles) {
+  const track = entry.data.track || 'articles';
+  if (!articlesByTrack[track]) articlesByTrack[track] = [];
+  articlesByTrack[track].push(entry);
+}
+
+// Track-aware prev/next: navigate within the SAME track
+const sameTrackArticles = articlesByTrack[currentTrack] || [];
+const trackIndex = sameTrackArticles.findIndex((e: any) => e.id === article.id);
+const prevInTrack = trackIndex > 0 ? sameTrackArticles[trackIndex - 1] : null;
+const nextInTrack = trackIndex < sameTrackArticles.length - 1 ? sameTrackArticles[trackIndex + 1] : null;
+
+// Cross-track: articles in other tracks (for "Switch tracks" section)
+const otherTracks = Object.entries(articlesByTrack)
+  .filter(([track]) => track !== currentTrack)
+  .map(([track, articles]) => ({ track, articles }));
+
+const trackLabels: Record<string, string> = { articles: 'A-Series', profiles: 'P-Series', events: 'E-Series' };
+const trackColors: Record<string, { bg: string; text: string; ring: string; cardBg: string; iconBg: string }> = {
+  articles: {
+    bg: 'bg-indigo-50 dark:bg-indigo-950',
+    text: 'text-indigo-700 dark:text-indigo-300',
+    ring: 'ring-indigo-100 dark:ring-indigo-800',
+    cardBg: 'bg-indigo-600',
+    iconBg: 'bg-indigo-100 dark:bg-indigo-900',
+  },
+  profiles: {
+    bg: 'bg-emerald-50 dark:bg-emerald-950',
+    text: 'text-emerald-700 dark:text-emerald-300',
+    ring: 'ring-emerald-100 dark:ring-emerald-800',
+    cardBg: 'bg-emerald-600',
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900',
+  },
+  events: {
+    bg: 'bg-amber-50 dark:bg-amber-950',
+    text: 'text-amber-700 dark:text-amber-300',
+    ring: 'ring-amber-100 dark:ring-amber-800',
+    cardBg: 'bg-amber-600',
+    iconBg: 'bg-amber-100 dark:bg-amber-900',
+  },
+};
+
+const currentTrackColors = trackColors[currentTrack] || trackColors.articles;
+const currentTrackLabel = trackLabels[currentTrack] || currentTrack;
 
 const ogImageUrl = `/og/projects/${article.id}.png`;
 ---
@@ -42,7 +86,7 @@ const ogImageUrl = `/og/projects/${article.id}.png`;
   pageType="blogPost"
   publishDate={article.data.startDate}
   featureImageUrl={article.data.heroImage || ogImageUrl}
-  category={article.data.track || article.data.techStack?.[0]}
+  category={currentTrackLabel}
   wordCount={0}
   articleType="Article"
 >
@@ -66,11 +110,18 @@ const ogImageUrl = `/og/projects/${article.id}.png`;
     <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12" data-pagefind-body>
       <!-- Article Header -->
       <header class="mb-10">
-        {article.data.tag && (
-          <span class="inline-flex items-center rounded-full bg-purple-50 px-2.5 py-0.5 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:ring-purple-800 mb-4">
-            {article.data.tag}
+        <!-- Track badge + tag -->
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${currentTrackColors.bg} ${currentTrackColors.text} ${currentTrackColors.ring}`}>
+            {currentTrackLabel}
           </span>
-        )}
+          {article.data.tag && (
+            <span class="inline-flex items-center rounded-full bg-purple-50 px-2.5 py-0.5 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-100 dark:bg-purple-950 dark:text-purple-300 dark:ring-purple-800">
+              {article.data.tag}
+            </span>
+          )}
+        </div>
+
         <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight" data-pagefind-meta="title">
           {article.data.title}
         </h1>
@@ -102,35 +153,85 @@ const ogImageUrl = `/og/projects/${article.id}.png`;
         <Content />
       </div>
 
-      <!-- Prev/Next Navigation -->
+      <!-- Track-aware Prev/Next Navigation -->
       <nav class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800" aria-label="Article navigation">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white">
+            Continue in {currentTrackLabel}
+          </h3>
+          <span class="text-xs text-gray-400 dark:text-gray-500">
+            {trackIndex + 1} of {sameTrackArticles.length}
+          </span>
+        </div>
         <div class="flex flex-col sm:flex-row justify-between gap-4">
-          {prevArticle ? (
+          {prevInTrack ? (
             <a
-              href={`/series/${seriesSlug}/${prevArticle.id.split('/').pop()}/`}
+              href={`/series/${seriesSlug}/${prevInTrack.id.split('/').pop()}/`}
               class="group flex items-center gap-3 rounded-xl border border-gray-100 dark:border-gray-800 p-4 transition-all hover:shadow-md hover:-translate-y-0.5 flex-grow max-w-sm"
             >
               <svg class="shrink-0 h-5 w-5 text-gray-400 group-hover:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
               <div class="min-w-0">
-                <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">Previous</div>
-                <div class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">{prevArticle.data.title}</div>
+                <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">Previous in {currentTrackLabel}</div>
+                <div class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">{prevInTrack.data.title}</div>
               </div>
             </a>
-          ) : <div />}
-          {nextArticle ? (
+          ) : (
+            <div class="flex-grow max-w-sm" />
+          )}
+          {nextInTrack ? (
             <a
-              href={`/series/${seriesSlug}/${nextArticle.id.split('/').pop()}/`}
+              href={`/series/${seriesSlug}/${nextInTrack.id.split('/').pop()}/`}
               class="group flex items-center gap-3 rounded-xl border border-gray-100 dark:border-gray-800 p-4 transition-all hover:shadow-md hover:-translate-y-0.5 flex-grow max-w-sm text-right"
             >
               <div class="min-w-0">
-                <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">Next</div>
-                <div class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">{nextArticle.data.title}</div>
+                <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">Next in {currentTrackLabel}</div>
+                <div class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">{nextInTrack.data.title}</div>
               </div>
               <svg class="shrink-0 h-5 w-5 text-gray-400 group-hover:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
             </a>
-          ) : <div />}
+          ) : (
+            <div class="flex-grow max-w-sm" />
+          )}
         </div>
       </nav>
+
+      <!-- Switch Tracks Section -->
+      {otherTracks.length > 0 && (
+        <section class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+            <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+            Switch tracks
+          </h3>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {otherTracks.map(({ track, articles }) => {
+              const trackLabel = trackLabels[track] || track;
+              const colors = trackColors[track] || trackColors.articles;
+              const firstArticle = articles[0];
+              return (
+                <div class="rounded-xl border border-gray-100 dark:border-gray-800 p-4">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring}`}>
+                      {trackLabel}
+                    </span>
+                    <span class="text-xs text-gray-400 dark:text-gray-500">{articles.length} article{articles.length !== 1 ? 's' : ''}</span>
+                  </div>
+                  <div class="space-y-2">
+                    {articles.map((a) => (
+                      <a
+                        href={`/series/${seriesSlug}/${a.id.split('/').pop()}/`}
+                        class="group flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                      >
+                        <svg class="shrink-0 h-3.5 w-3.5 text-gray-300 dark:text-gray-600 group-hover:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+                        <span class="truncate">{a.data.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <!-- Back to Series -->
       <div class="mt-8 text-center">

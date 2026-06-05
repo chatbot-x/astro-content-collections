@@ -42,6 +42,25 @@ const listingItems = seriesArticles.map((article) => ({
   title: article.data.title,
   url: `${SITE_URL}/series/${seriesEntry.id}/${article.id.split('/').pop()}/`,
 }));
+
+// Track lookup maps (avoid TypeScript generics in JSX template)
+const trackLabels = { articles: 'A-Series', profiles: 'P-Series', events: 'E-Series' };
+const trackCtaColors = {
+  articles: 'bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600',
+  profiles: 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600',
+  events: 'bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600',
+};
+const trackKeyMap = { 'A-series': 'articles', 'P-series': 'profiles', 'E-series': 'events' };
+const trackBtnColors = {
+  'A-series': 'text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300',
+  'P-series': 'text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300',
+  'E-series': 'text-amber-600 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300',
+};
+const trackCtaStyles = {
+  articles: 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200',
+  profiles: 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200',
+  events: 'bg-amber-100 text-amber-700 hover:bg-amber-200',
+};
 ---
 
 <Layout
@@ -117,16 +136,26 @@ const listingItems = seriesArticles.map((article) => ({
           )}
         </div>
 
-        <!-- Primary CTA -->
+        <!-- Choose Your Path CTA -->
         {data.status === 'active' && seriesArticles.length > 0 && (
           <div class="mt-10">
-            <a
-              href={`/series/${seriesEntry.id}/${seriesArticles[0].id.split('/').pop()}/`}
-              class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-0.5 dark:bg-indigo-500 dark:hover:bg-indigo-600"
-            >
-              Start from the beginning
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-            </a>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">Pick a track — each stands on its own</p>
+            <div class="flex flex-wrap justify-center gap-3">
+              {Object.entries(articlesByTrack).map(([track, articles]) => {
+                const firstArticle = articles[0];
+                if (!firstArticle) return null;
+                const color = trackCtaColors[track] || trackCtaColors.articles;
+                return (
+                  <a
+                    href={`/series/${seriesEntry.id}/${firstArticle.id.split('/').pop()}/`}
+                    class={`inline-flex items-center gap-2 rounded-xl ${color} px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5`}
+                  >
+                    {trackLabels[track] || track}
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                  </a>
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
@@ -159,7 +188,23 @@ const listingItems = seriesArticles.map((article) => ({
                   </div>
                   <div class="text-xs font-mono text-gray-400 dark:text-gray-500 mb-2">{track.code}</div>
                   <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{track.name}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{track.description}</p>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-5">{track.description}</p>
+                  {(() => {
+                    const trackKey = trackKeyMap[track.code] || track.code.toLowerCase();
+                    const trackArticles = articlesByTrack[trackKey];
+                    const firstArticle = trackArticles?.[0];
+                    if (!firstArticle) return null;
+                    const btnColor = trackBtnColors[track.code] || trackBtnColors['A-series'];
+                    return (
+                      <a
+                        href={`/series/${seriesEntry.id}/${firstArticle.id.split('/').pop()}/`}
+                        class={`inline-flex items-center gap-1.5 text-sm font-medium ${btnColor} transition-colors`}
+                      >
+                        Start this track
+                        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                      </a>
+                    );
+                  })()}
                 </div>
               );
             })}
@@ -284,15 +329,24 @@ const listingItems = seriesArticles.map((article) => ({
           <div class="rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-800 dark:to-purple-900 p-10 sm:p-14">
             <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ready to dive in?</h2>
             <p class="text-indigo-100 mb-8 max-w-lg mx-auto">
-              Start from the very first article and follow the story from ancient dreams to modern intelligence.
+              Every track stands on its own. Pick whichever calls to you — or read them all.
             </p>
-            <a
-              href={`/series/${seriesEntry.id}/${seriesArticles[0].id.split('/').pop()}/`}
-              class="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-semibold text-indigo-700 shadow-lg transition-all hover:bg-indigo-50 hover:shadow-xl hover:-translate-y-0.5"
-            >
-              {seriesArticles[0].data.title}
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-            </a>
+            <div class="flex flex-wrap justify-center gap-3">
+              {Object.entries(articlesByTrack).map(([track, articles]) => {
+                const firstArticle = articles[0];
+                if (!firstArticle) return null;
+                const btnStyle = trackCtaStyles[track] || 'bg-white text-indigo-700 hover:bg-indigo-50';
+                return (
+                  <a
+                    href={`/series/${seriesEntry.id}/${firstArticle.id.split('/').pop()}/`}
+                    class={`inline-flex items-center gap-2 rounded-xl ${btnStyle} px-6 py-3 text-sm font-semibold shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5`}
+                  >
+                    {trackLabels[track] || track}
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
