@@ -98,7 +98,7 @@ function siteWideEntities(): GraphEntity[] {
         items: [
           { name: 'Home', url: `${SITE_URL}/` },
           { name: 'Blog', url: `${SITE_URL}/blog/` },
-          { name: 'Projects', url: `${SITE_URL}/projects/` },
+          { name: 'Series', url: `${SITE_URL}/projects/` },
           { name: 'About', url: `${SITE_URL}/about/` },
         ],
       },
@@ -313,7 +313,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             url,
             items: [
               { name: 'Home', url: `${SITE_URL}/` },
-              { name: 'Projects', url: `${SITE_URL}/projects/` },
+              { name: 'Series', url: `${SITE_URL}/projects/` },
               { name: title, url },
             ],
           },
@@ -348,7 +348,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
             url,
             items: [
               { name: 'Home', url: `${SITE_URL}/` },
-              { name: 'Projects', url },
+              { name: 'Series', url },
             ],
           },
           ids,
@@ -360,7 +360,7 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           asGraphEntity(buildPiece<ItemList>({
             '@type': 'ItemList',
             '@id': `${url}#itemlist`,
-            name: 'Projects',
+            name: 'Series',
             numberOfItems: opts.listingItems.length,
             itemListElement: opts.listingItems.map((item, i) => ({
               '@type': 'ListItem',

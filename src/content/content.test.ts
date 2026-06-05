@@ -17,7 +17,7 @@ const blogSchema = z.object({
   articleType: z.enum(['Article', 'BlogPosting', 'TechArticle', 'NewsArticle', 'ScholarlyArticle', 'Report']).default('BlogPosting'),
 });
 
-const projectSchema = z.object({
+const seriesSchema = z.object({
   title: z.string(),
   description: z.string(),
   startDate: z.coerce.date(),
@@ -79,20 +79,20 @@ describe('Blog Collection Schema', () => {
   });
 });
 
-describe('Project Collection Schema', () => {
-  it('should validate a valid project', () => {
-    const result = projectSchema.safeParse({
-      title: 'Test Project',
-      description: 'A test project',
+describe('Series Collection Schema', () => {
+  it('should validate a valid series', () => {
+    const result = seriesSchema.safeParse({
+      title: 'Test Series',
+      description: 'A test series',
       startDate: '2026-01-01',
     });
     expect(result.success).toBe(true);
   });
 
   it('should apply defaults for optional fields', () => {
-    const result = projectSchema.parse({
-      title: 'Test Project',
-      description: 'A test project',
+    const result = seriesSchema.parse({
+      title: 'Test Series',
+      description: 'A test series',
       startDate: '2026-01-01',
     });
     expect(result.status).toBe('active');
@@ -101,9 +101,9 @@ describe('Project Collection Schema', () => {
   });
 
   it('should reject invalid URL format', () => {
-    const result = projectSchema.safeParse({
-      title: 'Test Project',
-      description: 'A test project',
+    const result = seriesSchema.safeParse({
+      title: 'Test Series',
+      description: 'A test series',
       startDate: '2026-01-01',
       url: 'not-a-url',
     });
@@ -111,9 +111,9 @@ describe('Project Collection Schema', () => {
   });
 
   it('should accept valid URLs', () => {
-    const result = projectSchema.safeParse({
-      title: 'Test Project',
-      description: 'A test project',
+    const result = seriesSchema.safeParse({
+      title: 'Test Series',
+      description: 'A test series',
       startDate: '2026-01-01',
       url: 'https://example.com',
       repo: 'https://github.com/example/repo',
@@ -122,9 +122,9 @@ describe('Project Collection Schema', () => {
   });
 
   it('should reject invalid status', () => {
-    const result = projectSchema.safeParse({
-      title: 'Test Project',
-      description: 'A test project',
+    const result = seriesSchema.safeParse({
+      title: 'Test Series',
+      description: 'A test series',
       startDate: '2026-01-01',
       status: 'unknown',
     });

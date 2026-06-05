@@ -28,20 +28,19 @@ const mockBlogPosts = [
   },
 ];
 
-const mockProjects = [
+const mockSeries = [
   {
-    id: 'documentation-site-generator',
+    id: 'minds-and-machines',
     data: {
-      title: 'Documentation Site Generator',
-      description: 'A documentation site built with Astro.',
-      startDate: new Date('2026-01-01'),
+      title: 'Minds & Machines: The Story of AI',
+      description: 'A 75-article deep-dive into the full history of Artificial Intelligence.',
+      startDate: new Date('2026-01-15'),
       status: 'active',
       featured: true,
-      techStack: ['Astro', 'Markdown'],
-      url: 'https://docs.example.com',
-      repo: 'https://github.com/example/docs',
+      techStack: ['Articles', 'Profiles', 'Events'],
+      url: 'https://astro-content-collections.pages.dev/blog/',
     },
-    body: 'This is the body of the documentation project.',
+    body: 'Minds & Machines is a 75-article deep-dive into the full history of AI.',
   },
 ];
 
@@ -52,7 +51,7 @@ vi.mock('astro:content', () => ({
       return Promise.resolve(posts);
     }
     if (collection === 'projects') {
-      return Promise.resolve(mockProjects);
+      return Promise.resolve(mockSeries);
     }
     return Promise.resolve([]);
   }),
@@ -124,17 +123,15 @@ describe('llms-full.txt API route', () => {
     expect(body).toContain('This is the body of the tailwindcss post.');
   });
 
-  it('should include project titles as markdown h2', () => {
-    expect(body).toContain('## Documentation Site Generator');
+  it('should include series titles as markdown h2', () => {
+    expect(body).toContain('## Minds & Machines: The Story of AI');
   });
 
-  it('should include project metadata', () => {
-    expect(body).toContain('URL: https://astro-content-collections.pages.dev/projects/documentation-site-generator/');
+  it('should include series metadata', () => {
+    expect(body).toContain('URL: https://astro-content-collections.pages.dev/projects/minds-and-machines/');
     expect(body).toContain('Status: active');
     expect(body).toContain('Featured: Yes');
-    expect(body).toContain('Tech Stack: Astro, Markdown');
-    expect(body).toContain('Live URL: https://docs.example.com');
-    expect(body).toContain('Repo: https://github.com/example/docs');
+    expect(body).toContain('Tech Stack: Articles, Profiles, Events');
   });
 
   it('should not have excessive blank lines (max 2 consecutive newlines)', () => {

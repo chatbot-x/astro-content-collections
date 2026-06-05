@@ -54,7 +54,7 @@ export const GET: APIRoute = async () => {
     );
   }
 
-  // Projects section
+  // Series section
   for (const project of projects) {
     const startDate = project.data.startDate.toISOString().split('T')[0];
     const techStack = project.data.techStack?.join(', ') || '';

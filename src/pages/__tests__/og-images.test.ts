@@ -22,19 +22,12 @@ const mockBlogPosts = [
   },
 ];
 
-const mockProjects = [
+const mockSeries = [
   {
-    id: 'documentation-site-generator',
+    id: 'minds-and-machines',
     data: {
-      title: 'Documentation Site Generator',
-      description: 'A documentation site built with Astro.',
-    },
-  },
-  {
-    id: 'astro-project-hub',
-    data: {
-      title: 'Astro Project Hub',
-      description: 'A hub for Astro projects.',
+      title: 'Minds & Machines: The Story of AI',
+      description: 'A 75-article deep-dive into the full history of Artificial Intelligence.',
     },
   },
 ];
@@ -46,7 +39,7 @@ vi.mock('astro:content', () => ({
       return Promise.resolve(posts);
     }
     if (collection === 'projects') {
-      return Promise.resolve(mockProjects);
+      return Promise.resolve(mockSeries);
     }
     return Promise.resolve([]);
   }),
@@ -88,17 +81,16 @@ describe('OG Image Routes - Static Paths', () => {
     });
   });
 
-  describe('Projects OG images', () => {
-    it('should export getStaticPaths that returns entries for each project', async () => {
+  describe('Series OG images', () => {
+    it('should export getStaticPaths that returns entries for each series', async () => {
       const { getStaticPaths } = await import('../og/projects/[...route].ts');
       const paths = await getStaticPaths();
-      expect(paths).toHaveLength(2);
-      expect(paths[0].params.route).toBe('documentation-site-generator.png');
+      expect(paths).toHaveLength(1);
+      expect(paths[0].params.route).toBe('minds-and-machines.png');
       expect(paths[0].props).toEqual({
-        title: 'Documentation Site Generator',
-        description: 'A documentation site built with Astro.',
+        title: 'Minds & Machines: The Story of AI',
+        description: 'A 75-article deep-dive into the full history of Artificial Intelligence.',
       });
-      expect(paths[1].params.route).toBe('astro-project-hub.png');
     });
 
     it('should include .png extension in route params', async () => {
@@ -122,10 +114,10 @@ describe('OG Image Routes - GET handler', () => {
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
   });
 
-  it('should return PNG image with correct content type for projects', async () => {
+  it('should return PNG image with correct content type for series', async () => {
     const { GET } = await import('../og/projects/[...route].ts');
     const response = await GET({
-      props: { title: 'Test Project', description: 'Test description' },
+      props: { title: 'Test Series', description: 'Test description' },
     } as any);
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toBe('image/png');
@@ -146,15 +138,15 @@ describe('OG Image Routes - GET handler', () => {
     );
   });
 
-  it('should call generateOpenGraphImage for project OG images', async () => {
+  it('should call generateOpenGraphImage for series OG images', async () => {
     const { generateOpenGraphImage } = await import('astro-og-canvas');
     const { GET } = await import('../og/projects/[...route].ts');
     await GET({
-      props: { title: 'Test Project', description: 'Test desc' },
+      props: { title: 'Test Series', description: 'Test desc' },
     } as any);
     expect(generateOpenGraphImage).toHaveBeenCalledWith(
       expect.objectContaining({
-        title: 'Test Project',
+        title: 'Test Series',
         description: 'Test desc',
       })
     );
