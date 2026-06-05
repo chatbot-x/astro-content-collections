@@ -6,15 +6,16 @@ status: "active"
 techStack: ["A-Series", "Act I: The Dream", "Article"]
 featured: true
 series: "minds-and-machines"
-episode_number: 1
+episodeNumber: 1
 roman: "I"
 part: "part-one"
-part_label: "Part I · The Origins"
+partLabel: "Part I · The Dream"
 track: "articles"
 tag: "Key Article"
-connectsTo: ["p1-ada-lovelace"]
+connectsTo:
+  - "p1-ada-lovelace"
+  - "a2-clockwork-wonders-the-automata-era"
 ---
-
 # The Ancient Dream of Artificial Life
 ### *Minds & Machines: The Story of AI — Article 1*
 

@@ -6,13 +6,14 @@ status: "active"
 techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
 featured: true
 series: "minds-and-machines"
-episode_number: 1
+episodeNumber: 1
 roman: "I"
 part: "part-one"
-part_label: "Part I · The Pioneers"
+partLabel: "Part I · The Pioneers"
 track: "profiles"
 tag: "Key Figure"
-connectsTo: ["a1-the-ancient-dream-of-artificial-life"]
+connectsTo:
+  - "a1-the-ancient-dream-of-artificial-life"
 ---
 
 *London, June 1833. A dinner party at the home of Charles Babbage, the eccentric mathematician and inventor who had made his house on Dorset Street a gathering point for the most curious minds in England. Scientists, politicians, artists, and socialites mingled beneath crystal chandeliers, admiring the strange mechanical device that occupied one end of the room — a fragment of Babbage's great unfinished Difference Engine, a tower of brass gears and levers that could, its creator claimed, calculate mathematical tables automatically without human error.*
@@ -249,4 +250,4 @@ She is remembered now. And the question she asked has never been more urgent.
 
 ---
 
-*Minds & Machines: The Story of AI is published weekly. If you found this valuable, share it with someone who would appreciate it.*
+*Minds & Machines: The Story of AI is published weekly. If this profile moved or surprised you, share it with someone who should know Ada Lovelace's name.*

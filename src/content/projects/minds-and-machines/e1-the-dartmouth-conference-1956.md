@@ -3,15 +3,18 @@ title: "E1 — The Dartmouth Conference, 1956: The Summer AI Was Born"
 description: "In the summer of 1956, ten men gathered at a small New Hampshire college and gave a name to the dream of thinking machines. They were wildly overconfident, occasionally wrong, and completely right about the one thing that mattered most. This is the story of the week Artificial Intelligence was born."
 startDate: 2026-03-28
 status: "active"
-techStack: ["E-Series", "Act II: The Birth", "Key Event"]
+techStack: ["E-Series", "Act I: The Dream", "Key Event"]
 featured: true
 series: "minds-and-machines"
-episode_number: 1
+episodeNumber: 1
 roman: "I"
 part: "part-one"
-part_label: "Part I · The Origins"
+partLabel: "Part I · The Origins"
 track: "events"
 tag: "Key Event"
+connectsTo:
+  - "p6-john-mccarthy"
+  - "a6-the-summer-that-named-ai"
 ---
 
 *Hanover, New Hampshire. Summer, 1956.*
@@ -272,10 +275,24 @@ But the awe is also warranted. The people in that room understood the problem. T
 
 And there is something more personal than that. When you look at the conversations happening today about AI — the excitement, the fear, the debates about what AI systems can and cannot do, the arguments about whether they are genuinely intelligent or just very sophisticated pattern matchers, the questions about what it would mean for a machine to truly learn and create — you are looking at the same conversation that began in that room in Hanover in 1956.
 
-The participants at Dartmouth were, in the end, both completely right and completely wrong. They were right that intelligence is a computational phenomenon. They were right that it could be studied, understood, and eventually replicated. They were right that a name and a community would be necessary to make progress. They were wrong about almost everything else — the timeline, the methods, the difficulty, the nature of the breakthroughs that would eventually come. But being right about the most important thing while being wrong about the details is, perhaps, the best any founding generation can hope for.
+The participants have changed. The technology has changed almost beyond recognition. The stakes have grown enormously. But the question is the same question: can we build a machine that thinks?
 
-The Dartmouth Conference did not create artificial intelligence. But it created the field of artificial intelligence — and that, in the end, made all the difference.
+We have been trying to answer it for seventy years, since a young mathematician named John McCarthy wrote it into a proposal for a summer conference and gave it a name. We have not finished answering it yet.
 
 ---
 
-*Minds & Machines: The Story of AI is published weekly. If you found this valuable, share it with someone who would appreciate it.*
+## Further Reading
+
+- **"Machines Who Think" by Pamela McCorduck** — The first and still one of the best comprehensive histories of AI, with a vivid account of the Dartmouth Conference and the people involved.
+- **"The Dream Machine" by M. Mitchell Waldrop** — Focused on J.C.R. Licklider, but provides essential context for the early computing world in which Dartmouth took place.
+- **"Hackers" by Steven Levy** — A wonderful portrait of the early hacker culture at MIT that grew directly from the post-Dartmouth AI Lab.
+- **The original Dartmouth proposal** — McCarthy's 1955 proposal is available online in full. It is short, readable, and remarkable.
+- **"Rise of the Machines" by Thomas Rid** — Traces the cybernetics tradition that ran in parallel to the AI tradition and sometimes intersected with it, including at Dartmouth.
+
+---
+
+*Next in the Events series: **E2 — The Turing Test, 1950: The Question That Still Has No Answer** — Six years before Dartmouth, a mathematician published a paper that asked a deceptively simple question: can machines think? The paper, the test it proposed, and the philosophical firestorm it started — a debate that has never been resolved and may never be.*
+
+---
+
+*Minds & Machines: The Story of AI is published weekly. If this piece made you think differently about where AI came from, share it with someone who should know this story.*
