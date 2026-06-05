@@ -119,8 +119,8 @@ export default defineConfig({
   //
   // TODO(SEC-001): Re-evaluate on every Astro upgrade. When the CSP hash
   // computation bug is fixed, switch to HTTP header CSP for defense-in-depth.
-  // Upstream issue: https://github.com/withastro/astro/issues/XXXX
-  // (Track the Astro CSP inline script hash issue for resolution.)
+  // Upstream issue: https://github.com/withastro/astro/issues/16664
+  // (CSP: <script is:inline> bodies not added to script-src hash allowlist)
   //
   // Best practice: Use the HTTP header (Content-Security-Policy) whenever
   // possible because it's evaluated before the document loads and can block

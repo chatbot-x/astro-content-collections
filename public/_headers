@@ -4,15 +4,15 @@
 # Apply security headers to all pages
 /*
   # NOTE: Content Security Policy is NOT set here. Astro's security.csp
-  # configuration auto-generates a CSP meta tag in the HTML with SHA-256
-  # hashes for all inline scripts (ThemeProvider, View Transitions, etc.).
-  # Setting a CSP HTTP header WITHOUT those hashes would create a stricter
-  # second policy that blocks those same inline scripts, breaking:
+  # configuration has a known bug where <script is:inline> bodies are not
+  # added to the script-src hash allowlist, causing browsers to block:
   #   - Theme toggle (depends on window.__ASTRO_THEMES__)
   #   - Dark mode initialization (FOUC prevention)
   #   - View Transitions (inline event handlers)
-  # The meta-tag CSP alone provides the same protection since CSP is
-  # enforced at the document level regardless of delivery mechanism.
+  # Upstream issue: https://github.com/withastro/astro/issues/16664
+  # Once resolved, add Content-Security-Policy header here for defense-in-depth.
+  # The meta-tag CSP (if enabled) alone provides the same protection since CSP
+  # is enforced at the document level regardless of delivery mechanism.
   # Prevent clickjacking — the site should not be embedded in iframes
   X-Frame-Options: DENY
   # Prevent MIME-type sniffing
