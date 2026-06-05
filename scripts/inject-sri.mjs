@@ -4,17 +4,28 @@
  *
  * After `astro build`, this script:
  * 1. Computes SHA-384 hashes of the Pagefind CSS and JS files in dist/pagefind/
- * 2. Finds the minified SearchModal inline script in built HTML files
- * 3. Injects integrity attributes into the dynamic createElement calls
+ * 2. Parses built HTML files using cheerio (proper HTML parser)
+ * 3. Finds dynamically created createElement calls for scripts/links
+ *    and injects the integrity attribute
  *
  * Usage: node scripts/inject-sri.mjs
  *
- * This addresses AUD-005: No SRI for dynamically loaded Pagefind JS/CSS.
+ * FIX (SEC-002): Replaced regex-based HTML modification with cheerio HTML
+ * parser. The regex approach was fragile and could silently break if Astro's
+ * minification output format changed. cheerio provides a proper DOM that is
+ * resilient to whitespace and formatting changes.
+ *
+ * Note: Because Pagefind assets are loaded via inline scripts that use
+ * createElement() (not via <script src> or <link href> tags), we still need
+ * to process inline script text. But we now use cheerio to select <script>
+ * elements reliably, then use string replacement only within the text content
+ * of those specific elements — not regex on the entire HTML.
  */
 
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, extname } from 'node:path';
+import * as cheerio from 'cheerio';
 
 const DIST_DIR = join(import.meta.dirname, '..', 'dist');
 
@@ -61,6 +72,17 @@ function computePagefindSRI() {
   return sriMap;
 }
 
+/**
+ * Inject SRI integrity attributes into inline scripts that dynamically
+ * create <link> and <script> elements for Pagefind assets.
+ *
+ * Strategy: Use cheerio to parse HTML and find all <script> elements,
+ * then examine their text content for createElement patterns. This is
+ * more robust than regex on raw HTML because:
+ * - cheerio handles any minification format
+ * - We only modify text content of relevant <script> elements
+ * - No risk of accidentally matching outside of script contexts
+ */
 function injectSRIIntoHtml(htmlFiles, sriMap) {
   let modifiedCount = 0;
   const cssSri = sriMap['/pagefind/pagefind-component-ui.css'];
@@ -72,43 +94,58 @@ function injectSRIIntoHtml(htmlFiles, sriMap) {
   }
 
   for (const htmlFile of htmlFiles) {
-    let content = readFileSync(htmlFile, 'utf-8');
+    const raw = readFileSync(htmlFile, 'utf-8');
+    const $ = cheerio.load(raw, { decodeEntities: false });
     let modified = false;
 
-    // Inject integrity into CSS link creation in minified Astro output
-    // Minified pattern: e.href="/pagefind/pagefind-component-ui.css",e.rel="stylesheet"
-    if (cssSri) {
-      const cssPattern = /(\w+\.href\s*=\s*["']\/pagefind\/pagefind-component-ui\.css["']\s*,\s*\w+\.rel\s*=\s*["']stylesheet["'])/;
-      if (cssPattern.test(content)) {
-        content = content.replace(cssPattern, `$1,e.integrity="${cssSri}"`);
-        modified = true;
-      }
-      // Also handle unminified format
-      const cssPattern2 = /(link\.href\s*=\s*["']\/pagefind\/pagefind-component-ui\.css["'];?\s*\n)/;
-      if (!modified && cssPattern2.test(content)) {
-        content = content.replace(cssPattern2, `$1        link.integrity = '${cssSri}';\n`);
-        modified = true;
-      }
-    }
+    // Find all inline <script> elements and check their content
+    $('script').each(function () {
+      const text = $(this).html() || '';
+      if (!text) return;
 
-    // Inject integrity into JS script creation in minified Astro output
-    // Minified pattern: e.src="/pagefind/pagefind-component-ui.js",e.type="module"
-    if (jsSri) {
-      const jsPattern = /(\w+\.src\s*=\s*["']\/pagefind\/pagefind-component-ui\.js["']\s*,\s*\w+\.type\s*=\s*["']module["'])/;
-      if (jsPattern.test(content)) {
-        content = content.replace(jsPattern, `$1,e.integrity="${jsSri}"`);
+      let updatedText = text;
+
+      // Inject integrity into CSS link creation
+      // Matches: e.href="/pagefind/pagefind-component-ui.css",e.rel="stylesheet"
+      if (cssSri && updatedText.includes('/pagefind/pagefind-component-ui.css')) {
+        // Minified: e.href="...",e.rel="stylesheet" — append ,e.integrity="..."
+        const cssMinified = /(\w+\.href\s*=\s*["']\/pagefind\/pagefind-component-ui\.css["']\s*,\s*\w+\.rel\s*=\s*["']stylesheet["'])/;
+        if (cssMinified.test(updatedText)) {
+          updatedText = updatedText.replace(cssMinified, `$1,e.integrity="${cssSri}"`);
+        }
+        // Unminified: link.href = "...";  — add link.integrity = '...'; on next line
+        else {
+          const cssUnminified = /(link\.href\s*=\s*["']\/pagefind\/pagefind-component-ui\.css["'];?\s*\n)/;
+          if (cssUnminified.test(updatedText)) {
+            updatedText = updatedText.replace(cssUnminified, `$1        link.integrity = '${cssSri}';\n`);
+          }
+        }
+      }
+
+      // Inject integrity into JS script creation
+      // Matches: e.src="/pagefind/pagefind-component-ui.js",e.type="module"
+      if (jsSri && updatedText.includes('/pagefind/pagefind-component-ui.js')) {
+        const jsMinified = /(\w+\.src\s*=\s*["']\/pagefind\/pagefind-component-ui\.js["']\s*,\s*\w+\.type\s*=\s*["']module["'])/;
+        if (jsMinified.test(updatedText)) {
+          updatedText = updatedText.replace(jsMinified, `$1,e.integrity="${jsSri}"`);
+        }
+        else {
+          const jsUnminified = /(script\.src\s*=\s*["']\/pagefind\/pagefind-component-ui\.js["'];?\s*\n)/;
+          if (jsUnminified.test(updatedText)) {
+            updatedText = updatedText.replace(jsUnminified, `$1        script.integrity = '${jsSri}';\n`);
+          }
+        }
+      }
+
+      if (updatedText !== text) {
+        $(this).html(updatedText);
         modified = true;
       }
-      // Also handle unminified format
-      const jsPattern2 = /(script\.src\s*=\s*["']\/pagefind\/pagefind-component-ui\.js["'];?\s*\n)/;
-      if (!modified && jsPattern2.test(content)) {
-        content = content.replace(jsPattern2, `$1        script.integrity = '${jsSri}';\n`);
-        modified = true;
-      }
-    }
+    });
 
     if (modified) {
-      writeFileSync(htmlFile, content, 'utf-8');
+      // Use cheerio's html() output which preserves the DOM structure
+      writeFileSync(htmlFile, $.html(), 'utf-8');
       modifiedCount++;
     }
   }

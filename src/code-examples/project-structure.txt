@@ -1,0 +1,37 @@
+astro-project/
+├── public/              # Static assets
+│   └── favicon.svg
+├── src/
+│   ├── components/      # Reusable UI components
+│   │   ├── FeatureCard.astro
+│   │   ├── Features.astro
+│   │   ├── Footer.astro
+│   │   ├── Hero.astro
+│   │   ├── LatestPosts.astro
+│   │   ├── Navbar.astro
+│   │   └── ThemeToggle.astro
+│   ├── content/         # Content Collections
+│   │   ├── blog/        # Blog posts (Markdown)
+│   │   └── projects/    # Project entries (Markdown)
+│   ├── layouts/         # Page layouts
+│   │   ├── BlogPost.astro
+│   │   ├── Layout.astro
+│   │   └── ProjectPage.astro
+│   ├── pages/           # File-based routing
+│   │   ├── blog/
+│   │   │   ├── index.astro
+│   │   │   ├── [...slug].astro
+│   │   │   └── rss.xml.ts
+│   │   ├── projects/
+│   │   │   ├── index.astro
+│   │   │   └── [...slug].astro
+│   │   ├── about.astro
+│   │   └── index.astro
+│   ├── styles/
+│   │   └── global.css   # TailwindCSS v4 + Dark mode
+│   ├── utils/
+│   │   └── schema/      # SEO graph schema builders
+│   └── content.config.ts # Collection schemas
+├── astro.config.mjs     # Astro + integrations
+├── tsconfig.json
+└── package.json

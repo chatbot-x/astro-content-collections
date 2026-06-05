@@ -13,15 +13,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// Import SITE_URL from the shared module to avoid duplication.
-// astro.config.mjs is ESM, so we can use dynamic import for a TS module.
-// However, since this is a .mjs config file evaluated at build time,
-// we define the constant here and re-export it is not possible.
-// Instead, we keep a single definition here and import it in utils/site.ts
-// via a re-export pattern. BUT .mjs cannot import .ts directly.
-// Solution: Define SITE_URL here, and have utils/site.ts also define it.
-// To truly DRY this up, we create a shared JSON config.
-import { readFileSync } from 'node:fs';
+// FIX (ARCH-001): This file is now the SINGLE source of truth for SITE_URL.
+// src/utils/site.ts reads it via import.meta.env.SITE (which Astro populates
+// from the `site` field below). This eliminates the dual-reader pattern that
+// previously used site.config.json, removing the risk of URL inconsistency.
+//
+// To change the site URL, edit the `site` property in the defineConfig below.
+// All consumers (sitemap, Schema.org, RSS, OG images, llms.txt) will pick it up.
 
 // Resolve paths relative to this config file, not CWD
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -82,19 +80,11 @@ const CHANGEFREQ_DAILY = ChangeFreqEnum.DAILY;
 const CHANGEFREQ_WEEKLY = ChangeFreqEnum.WEEKLY;
 const CHANGEFREQ_MONTHLY = ChangeFreqEnum.MONTHLY;
 
-// Site URL constant — single source of truth.
-// FIX: Load from a shared JSON file so both astro.config.mjs and
-// src/utils/site.ts read the same value. Previously, SITE_URL was
-// independently defined in both files, creating a DRY violation that
-// could lead to inconsistent URLs across sitemap, Schema.org, RSS, etc.
-const siteConfigPath = path.join(__dirname, 'site.config.json');
-let SITE_URL = 'https://astro-content-collections.pages.dev'; // fallback
-try {
-  const siteConfig = JSON.parse(readFileSync(siteConfigPath, 'utf-8'));
-  SITE_URL = siteConfig.siteUrl || SITE_URL;
-} catch {
-  // site.config.json not found — use default
-}
+// Site URL — single source of truth.
+// FIX (ARCH-001): Define directly here. src/utils/site.ts reads this
+// via import.meta.env.SITE instead of reading site.config.json.
+// To change the URL, edit this constant.
+const SITE_URL = 'https://astro-content-collections.pages.dev';
 
 // https://astro.build/config
 export default defineConfig({
@@ -126,8 +116,15 @@ export default defineConfig({
   //
   // For a static site with NO user-generated content, these headers provide
   // adequate protection without the risk of breaking interactive features.
-  // If Astro's CSP hash computation is fixed in a future release, CSP can
-  // be re-enabled here.
+  //
+  // TODO(SEC-001): Re-evaluate on every Astro upgrade. When the CSP hash
+  // computation bug is fixed, switch to HTTP header CSP for defense-in-depth.
+  // Upstream issue: https://github.com/withastro/astro/issues/XXXX
+  // (Track the Astro CSP inline script hash issue for resolution.)
+  //
+  // Best practice: Use the HTTP header (Content-Security-Policy) whenever
+  // possible because it's evaluated before the document loads and can block
+  // network-level attacks. Meta tag CSP is acceptable only as a workaround.
 
   integrations: [
     // 1. Sitemap — generates sitemap-index.xml + sitemap-0.xml

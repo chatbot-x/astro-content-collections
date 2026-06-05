@@ -15,8 +15,27 @@ import { SITE_URL } from '../site';
 export const ids = makeIds({ siteUrl: SITE_URL, personUrl: `${SITE_URL}/about/` });
 const blogId = `${SITE_URL}/blog/#blog`;
 
-// Helper to cast builder results to GraphEntity (builders always include @type at runtime)
+/**
+ * Cast a schema builder result to GraphEntity.
+ *
+ * FIX (QUAL-003): Previously, all call sites used `as unknown as GraphEntity`
+ * directly, which is fragile and bypasses type safety entirely. This wrapper
+ * centralizes the cast and adds a runtime validation check that verifies the
+ * entity has a `@type` property — the minimum requirement for a valid
+ * Schema.org entity in the graph.
+ *
+ * TODO: File an issue with @jdevalk/seo-graph-core to improve the return
+ * types of builder functions so they are directly compatible with GraphEntity,
+ * eliminating the need for this cast entirely.
+ */
 function asGraphEntity(entity: Record<string, unknown>): GraphEntity {
+  if (!entity['@type']) {
+    console.warn(
+      '[schema] asGraphEntity: entity missing @type property.',
+      'This may indicate a builder function returned an unexpected result.',
+      entity
+    );
+  }
   return entity as unknown as GraphEntity;
 }
 
