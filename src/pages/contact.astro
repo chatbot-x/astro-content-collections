@@ -1,0 +1,341 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch with isHistory — feedback, corrections, collaboration, or a quiet hello. Reach out via GitHub Discussions or email."
+  pageType="page"
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Section 1: Hero                                                -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-950 py-24 sm:py-32">
+    <!-- Decorative blur orbs -->
+    <div class="absolute inset-0 opacity-30 dark:opacity-20">
+      <div class="absolute top-20 left-10 h-72 w-72 rounded-full bg-indigo-300 dark:bg-indigo-600 blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 h-72 w-72 rounded-full bg-purple-300 dark:bg-purple-600 blur-3xl"></div>
+    </div>
+    <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Eyebrow -->
+      <p class="text-sm font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-3">
+        Preservation Channels
+      </p>
+      <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+        Get in Touch
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+        Feedback, corrections, collaboration, or a quiet hello — all welcome.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Section 2: Two Contact Method Cards                            -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-20 sm:py-28 bg-white dark:bg-gray-950">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+      <div class="grid gap-8 md:grid-cols-2">
+        <!-- Card: GitHub Discussions (Public) -->
+        <div class="rounded-2xl border-l-4 border-l-indigo-500 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-400">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500">Public</p>
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">GitHub Discussions</h2>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            Best for suggestions, factual corrections, and conversations that help other readers. Discussions are open and searchable — your question might already have an answer.
+          </p>
+          <a
+            href="https://github.com/chatbot-x/astro-content-collections/discussions"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-indigo-700 hover:shadow-md hover:-translate-y-0.5"
+          >
+            Open Discussions
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Card: Direct Email (Private) -->
+        <div class="rounded-2xl border-l-4 border-l-purple-500 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-400">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-500">Private</p>
+              <h2 class="text-xl font-bold text-gray-900 dark:text-white">Direct Email</h2>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+            For collaboration proposals, translation requests, or anything you'd rather not share publicly. Your message stays between us.
+          </p>
+          <!-- Copiable email address -->
+          <div class="flex items-center gap-3">
+            <div class="flex-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3">
+              <code class="text-sm font-mono text-gray-900 dark:text-gray-100 select-all">ishistory@proton.me</code>
+            </div>
+            <button
+              type="button"
+              id="copy-email-btn"
+              class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400 transition-all hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+              aria-label="Copy email address"
+            >
+              <svg id="copy-icon" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              <svg id="check-icon" class="h-4 w-4 hidden text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reassurance line -->
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-500 italic">
+        No form needed. Just write to me directly. I read every message, though replies may take a few days.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- Section 3: FAQ Accordion                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <section class="py-20 sm:py-28 bg-gradient-to-br from-gray-50 to-indigo-50 dark:from-gray-900 dark:to-indigo-950/50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Common questions about isHistory — content, licensing, updates, and how to get involved.
+        </p>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+
+        <!-- FAQ 1 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Can I suggest a topic for a future series?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes — please email me with your idea and why it matters. I consider all suggestions, especially those that highlight underexplored corners of computing history or connect technology to broader cultural shifts. There's no formal submission process; a thoughtful paragraph is enough to start the conversation.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">I found a factual error in an article. How do I report it?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Publicly via <a href="https://github.com/chatbot-x/astro-content-collections/discussions" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">GitHub Discussions</a> (preferred, helps others) or privately by email. I correct errors promptly with a note in the article acknowledging the fix and the contributor. Accuracy is foundational to the archive's credibility — every correction makes it stronger.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Can I reuse or translate content from isHistory?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes — the archive is published under an open license. Share, quote, and adapt with attribution. For translations or large-scale reuse (e.g., curricula, course packs, anthologies), please get in touch so I can help coordinate and ensure the adapted version maintains the same standard of accuracy.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">How often do you publish new articles?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              The current series (<em>Minds &amp; Machines</em>) publishes three articles per week (one per track). Future series will follow a similar cadence. Subscribe to the newsletter or RSS for updates so you never miss a chapter.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Is there a newsletter? How do I stay updated?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes — subscribe via the link in the footer or on the homepage. I send weekly roundups of new articles and occasional behind-the-scenes notes about the research and writing process. No spam, no tracking — just the archive, delivered.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Do you provide a bibliography or sources for each article?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes — every article includes a "Further Reading" section with primary and secondary sources. For specific citations or deeper source material, feel free to ask via <a href="https://github.com/chatbot-x/astro-content-collections/discussions" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">GitHub Discussions</a>. I'm happy to share research notes when available.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Can I download articles as PDF or read offline?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Not yet, but it's on the roadmap. In the meantime, your browser's "Print to PDF" works well for saving individual articles. A dedicated offline reading experience is being explored as part of the archive's long-term accessibility goals.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Do you accept donations or financial support?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Currently, isHistory is self-funded and ad-free. If that changes, I'll announce it transparently. For now, sharing articles and subscribing helps the most — it expands the archive's reach and motivates continued research and writing.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Is there an RSS feed?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes — the RSS feed is available at <code class="rounded bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 text-sm font-mono">/blog/rss.xml</code>. Add it to your preferred reader for automatic updates whenever new articles are published. No algorithms, no noise — just the content you want.
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="faq-item rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors">
+          <button type="button" class="faq-trigger flex w-full items-center justify-between gap-4 px-6 py-5 text-left" aria-expanded="false">
+            <span class="text-base font-semibold text-gray-900 dark:text-white">Can I contribute as a guest writer or researcher?</span>
+            <svg class="faq-chevron h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="faq-content max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+            <div class="px-6 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+              At this time, isHistory is a solo project. But I'm open to collaboration proposals — email me with your background and ideas. Whether it's co-research on a specific topic, a joint series, or something else entirely, I'd rather have the conversation than close the door.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- Scripts: FAQ Accordion + Copy Email                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<script>
+  function initContactPage() {
+    const controller = new AbortController();
+
+    // --- FAQ Accordion ---
+    const triggers = document.querySelectorAll<HTMLButtonElement>('.faq-trigger');
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.closest('.faq-item');
+        const content = item?.querySelector<HTMLDivElement>('.faq-content');
+        const chevron = trigger.querySelector<SVGElement>('.faq-chevron');
+        if (!content || !chevron) return;
+
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        if (isOpen) {
+          // Close
+          content.style.maxHeight = content.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            content.style.maxHeight = '0px';
+          });
+          trigger.setAttribute('aria-expanded', 'false');
+          chevron.style.transform = 'rotate(0deg)';
+        } else {
+          // Open
+          content.style.maxHeight = content.scrollHeight + 'px';
+          trigger.setAttribute('aria-expanded', 'true');
+          chevron.style.transform = 'rotate(180deg)';
+          // After animation, remove maxHeight so content can reflow
+          const onEnd = () => {
+            if (trigger.getAttribute('aria-expanded') === 'true') {
+              content.style.maxHeight = 'none';
+            }
+            content.removeEventListener('transitionend', onEnd);
+          };
+          content.addEventListener('transitionend', onEnd);
+        }
+      }, { signal: controller.signal });
+    });
+
+    // --- Copy Email Button ---
+    const copyBtn = document.getElementById('copy-email-btn');
+    const copyIcon = document.getElementById('copy-icon');
+    const checkIcon = document.getElementById('check-icon');
+    if (copyBtn && copyIcon && checkIcon) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('ishistory@proton.me');
+          copyIcon.classList.add('hidden');
+          checkIcon.classList.remove('hidden');
+          setTimeout(() => {
+            copyIcon.classList.remove('hidden');
+            checkIcon.classList.add('hidden');
+          }, 2000);
+        } catch {
+          // Fallback: select the <code> element
+          const codeEl = copyBtn.parentElement?.querySelector('code');
+          if (codeEl) {
+            const range = document.createRange();
+            range.selectNodeContents(codeEl);
+            const sel = window.getSelection();
+            sel?.removeAllRanges();
+            sel?.addRange(range);
+          }
+        }
+      }, { signal: controller.signal });
+    }
+
+    return () => controller.abort();
+  }
+
+  let cleanup: (() => void) | undefined;
+  function reInit() {
+    cleanup?.();
+    cleanup = initContactPage();
+  }
+  document.addEventListener('astro:page-load', reInit);
+</script>
