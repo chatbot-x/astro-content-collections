@@ -31,37 +31,32 @@ const upcomingSeries = allProjects
 >
   <Hero />
 
-  <!-- FIX: Editorial intro section — adds keyword-rich content for SEO density.
-       Explains the site's purpose in natural language so search engines understand
-       the topical focus without needing to crawl the full article archive. -->
-  <section class="py-16 sm:py-20 bg-white dark:bg-gray-950">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-        From the origins of artificial intelligence in <em>Minds &amp; Machines</em>, to the birth of the internet in <em>The Wire</em>, to the corporate battles of <em>Console Wars</em> — isHistory traces the people, events, and ideas that defined the digital age. Every article is a self-contained story, meticulously researched and written for curious readers who want to understand not just what happened, but why it mattered.
-      </p>
-    </div>
-  </section>
-
   <Features />
 
-  <!-- FIX: Featured series section — surfaces the active series on the homepage,
-       adding content density and internal links for SEO crawlers.
-       MOVED after "Why isHistory?" for better narrative flow. -->
+  <!-- Featured series section — surfaces the active series on the homepage,
+       with an editorial pull-quote that names all three series and frames the showcase. -->
   {activeSeries.length > 0 && (
-    <section class="py-20 sm:py-28 bg-white dark:bg-gray-950">
+    <section class="py-20 sm:py-28 bg-gradient-to-b from-white to-indigo-50/30 dark:from-gray-950 dark:to-indigo-950/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <!-- Section header -->
+        <!-- Section header with editorial pull-quote -->
         <div class="text-center mb-16">
-          <span class="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-semibold text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400 mb-4">
+          <span class="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-semibold text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400 mb-6">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             Featured Series
           </span>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Deep-Dive Narratives
-          </h2>
-          <p class="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Explore the history of technology through immersive, multi-article series — no code, just the human journey.
-          </p>
+
+          <!-- Editorial pull-quote paragraph -->
+          <div class="mx-auto max-w-3xl">
+            <div class="relative">
+              <!-- Decorative quote marks -->
+              <svg class="absolute -top-4 -left-4 sm:-top-6 sm:-left-8 h-10 w-10 sm:h-14 sm:w-14 text-indigo-100 dark:text-indigo-900/50" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+              </svg>
+              <p class="relative text-xl sm:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-serif italic">
+                From the origins of artificial intelligence in <em class="not-italic font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">Minds &amp; Machines</em>, to the birth of the internet in <em class="not-italic font-semibold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">The Wire</em>, to the corporate battles of <em class="not-italic font-semibold bg-gradient-to-r from-pink-600 to-amber-600 dark:from-pink-400 dark:to-amber-400 bg-clip-text text-transparent">Console Wars</em> — isHistory traces the people, events, and ideas that defined the digital age. Every article is a self-contained story, meticulously researched and written for curious readers who want to understand not just <em class="not-italic font-semibold text-gray-900 dark:text-white">what</em> happened, but <em class="not-italic font-semibold text-gray-900 dark:text-white">why</em> it mattered.
+              </p>
+            </div>
+          </div>
         </div>
 
         <!-- Featured series: large hero card for the primary active series -->
