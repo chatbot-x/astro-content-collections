@@ -57,6 +57,18 @@ vi.mock('astro:content', () => ({
           },
         },
         {
+          id: 'minds-and-machines/a4-ada-lovelace-and-the-first-algorithm',
+          data: {
+            title: 'A4 — Ada Lovelace & The First Algorithm',
+            description: 'The story of the first algorithm.',
+            startDate: new Date('2026-04-18'),
+            status: 'upcoming',
+            track: 'articles',
+            techStack: ['A-Series'],
+            tag: 'Article',
+          },
+        },
+        {
           id: 'console-wars',
           data: {
             title: 'Console Wars',
@@ -153,10 +165,17 @@ describe('RSS feed API route (site-wide)', () => {
       expect(body).toContain('P1 — Ada Lovelace: The First Programmer');
     });
 
-    it('should exclude upcoming series index pages', () => {
-      // "Console Wars" has status: 'upcoming' and is a series index (no / in id)
-      // It should NOT appear in the feed
+    it('should exclude series index pages (no / in id)', () => {
+      // "Console Wars" is a series index page (no / in id), not an article.
+      // It should NOT appear in the feed regardless of status.
       expect(body).not.toContain('Console Wars');
+    });
+
+    it('should include upcoming series articles (articles with / in id)', () => {
+      // Articles with status 'upcoming' but that have content (contain / in id)
+      // should still appear in the feed — status is a lifecycle label, not a draft flag.
+      expect(body).toContain('A4 — Ada Lovelace & The First Algorithm');
+      expect(body).toContain('https://ishistory.dev/series/minds-and-machines/a4-ada-lovelace-and-the-first-algorithm/');
     });
 
     it('should include blog post links as absolute URLs', () => {

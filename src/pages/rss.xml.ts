@@ -24,7 +24,6 @@ export async function GET(context: APIContext) {
   const allProjects = await getCollection('projects');
   const seriesArticles = allProjects
     .filter((entry) => entry.id.includes('/')) // only articles, not series index pages
-    .filter((entry) => entry.data.status !== 'upcoming') // skip upcoming series articles
     .map((article) => {
       const seriesSlug = article.id.split('/')[0];
       const articleSlug = article.id.split('/').pop();
