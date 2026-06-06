@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import { computeReadingTime } from '../../../utils/readingTime';
+import TableOfContents from '../../../components/TableOfContents.astro';
 
 import { SITE_URL } from '../../../utils/site';
 
@@ -23,7 +24,7 @@ export async function getStaticPaths() {
 }
 
 const { article, seriesEntry, allEntries } = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
 
 // FIX: Compute word count from article body instead of hardcoding to 0.
 // This provides accurate wordCount for Schema.org structured data and reading time.
@@ -218,6 +219,11 @@ const ogImageUrl = `/og/projects/${article.id}.png`;
           </span>
         )}
       </div>
+
+      <!-- Auto-generated Table of Contents -->
+      {headings.filter((h: any) => h.depth >= 2 && h.depth <= 3).length >= 2 && (
+        <TableOfContents headings={headings} />
+      )}
 
       <!-- Article Body -->
       <div class="prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-300 max-w-none dark:prose-invert dark:prose-a:text-indigo-400 dark:prose-headings:text-white dark:prose-code:text-indigo-300 dark:prose-pre:bg-gray-900 [&_h1]:sr-only">

@@ -1,0 +1,126 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  minHeadings?: number;
+}
+
+const { headings, minHeadings = 2 } = Astro.props;
+
+// Only show h2 and h3 headings in the TOC (skip h1 which is the title)
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 3);
+
+// Don't render TOC if there aren't enough headings to justify it
+if (tocHeadings.length < minHeadings) return;
+---
+
+<nav aria-label="Table of Contents" class="toc-container">
+  <div class="toc-header">
+    <svg class="toc-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h10M4 18h7" />
+    </svg>
+    <span class="toc-title">On this page</span>
+  </div>
+  <ul class="toc-list">
+    {tocHeadings.map((heading) => (
+      <li class={`toc-item toc-depth-${heading.depth}`}>
+        <a href={`#${heading.slug}`} class="toc-link">
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .toc-container {
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  :global([data-theme='dark']) .toc-container {
+    border-color: #374151;
+    background: linear-gradient(135deg, #111827, #1f2937);
+  }
+
+  .toc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .toc-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: #6366f1;
+  }
+
+  :global([data-theme='dark']) .toc-icon {
+    color: #818cf8;
+  }
+
+  .toc-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+  }
+
+  :global([data-theme='dark']) .toc-title {
+    color: #9ca3af;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .toc-item {
+    line-height: 1.5;
+  }
+
+  .toc-link {
+    display: block;
+    font-size: 0.875rem;
+    color: #4b5563;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-left: 2px solid transparent;
+    padding-left: 0.5rem;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  :global([data-theme='dark']) .toc-link {
+    color: #9ca3af;
+  }
+
+  .toc-link:hover {
+    color: #4f46e5;
+    border-left-color: #4f46e5;
+  }
+
+  :global([data-theme='dark']) .toc-link:hover {
+    color: #818cf8;
+    border-left-color: #818cf8;
+  }
+
+  /* h3 items get extra indentation */
+  .toc-depth-3 .toc-link {
+    padding-left: 1.25rem;
+    font-size: 0.8125rem;
+  }
+</style>

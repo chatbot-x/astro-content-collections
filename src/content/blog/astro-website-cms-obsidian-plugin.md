@@ -28,23 +28,6 @@ I built **isHistory CMS** to solve this problem. It's now an official [Obsidian 
 
 ---
 
-## Table of Contents
-
-- [The Problem: Managing History Content in a Static World](#the-problem-managing-history-content-in-a-static-world)
-- [What isHistory CMS Does](#what-ishistory-cms-does)
-  - [A Visual Dashboard for Your Content](#a-visual-dashboard-for-your-content)
-  - [Live Frontmatter Validation](#live-frontmatter-validation)
-  - [Pre‑flight: Mark Posts Ready for Deployment](#preflight-mark-posts-ready-for-deployment)
-  - [Mobile‑First Design](#mobilefirst-design)
-- [The Technical Journey: From Idea to Official Plugin](#the-technical-journey-from-idea-to-official-plugin)
-- [The Broader Ecosystem](#the-broader-ecosystem)
-- [Getting Started with isHistory CMS](#getting-started-with-ishistory-cms)
-- [Why I Built This and What Comes Next](#why-i-built-this-and-what-comes-next)
-- [Try isHistory CMS](#try-ishistory-cms)
-- [FAQ](#faq)
-
----
-
 ## The Problem: Managing History Content in a Static World
 
 Building an AI history publication in Astro is fast, elegant, and delightfully developer-friendly — until you have to manage it day to day. Each post in my publication has:

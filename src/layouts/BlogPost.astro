@@ -1,4 +1,10 @@
 ---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
 interface Props {
   title: string;
   description?: string;
@@ -10,11 +16,13 @@ interface Props {
   readingTime?: string;
   wordCount?: number;
   url?: string;
+  headings?: Heading[];
 }
 
 import { SITE_URL } from '../utils/site';
+import TableOfContents from '../components/TableOfContents.astro';
 
-const { title, description, pubDate, updatedDate, author = 'Ishaan', tags = [], heroImage, readingTime, wordCount, url } = Astro.props;
+const { title, description, pubDate, updatedDate, author = 'Ishaan', tags = [], heroImage, readingTime, wordCount, url, headings = [] } = Astro.props;
 const shareUrl = url || Astro.url.href;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
@@ -117,6 +125,10 @@ const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
       LinkedIn
     </a>
   </div>
+
+  {headings.length >= 2 && (
+    <TableOfContents headings={headings} />
+  )}
 
   <div class="prose prose-lg prose-indigo prose-headings:font-bold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-pre:bg-gray-900 prose-pre:text-gray-300 max-w-none dark:prose-invert dark:prose-a:text-indigo-400 dark:prose-headings:text-white dark:prose-code:text-indigo-300 dark:prose-pre:bg-gray-900" data-pagefind-body>
     <slot />
