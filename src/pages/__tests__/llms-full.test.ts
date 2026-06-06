@@ -45,7 +45,7 @@ const mockSeries = [
 ];
 
 vi.mock('astro:content', () => ({
-  getCollection: vi.fn().mockImplementation((collection: string, filter?: any) => {
+  getCollection: vi.fn().mockImplementation((collection: string, filter?: (entry: { data: { draft: boolean } }) => boolean) => {
     if (collection === 'blog') {
       const posts = mockBlogPosts.filter((p) => (filter ? filter(p) : true));
       return Promise.resolve(posts);
@@ -70,7 +70,7 @@ describe('llms-full.txt API route', () => {
   let body: string;
 
   beforeEach(async () => {
-    response = await GET({} as any);
+    response = await GET({} as Record<string, never>);
     body = await response.text();
   });
 

@@ -25,3 +25,27 @@
   X-XSS-Protection: 1; mode=block
   # Strict Transport Security — enforce HTTPS for 1 year, include subdomains, allow preloading
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Cache static assets aggressively — fonts, images, CSS, JS
+# Cloudflare serves these with its own CDN cache; explicit Cache-Control
+# ensures browsers also cache them, reducing repeat requests.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache OG images for 1 year (they only change on rebuild)
+/og/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache favicon and static assets for 7 days
+/*.png
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+/*.jpg
+  Cache-Control: public, max-age=604800
+
+# IndexNow key file — no caching (must always verify)
+/101ca11c95314d7094344c49eea380f9.txt
+  Cache-Control: no-cache

@@ -141,9 +141,19 @@ const graph = buildSchemaGraph({
         While Open Graph covers Facebook, Twitter Cards are a separate
         standard and are widely supported across platforms. */}
     <meta name="twitter:card" content={pageType === 'blogPost' ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:site" content="@ishistory_" />
+    <meta name="twitter:creator" content="@ishistory_" />
     <meta name="twitter:title" content={formattedTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={twitterImageUrl} />
+    {/* FIX: theme-color for mobile browser chrome & PWA install prompts — matches dark bg */}
+    <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f9fafb" media="(prefers-color-scheme: light)" />
+    {/* FIX: Cloudflare Web Analytics — privacy-first, no cookies, no personal data collected.
+        Enable in Cloudflare dashboard: Traffic → Web Analytics → Add site.
+        The script is loaded via a Cloudflare-origin snippet; replace the
+        data-token value with your actual token after enabling analytics. */}
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "PLACEHOLDER_CLOUDFLARE_ANALYTICS_TOKEN"}'></script>
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased transition-colors duration-200 dark:bg-gray-950 dark:text-gray-100">
     <!-- Skip navigation link for accessibility -->

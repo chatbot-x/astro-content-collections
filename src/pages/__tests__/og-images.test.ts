@@ -33,7 +33,7 @@ const mockSeries = [
 ];
 
 vi.mock('astro:content', () => ({
-  getCollection: vi.fn().mockImplementation((collection: string, filter?: any) => {
+  getCollection: vi.fn().mockImplementation((collection: string, filter?: (entry: { data: { draft: boolean } }) => boolean) => {
     if (collection === 'blog') {
       const posts = mockBlogPosts.filter((p) => (filter ? filter(p) : true));
       return Promise.resolve(posts);
@@ -76,7 +76,7 @@ describe('OG Image Routes - Static Paths', () => {
       const { getStaticPaths } = await import('../og/blog/[...route].ts');
       const paths = await getStaticPaths();
       expect(paths).toHaveLength(2);
-      const routeSlugs = paths.map((p: any) => p.params.route);
+      const routeSlugs = paths.map((p: { params: { route: string } }) => p.params.route);
       expect(routeSlugs).not.toContain('draft-post.png');
     });
   });
@@ -108,7 +108,7 @@ describe('OG Image Routes - GET handler', () => {
     const { GET } = await import('../og/blog/[...route].ts');
     const response = await GET({
       props: { title: 'Test Post', description: 'Test description' },
-    } as any);
+    } as unknown as Parameters<typeof GET>[0]);
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toBe('image/png');
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
@@ -118,7 +118,7 @@ describe('OG Image Routes - GET handler', () => {
     const { GET } = await import('../og/projects/[...route].ts');
     const response = await GET({
       props: { title: 'Test Series', description: 'Test description' },
-    } as any);
+    } as unknown as Parameters<typeof GET>[0]);
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toBe('image/png');
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=31536000, immutable');
@@ -129,7 +129,7 @@ describe('OG Image Routes - GET handler', () => {
     const { GET } = await import('../og/blog/[...route].ts');
     await GET({
       props: { title: 'Test Post', description: 'Test desc' },
-    } as any);
+    } as unknown as Parameters<typeof GET>[0]);
     expect(generateOpenGraphImage).toHaveBeenCalledWith(
       expect.objectContaining({
         title: 'Test Post',
@@ -143,7 +143,7 @@ describe('OG Image Routes - GET handler', () => {
     const { GET } = await import('../og/projects/[...route].ts');
     await GET({
       props: { title: 'Test Series', description: 'Test desc' },
-    } as any);
+    } as unknown as Parameters<typeof GET>[0]);
     expect(generateOpenGraphImage).toHaveBeenCalledWith(
       expect.objectContaining({
         title: 'Test Series',

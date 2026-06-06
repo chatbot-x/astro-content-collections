@@ -85,19 +85,19 @@ vi.mock('astro:content', () => ({
 
 // Mock @astrojs/rss — simulate the RSS XML output
 vi.mock('@astrojs/rss', () => ({
-  default: vi.fn().mockImplementation((opts: any) => {
-    const items = opts.items
+  default: vi.fn().mockImplementation((opts: Record<string, unknown>) => {
+    const items = (opts.items as Array<Record<string, unknown>>)
       .map(
-        (item: any) =>
-          `    <item>\n      <title>${item.title}</title>\n      <link>${item.link}</link>\n      <description>${item.description}</description>\n      <author>${item.author}</author>\n      <pubDate>${item.pubDate.toISOString()}</pubDate>\n    </item>`
+        (item) =>
+          `    <item>\n      <title>${item.title}</title>\n      <link>${item.link}</link>\n      <description>${item.description}</description>\n      <author>${item.author}</author>\n      <pubDate>${(item.pubDate as Date).toISOString()}</pubDate>\n    </item>`
       )
       .join('\n');
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>${opts.title}</title>
-    <description>${opts.description}</description>
-    <link>${opts.site}</link>
+    <title>${opts.title as string}</title>
+    <description>${opts.description as string}</description>
+    <link>${opts.site as string}</link>
     <language>en-us</language>
 ${items}
   </channel>
@@ -113,7 +113,7 @@ import { GET } from '../rss.xml';
 describe('RSS feed API route (site-wide)', () => {
   it('should throw if context.site is not defined', async () => {
     const context = { site: undefined };
-    await expect(GET(context as any)).rejects.toThrow(
+    await expect(GET(context as unknown as Parameters<typeof GET>[0])).rejects.toThrow(
       'RSS feed requires a configured `site` URL in astro.config.mjs'
     );
   });
@@ -126,7 +126,7 @@ describe('RSS feed API route (site-wide)', () => {
       const context = {
         site: new URL('https://ishistory.dev'),
       };
-      response = await GET(context as any);
+      response = await GET(context as unknown as Parameters<typeof GET>[0]);
       body = await response.text();
     });
 

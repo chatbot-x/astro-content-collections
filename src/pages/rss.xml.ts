@@ -56,7 +56,7 @@ export async function GET(context: APIContext) {
     title: 'isHistory',
     description: 'Mapping the digital past — articles, profiles, and events from the curated archive of technology history. No code, just the human stories behind the machines.',
     site: context.site,
-    items: allItems.map(({ sortDate, ...item }) => item),
+    items: allItems.map(({ sortDate: _sortDate, ...item }) => item),
     customData: `<language>en-us</language>`,
   });
 }

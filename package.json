@@ -1,5 +1,5 @@
 {
-  "name": "astro-project",
+  "name": "ishistory",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -33,12 +33,16 @@
     "schema-dts": "^2.0.0",
     "tailwindcss": "^4.3.0"
   },
-  "description": "Astro v6 project with TailwindCSS v4",
+  "description": "isHistory — A curated digital archive of the stories behind technology",
   "keywords": [
+    "isHistory",
+    "technology-history",
+    "artificial-intelligence",
+    "digital-archive",
     "astro",
     "tailwindcss"
   ],
-  "author": "",
+  "author": "Ishaan",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.60.1",

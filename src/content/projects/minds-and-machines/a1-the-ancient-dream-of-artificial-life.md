@@ -21,7 +21,7 @@ tag: Key Article
 connectsTo:
 - p1-ada-lovelace
 ---
-# The Ancient Dream of Artificial Life
+## The Ancient Dream of Artificial Life
 ### *Minds & Machines: The Story of AI — Article 1*
 
 ---

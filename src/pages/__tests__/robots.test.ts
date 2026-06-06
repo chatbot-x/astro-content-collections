@@ -15,7 +15,7 @@ describe('robots.txt API route', () => {
   let body: string;
 
   beforeEach(async () => {
-    response = await GET({} as any);
+    response = await GET({} as Record<string, never>);
     body = await response.text();
   });
 

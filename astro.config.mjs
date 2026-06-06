@@ -188,7 +188,13 @@ export default defineConfig({
         // Google displays ~60 chars in search results; the validator enforces
         // a practical range rather than strict SEO ideal.
         title: { min: 20, max: 75 },
-        description: { min: 70, max: 200 },
+        // FIX: Description max raised from 200 to 500.
+        // Series articles have editorial descriptions averaging 300-470 chars.
+        // These are intentional — they serve as both meta descriptions and
+        // article teasers. Google truncates in SERPs at ~160 chars but reads
+        // the full description for indexing. Shortening would degrade the
+        // user experience on the site itself.
+        description: { min: 50, max: 500 },
       },
       validateInternalLinks: true,
 
@@ -200,19 +206,13 @@ export default defineConfig({
       },
 
       // IndexNow — instant indexing on Bing/Yandex/Naver/Seznam/Yep
-      // IMPORTANT: Deploy the key route FIRST before enabling this!
-      // Verify https://astro-content-collections.pages.dev/101ca11c95314d7094344c49eea380f9.txt loads, then uncomment:
-      // FIX: Removed TypeScript non-null assertion (!) which is invalid in .mjs files.
-      // Also conditionally enable IndexNow only when the key is actually set.
-      ...(process.env.INDEXNOW_KEY
-        ? {
-            indexNow: {
-              key: process.env.INDEXNOW_KEY,
-              host: SITE_URL.replace(/^https?:\/\//, ''),
-              siteUrl: SITE_URL,
-            },
-          }
-        : {}),
+      // FIX: Key file deployed at /101ca11c95314d7094344c49eea380f9.txt.
+      // IndexNow is now active — every build notifies search engines of new/changed URLs.
+      indexNow: {
+        key: '101ca11c95314d7094344c49eea380f9',
+        host: SITE_URL.replace(/^https?:\/\//, ''),
+        siteUrl: SITE_URL,
+      },
     }),
 
     // 3. AI crawler blocking

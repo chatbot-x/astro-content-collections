@@ -1,6 +1,5 @@
 ---
-title: 'E10 — Backpropagation Goes Mainstream, 1986: The Algorithm That Refused to
-  Die'
+title: 'E10 — Backpropagation Goes Mainstream, 1986'
 description: The most important algorithm in modern AI was discovered at least three
   times before anyone paid attention. The full story of backpropagation — its multiple
   independent inventions, the decades it spent in the shadows of the symbolic AI winter,

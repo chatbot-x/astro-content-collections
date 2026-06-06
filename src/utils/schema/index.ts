@@ -10,7 +10,7 @@ import {
   buildSiteNavigationElement,
 } from '@jdevalk/seo-graph-core';
 import type { GraphEntity } from '@jdevalk/seo-graph-core';
-import type { Person, Blog, SoftwareApplication, ItemList } from 'schema-dts';
+import type { Person, Blog, Collection, ItemList } from 'schema-dts';
 import { SITE_URL } from '../site';
 export const ids = makeIds({ siteUrl: SITE_URL, personUrl: `${SITE_URL}/about/` });
 const blogId = `${SITE_URL}/blog/#blog`;
@@ -77,15 +77,15 @@ function siteWideEntities(): GraphEntity[] {
     asGraphEntity(buildPiece<Person>({
       '@type': 'Person',
       '@id': ids.person,
-      name: 'Astro Team',
+      name: 'Ishaan',
       url: `${SITE_URL}/about/`,
       image: { '@id': ids.personImage },
       sameAs: [
-        'https://github.com/astroteam',
-        'https://twitter.com/astroteam',
+        'https://github.com/chatbot-x',
+        'https://twitter.com/ishistory_',
       ],
-      knowsAbout: ['Web Development', 'Astro', 'TypeScript', 'TailwindCSS', 'SEO'],
-      jobTitle: 'Web Developer',
+      knowsAbout: ['Artificial Intelligence', 'Technology History', 'Web Development', 'Astro', 'TypeScript', 'TailwindCSS', 'SEO'],
+      jobTitle: 'Technology Historian & Web Developer',
     })),
     asGraphEntity(buildImageObject(
       { id: ids.personImage, url: `${SITE_URL}/og-default.jpg`, width: 1200, height: 675 },
@@ -289,23 +289,19 @@ export function buildSchemaGraph(opts: SchemaGraphOpts) {
           },
           ids,
         )),
-        // SoftwareApplication for project pages
-        asGraphEntity(buildPiece<SoftwareApplication>({
-          '@type': 'SoftwareApplication',
-          '@id': `${url}#software`,
+        // FIX: Changed from SoftwareApplication to Collection.
+        // Series pages are editorial content collections (history articles),
+        // not software products. Using Collection is semantically correct
+        // and helps search engines understand the content type.
+        asGraphEntity(buildPiece<Collection>({
+          '@type': 'Collection',
+          '@id': `${url}#collection`,
           name: title,
           description,
-          applicationCategory: 'DeveloperApplication',
-          operatingSystem: 'Any',
-          url: opts.projectUrl || url,
+          url,
           ...(opts.techStack && opts.techStack.length > 0
-            ? { programmingLanguage: opts.techStack.join(', ') }
+            ? { about: opts.techStack.map((t) => ({ '@type': 'Thing', name: t })) }
             : {}),
-          offers: {
-            '@type': 'Offer',
-            price: '0',
-            priceCurrency: 'USD',
-          },
           author: { '@id': ids.person },
         })),
         asGraphEntity(buildBreadcrumbList(
