@@ -1,21 +1,27 @@
 ---
-title: "P19 — Ilya Sutskever: The Mind That Saw the Future"
-description: "The co-founder of OpenAI, the architect of GPT, the chief scientist who voted to fire Sam Altman and then reversed course, and the founder of Safe Superintelligence Inc. The most technically gifted and most philosophically serious of the deep learning generation's leaders — and the figure whose trajectory tracks the field's own ambivalence about what it is building."
-startDate: "2026-04-26"
-status: "upcoming"
+title: 'P19 — Ilya Sutskever: The Mind That Saw the Future'
+description: The co-founder of OpenAI, the architect of GPT, the chief scientist who
+  voted to fire Sam Altman and then reversed course, and the founder of Safe Superintelligence
+  Inc. The most technically gifted and most philosophically serious of the deep learning
+  generation's leaders — and the figure whose trajectory tracks the field's own ambivalence
+  about what it is building.
+startDate: '2026-04-26'
+status: upcoming
 techStack:
-  - "P-Series"
-  - "Act IV: The Builders"
-  - "Figure"
+- P-Series
+- 'Act IV: The Builders'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 19
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Builders"
-track: "profiles"
-tag: "Key Figure"
-connectsTo: []
+roman: IV
+part: part-four
+partLabel: Part IV · The Builders
+track: profiles
+tag: Key Figure
+connectsTo:
+- a17-the-race-to-agi
+- e18-chatgpt-2022-when-ai-became-everyones-business
 ---
 
 *San Francisco, California. November 17, 2023. Ilya Sutskever is one of five board members who vote to remove Sam Altman as CEO of OpenAI. He has been with the organisation since its founding. He is its Chief Scientist — the person most responsible, more than any single individual, for the technical programme that produced GPT-3, GPT-4, and ChatGPT. He is, in the estimation of most people who have worked with him, among the most gifted AI researchers of his generation.*

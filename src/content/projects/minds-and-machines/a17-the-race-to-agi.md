@@ -1,24 +1,28 @@
 ---
-title: "A17 — The Race to AGI: When Silicon Valley Decided to Change the World"
-description: "The story of the companies, the investors, the research programmes, and the competitive dynamics that defined the AI industry from 2015 to 2025 — the people who believed they were building the most transformative and most dangerous technology in human history, and how that belief shaped what they built. The race to AGI, told from the inside."
+title: 'A17 — The Race to AGI: When Silicon Valley Decided to Change the World'
+description: The story of the companies, the investors, the research programmes, and
+  the competitive dynamics that defined the AI industry from 2015 to 2025 — the people
+  who believed they were building the most transformative and most dangerous technology
+  in human history, and how that belief shaped what they built. The race to AGI, told
+  from the inside.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act IV: The Revolution"
-  - "Article"
+- A-Series
+- 'Act IV: The Revolution'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 17
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Revolution"
-track: "articles"
-tag: "AGI"
+roman: IV
+part: part-four
+partLabel: Part IV · The Revolution
+track: articles
+tag: AGI
 connectsTo:
-  - "p16-sam-altman-and-openai"
-  - "p17-demis-hassabis-and-deepmind"
-  - "p18-dario-and-daniela-amodei-anthropic"
+- p16-sam-altman-and-openai
+- p17-demis-hassabis-and-deepmind
+- p18-dario-and-daniela-amodei-anthropic
 ---
 
 *San Francisco, California. 2019. A venture capitalist is explaining to a journalist why he has put fifty million dollars into an AI startup with no product, no revenue, and a founding team of four researchers who had left a major technology company six months ago. The journalist is trying to understand the logic.*

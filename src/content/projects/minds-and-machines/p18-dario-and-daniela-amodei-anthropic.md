@@ -1,23 +1,28 @@
 ---
-title: "P18 — Dario & Daniela Amodei: Building AI You Can Trust"
-description: "The siblings who left OpenAI to found Anthropic, the organisation that has put AI safety at the centre of its commercial strategy. The Constitutional AI approach, the interpretability research, the billion-dollar fundraising, and the genuinely difficult question of whether safety and commercialism can coexist at the frontier of AI."
+title: 'P18 — Dario & Daniela Amodei: Building AI You Can Trust'
+description: The siblings who left OpenAI to found Anthropic, the organisation that
+  has put AI safety at the centre of its commercial strategy. The Constitutional AI
+  approach, the interpretability research, the billion-dollar fundraising, and the
+  genuinely difficult question of whether safety and commercialism can coexist at
+  the frontier of AI.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "P-Series"
-  - "Act IV: The Builders"
-  - "Figure"
+- P-Series
+- 'Act IV: The Builders'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 18
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Builders"
-track: "profiles"
-tag: "Key Figure"
+roman: IV
+part: part-four
+partLabel: Part IV · The Builders
+track: profiles
+tag: Key Figure
 connectsTo:
-  - "p16-sam-altman-and-openai"
-  - "a18-the-alignment-problem"
+- p16-sam-altman-and-openai
+- a18-the-alignment-problem
+- a17-the-race-to-agi
 ---
 
 *San Francisco, California. Early 2021. A group of researchers are meeting informally — not in a conference room, not in a formal setting — to have a conversation that has been getting harder to have at the organisation they work for. They are not discontented in the ordinary sense. They are grateful for their positions, they respect their colleagues, they are proud of what they have built together. But they have a concern that has grown over the past year into something that feels irresolvable.*

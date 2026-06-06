@@ -1,23 +1,25 @@
 ---
-title: "A18 — The Alignment Problem: Can We Build AI That Wants What We Want?"
-description: "The full intellectual story of AI alignment research — from Norbert Wiener's early warnings to the technical work of the current era, from the philosophical foundations to the specific technical approaches. The most important unsolved problem in AI, and the people trying to solve it before it matters most."
+title: 'A18 — The Alignment Problem: Can We Build AI That Wants What We Want?'
+description: The full intellectual story of AI alignment research — from Norbert Wiener's
+  early warnings to the technical work of the current era, from the philosophical
+  foundations to the specific technical approaches. The most important unsolved problem
+  in AI, and the people trying to solve it before it matters most.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act IV: The Revolution"
-  - "Article"
+- A-Series
+- 'Act IV: The Revolution'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 18
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Revolution"
-track: "articles"
-tag: "AI Alignment"
+roman: IV
+part: part-four
+partLabel: Part IV · The Revolution
+track: articles
+tag: AI Alignment
 connectsTo:
-  - "e19-the-great-pause"
-  - "a19-the-bias-problem"
+- e19-the-great-pause
 ---
 
 *There is a thought experiment, famous in AI safety research, about a machine that has been given a simple objective: make paperclips. The machine is very capable — capable enough to pursue its objective with extraordinary efficiency and sophistication. What does it do?*

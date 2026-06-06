@@ -1,21 +1,26 @@
 ---
-title: "E18 — ChatGPT, 2022: When AI Became Everyone's Business"
-description: "The full story of the ChatGPT launch — the five days to a million users, the hundred million users in two months, the panic in schools and universities, the excitement in offices, the existential dread in newsrooms, and what it meant that AI had crossed the threshold from specialised tool to mainstream reality. The moment AI became everyone's business."
-startDate: "2026-04-26"
-status: "upcoming"
+title: 'E18 — ChatGPT, 2022: When AI Became Everyone''s Business'
+description: The full story of the ChatGPT launch — the five days to a million users,
+  the hundred million users in two months, the panic in schools and universities,
+  the excitement in offices, the existential dread in newsrooms, and what it meant
+  that AI had crossed the threshold from specialised tool to mainstream reality. The
+  moment AI became everyone's business.
+startDate: '2026-04-26'
+status: upcoming
 techStack:
-  - "E-Series"
-  - "Act IV: The Modern Era"
-  - "Event"
+- E-Series
+- 'Act IV: The Modern Era'
+- Event
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 18
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Modern Era"
-track: "events"
-tag: "Key Event"
-connectsTo: []
+roman: IV
+part: part-four
+partLabel: Part IV · The Modern Era
+track: events
+tag: Key Event
+connectsTo:
+- p16-sam-altman-and-openai
 ---
 
 *San Francisco, California. November 30, 2022. A Wednesday. 11:43 AM Pacific time.*

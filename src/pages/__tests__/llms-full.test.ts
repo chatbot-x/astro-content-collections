@@ -128,7 +128,7 @@ describe('llms-full.txt API route', () => {
   });
 
   it('should include series metadata', () => {
-    expect(body).toContain('URL: https://astro-content-collections.pages.dev/projects/minds-and-machines/');
+    expect(body).toContain('URL: https://astro-content-collections.pages.dev/series/minds-and-machines/');
     expect(body).toContain('Status: active');
     expect(body).toContain('Featured: Yes');
     expect(body).toContain('Tech Stack: Articles, Profiles, Events');

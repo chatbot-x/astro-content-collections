@@ -1,23 +1,26 @@
 ---
-title: "A13 — The Second AI Winter: Lightning Strikes Twice"
-description: "The full narrative of AI's second great contraction — told from the inside, through the experiences of the researchers who built the boom and watched it collapse. The collapse of the expert systems industry, the dissolution of the LISP machine market, the reduction of DARPA funding, and the underground movement that kept the neural network approach alive through the cold."
+title: 'A13 — The Second AI Winter: Lightning Strikes Twice'
+description: The full narrative of AI's second great contraction — told from the inside,
+  through the experiences of the researchers who built the boom and watched it collapse.
+  The collapse of the expert systems industry, the dissolution of the LISP machine
+  market, the reduction of DARPA funding, and the underground movement that kept the
+  neural network approach alive through the cold.
 startDate: 2026-04-19
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act III: The Comeback"
-  - "Article"
+- A-Series
+- 'Act III: The Comeback'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 13
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Comeback"
-track: "articles"
-tag: "AI Winter"
+roman: III
+part: part-three
+partLabel: Part III · The Comeback
+track: articles
+tag: AI Winter
 connectsTo:
-  - "e9-the-second-ai-winter-1987-1993"
-  - "a14-the-godfathers-go-underground"
+- e9-the-second-ai-winter-1987-1993
 ---
 
 *Boston, Massachusetts. 1988. A researcher at a company called Teknowledge — one of the leading expert systems firms, a company that had grown rapidly through the early 1980s on the strength of the AI boom, a company that in 1984 had seemed like it might become one of the defining technology companies of the decade — is cleaning out her desk.*

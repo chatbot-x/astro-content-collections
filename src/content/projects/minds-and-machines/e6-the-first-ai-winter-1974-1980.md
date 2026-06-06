@@ -1,21 +1,25 @@
 ---
-title: "E6 — The First AI Winter, 1974–1980: The Great Disillusionment"
-description: "What the first AI winter actually felt like for the people who lived through it. The funding cuts, the disbanded research groups, the researchers who left the field, and the stubborn few who kept working in the cold. The story of how AI's first collapse shaped everything that came after."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'E6 — The First AI Winter, 1974–1980: The Great Disillusionment'
+description: What the first AI winter actually felt like for the people who lived
+  through it. The funding cuts, the disbanded research groups, the researchers who
+  left the field, and the stubborn few who kept working in the cold. The story of
+  how AI's first collapse shaped everything that came after.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "E-Series"
-  - "Act II: The Crashes & Comebacks"
-  - "Event"
+- E-Series
+- 'Act II: The Crashes & Comebacks'
+- Event
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 6
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Crashes & Comebacks"
-track: "events"
-tag: "Key Event"
-connectsTo: []
+roman: II
+part: part-two
+partLabel: Part II · The Crashes & Comebacks
+track: events
+tag: Key Event
+connectsTo:
+- a10-the-first-ai-winter-when-the-dream-crashed
 ---
 
 *Edinburgh, Scotland. Autumn 1974. The machine intelligence unit at Edinburgh University — one of the most productive AI research groups in the world, the place where Donald Michie had been building robots and training programs and asking fundamental questions about machine learning for the better part of a decade — is being dismantled.*

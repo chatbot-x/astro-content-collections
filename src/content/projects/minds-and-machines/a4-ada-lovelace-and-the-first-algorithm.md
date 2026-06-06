@@ -1,23 +1,26 @@
 ---
-title: "A4 — Ada Lovelace & The First Algorithm"
-description: "She wrote the world's first computer program in 1843 — but what did it actually say? We go deep into the mathematics of Ada Lovelace's Notes on the Analytical Engine, what the Bernoulli number algorithm actually did, and why the ideas buried in those footnotes were more radical than even most computer scientists realise."
-startDate: "2026-04-18"
-status: "upcoming"
+title: A4 — Ada Lovelace & The First Algorithm
+description: She wrote the world's first computer program in 1843 — but what did it
+  actually say? We go deep into the mathematics of Ada Lovelace's Notes on the Analytical
+  Engine, what the Bernoulli number algorithm actually did, and why the ideas buried
+  in those footnotes were more radical than even most computer scientists realise.
+startDate: '2026-04-18'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act I: The Dream"
-  - "Article"
+- A-Series
+- 'Act I: The Dream'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 4
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Dream"
-track: "articles"
-tag: "Key Article"
+roman: I
+part: part-one
+partLabel: Part I · The Dream
+track: articles
+tag: Key Article
 connectsTo:
-  - "p1-ada-lovelace"
-  - "e3-the-logic-theorist-1956"
+- p1-ada-lovelace
+- e3-the-logic-theorist-1956
 ---
 
 *London, July 1843. A woman sits at a writing desk in her home on St. James's Square, surrounded by papers covered in mathematical notation, cross-references, corrections, and marginal observations written in a hand that has grown increasingly hurried over the preceding weeks. The papers are the working drafts of a translation — a rendering into English of an Italian paper describing a remarkable machine — but the translation itself has long since been buried under an avalanche of additions that have taken on a life of their own.*

@@ -1,24 +1,25 @@
 ---
-title: "A2 — Clockwork Wonders: The Automata Era"
-description: "Before computers, before electricity, before Ada Lovelace wrote the first program — craftsmen across Europe built mechanical marvels that walked, wrote, played music, and digested food. The extraordinary story of the automata era and the question it forced the world to ask."
-startDate: "2026-04-04"
-status: "active"
+title: 'A2 — Clockwork Wonders: The Automata Era'
+description: Before computers, before electricity, before Ada Lovelace wrote the first
+  program — craftsmen across Europe built mechanical marvels that walked, wrote, played
+  music, and digested food. The extraordinary story of the automata era and the question
+  it forced the world to ask.
+startDate: '2026-04-04'
+status: active
 techStack:
-  - "A-Series"
-  - "Act I: The Dream"
-  - "Article"
+- A-Series
+- 'Act I: The Dream'
+- Article
 featured: true
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 2
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Dream"
-track: "articles"
-tag: "Key Article"
+roman: I
+part: part-one
+partLabel: Part I · The Dream
+track: articles
+tag: Key Article
 connectsTo:
-  - "a1-the-ancient-dream-of-artificial-life"
-  - "a3-the-philosophers-who-asked-can-machines-think"
-  - "p3-john-von-neumann"
+- p3-john-von-neumann
 ---
 
 *Versailles, 1738. The court of Louis XV is assembled in a gallery of the palace, dressed in silk and powder, gathered around something that has drawn murmurs and whispers across Europe for weeks. On a low table sits a duck — or what appears to be a duck. It is made of gilded copper, roughly the size of a real bird, and it sits on a small platform surrounded by a curtained cabinet that conceals whatever mechanism drives it.*

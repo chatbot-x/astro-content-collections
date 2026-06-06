@@ -1,21 +1,27 @@
 ---
-title: "P5 — Claude Shannon: The Man Who Invented Information"
-description: "In 1948 a Bell Labs engineer published a paper that invented information theory and gave the entire digital age its mathematical foundation. He then spent his later years building juggling robots, riding a unicycle through the corridors, and playing chess against early computers. The remarkable, playful, essential life of Claude Shannon."
-startDate: "2026-04-18"
-status: "upcoming"
+title: 'P5 — Claude Shannon: The Man Who Invented Information'
+description: In 1948 a Bell Labs engineer published a paper that invented information
+  theory and gave the entire digital age its mathematical foundation. He then spent
+  his later years building juggling robots, riding a unicycle through the corridors,
+  and playing chess against early computers. The remarkable, playful, essential life
+  of Claude Shannon.
+startDate: '2026-04-18'
+status: upcoming
 techStack:
-  - "P-Series"
-  - "Act I: The Pioneers"
-  - "Figure"
+- P-Series
+- 'Act I: The Pioneers'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 5
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Pioneers"
-track: "profiles"
-tag: "Key Figure"
-connectsTo: []
+roman: I
+part: part-one
+partLabel: Part I · The Pioneers
+track: profiles
+tag: Key Figure
+connectsTo:
+- e1-the-dartmouth-conference-1956
+- a6-the-summer-that-named-ai
 ---
 
 *Murray Hill, New Jersey. 1950. The corridors of Bell Telephone Laboratories are quiet in the early morning, before most researchers have arrived. But one office is already occupied. A man in his early thirties sits at a workbench, not at a desk — the desk is buried under papers, books, and half-finished mechanical contraptions whose purpose is not immediately obvious. He is tinkering with something that has wheels. And stilts. And a form of balance mechanism.*

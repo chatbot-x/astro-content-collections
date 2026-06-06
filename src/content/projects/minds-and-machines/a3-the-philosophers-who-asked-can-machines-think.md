@@ -1,24 +1,27 @@
 ---
-title: "A3 — The Philosophers Who Asked 'Can Machines Think?"
-description: "Before the engineers came the philosophers. Leibniz dreamed of a calculus of thought. Pascal built the first mechanical calculator. Descartes asked whether mechanism had limits. The thinkers who laid the conceptual groundwork for everything that followed — and the questions they left unanswered that we are still wrestling with today."
-startDate: "2026-04-11"
-status: "active"
+title: A3 — The Philosophers Who Asked 'Can Machines Think?
+description: Before the engineers came the philosophers. Leibniz dreamed of a calculus
+  of thought. Pascal built the first mechanical calculator. Descartes asked whether
+  mechanism had limits. The thinkers who laid the conceptual groundwork for everything
+  that followed — and the questions they left unanswered that we are still wrestling
+  with today.
+startDate: '2026-04-11'
+status: active
 techStack:
-  - "A-Series"
-  - "Act I: The Dream"
-  - "Article"
+- A-Series
+- 'Act I: The Dream'
+- Article
 featured: true
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 3
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Dream"
-track: "articles"
-tag: "Key Article"
+roman: I
+part: part-one
+partLabel: Part I · The Dream
+track: articles
+tag: Key Article
 connectsTo:
-  - "e2-the-turing-test-1950"
-  - "p2-alan-turing"
-  - "a4-ada-lovelace-and-the-first-algorithm"
+- e2-the-turing-test-1950
+- p2-alan-turing
 ---
 
 *Paris, 1642. A nineteen-year-old boy watches his father, a tax commissioner for the French Crown, spend his evenings hunched over columns of numbers — adding, checking, re-adding, checking again. The work is relentless and mind-numbing: thousands of figures to be summed, thousands of opportunities for the small errors that cascade into large ones. The boy, whose name is Blaise Pascal, has a gift for mathematics that borders on the supernatural — he had independently rediscovered several of Euclid's geometric propositions as a child, before anyone had taught them to him. He looks at his father's labor and thinks: there must be a better way.*

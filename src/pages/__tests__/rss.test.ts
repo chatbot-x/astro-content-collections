@@ -90,7 +90,7 @@ describe('RSS feed API route', () => {
     });
 
     it('should include the feed description', () => {
-      expect(body).toContain('Thoughts, tutorials, and insights');
+      expect(body).toContain('Stories behind technology');
     });
 
     it('should include the site URL as channel link', () => {

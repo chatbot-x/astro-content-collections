@@ -1,21 +1,29 @@
 ---
-title: "E10 — Backpropagation Goes Mainstream, 1986: The Algorithm That Refused to Die"
-description: "The most important algorithm in modern AI was discovered at least three times before anyone paid attention. The full story of backpropagation — its multiple independent inventions, the decades it spent in the shadows of the symbolic AI winter, and the specific confluence of people, ideas, and timing that produced the 1986 paper that changed everything. How an algorithm refused to die, and what happened when the world finally listened."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'E10 — Backpropagation Goes Mainstream, 1986: The Algorithm That Refused to
+  Die'
+description: The most important algorithm in modern AI was discovered at least three
+  times before anyone paid attention. The full story of backpropagation — its multiple
+  independent inventions, the decades it spent in the shadows of the symbolic AI winter,
+  and the specific confluence of people, ideas, and timing that produced the 1986
+  paper that changed everything. How an algorithm refused to die, and what happened
+  when the world finally listened.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "E-Series"
-  - "Act II: The Crashes & Comebacks"
-  - "Event"
+- E-Series
+- 'Act II: The Crashes & Comebacks'
+- Event
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 10
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Crashes & Comebacks"
-track: "events"
-tag: "Key Event"
-connectsTo: []
+roman: II
+part: part-two
+partLabel: Part II · The Crashes & Comebacks
+track: events
+tag: Key Event
+connectsTo:
+- p10-frank-rosenblatt
+- p14-jurgen-schmidhuber
 ---
 
 *San Diego, California. 1986. A cognitive scientist named David Rumelhart sits in his office at the Institute for Cognitive Science at UC San Diego, working on a paper that he knows is important but cannot yet know will be transformative. He has been working on neural networks for years — on the connectionist approach to cognition and intelligence that the symbolic AI mainstream has been dismissing for a decade and a half. He has a collaborator, Geoffrey Hinton, who has been working on the same problems from a slightly different angle at Carnegie Mellon. And he has an algorithm.*

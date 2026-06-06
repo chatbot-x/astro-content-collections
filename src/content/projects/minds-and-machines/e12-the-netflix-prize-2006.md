@@ -1,21 +1,26 @@
 ---
-title: "E12 — The Netflix Prize, 2006: The Moment the Crowd Beat the Experts"
-description: "In 2006 Netflix offered a million-dollar prize to anyone who could improve its movie recommendation algorithm by 10%. What followed was the most consequential open machine learning competition in history — three years of innovation, collaboration, unexpected breakthroughs, and ultimately a winning solution that Netflix never actually deployed. The strange, productive, ultimately instructive story of science by competition."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'E12 — The Netflix Prize, 2006: The Moment the Crowd Beat the Experts'
+description: In 2006 Netflix offered a million-dollar prize to anyone who could improve
+  its movie recommendation algorithm by 10%. What followed was the most consequential
+  open machine learning competition in history — three years of innovation, collaboration,
+  unexpected breakthroughs, and ultimately a winning solution that Netflix never actually
+  deployed. The strange, productive, ultimately instructive story of science by competition.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "E-Series"
-  - "Act III: The Turning Points"
-  - "Event"
+- E-Series
+- 'Act III: The Turning Points'
+- Event
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 12
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Turning Points"
-track: "events"
-tag: "Key Event"
-connectsTo: []
+roman: III
+part: part-three
+partLabel: Part III · The Turning Points
+track: events
+tag: Key Event
+connectsTo:
+- a15-the-rise-of-the-thinking-machine
 ---
 
 *Los Gatos, California. October 2, 2006. Netflix, the DVD-by-mail company that is beginning to transition toward streaming, announces a competition unlike any previously seen in the history of artificial intelligence research.*

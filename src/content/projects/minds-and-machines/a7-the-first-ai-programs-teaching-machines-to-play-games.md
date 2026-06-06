@@ -1,23 +1,28 @@
 ---
-title: "A7 — The First AI Programs: Teaching Machines to Play Games"
-description: "The exhilarating early years when Arthur Samuel's checkers program learned to beat its creator, when chess programs first challenged amateur players, and when every new demonstration felt like proof that general machine intelligence was just around the corner. What those early programs actually did, why they were so impressive, and why the gap between their performance and genuine intelligence was wider than it appeared."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'A7 — The First AI Programs: Teaching Machines to Play Games'
+description: The exhilarating early years when Arthur Samuel's checkers program learned
+  to beat its creator, when chess programs first challenged amateur players, and when
+  every new demonstration felt like proof that general machine intelligence was just
+  around the corner. What those early programs actually did, why they were so impressive,
+  and why the gap between their performance and genuine intelligence was wider than
+  it appeared.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act II: The Birth"
-  - "Article"
+- A-Series
+- 'Act II: The Birth'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 7
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Birth"
-track: "articles"
-tag: "Key Article"
+roman: II
+part: part-two
+partLabel: Part II · The Birth
+track: articles
+tag: Key Article
 connectsTo:
-  - "e3-the-logic-theorist-1956"
-  - "a8-eliza-and-the-illusion-of-understanding"
+- e3-the-logic-theorist-1956
+- e11-deep-blue-vs-kasparov-1997
 ---
 
 *Poughkeepsie, New York. 1962. An IBM computer — a 7094, occupying a good portion of a temperature-controlled room, requiring a team of operators to keep it running — is playing checkers against a man named Robert Nealey. Nealey is not a casual player. He is a champion — the Connecticut state checkers champion, in fact, a man who has spent years studying the game and who plays at a level that most people will never approach.*

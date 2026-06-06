@@ -1,21 +1,26 @@
 ---
-title: "P13 — Yoshua Bengio: The Conscience of AI"
-description: "The third Godfather of Deep Learning — his foundational contributions to recurrent networks, attention mechanisms, and generative models, his evolution from pure researcher to the field's most prominent voice for AI safety and ethics, and why the man who spent his career building increasingly powerful AI systems has become one of the most persuasive voices for ensuring those systems are safe."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'P13 — Yoshua Bengio: The Conscience of AI'
+description: The third Godfather of Deep Learning — his foundational contributions
+  to recurrent networks, attention mechanisms, and generative models, his evolution
+  from pure researcher to the field's most prominent voice for AI safety and ethics,
+  and why the man who spent his career building increasingly powerful AI systems has
+  become one of the most persuasive voices for ensuring those systems are safe.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "P-Series"
-  - "Act III: The Survivors"
-  - "Figure"
+- P-Series
+- 'Act III: The Survivors'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 13
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Survivors"
-track: "profiles"
-tag: "Key Figure"
-connectsTo: []
+roman: III
+part: part-three
+partLabel: Part III · The Survivors
+track: profiles
+tag: Key Figure
+connectsTo:
+- a14-the-godfathers-go-underground
 ---
 
 *Montreal, Quebec. June 2023. The Mila — Quebec Artificial Intelligence Institute — occupies a gleaming building in the heart of Montreal's university district. Inside, hundreds of researchers work on the problems that will define AI for the next decade. The institute is one of the most productive AI research organisations in the world, and it exists because one researcher, in the early 1990s, chose to stay in Quebec rather than accept the more prestigious positions available to him elsewhere.*

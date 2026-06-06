@@ -1,23 +1,26 @@
 ---
-title: "A11 — Expert Systems: AI Learns to Be a Specialist"
-description: "How the field that had been humbled by the first winter found a commercially viable path forward through the expert systems approach — going narrow, going deep, and going to work. The full story of AI's first commercial era, from DENDRAL and MYCIN to XCON and the billion-dollar industry that grew around knowledge engineering, and what it revealed about the nature of expertise itself."
+title: 'A11 — Expert Systems: AI Learns to Be a Specialist'
+description: How the field that had been humbled by the first winter found a commercially
+  viable path forward through the expert systems approach — going narrow, going deep,
+  and going to work. The full story of AI's first commercial era, from DENDRAL and
+  MYCIN to XCON and the billion-dollar industry that grew around knowledge engineering,
+  and what it revealed about the nature of expertise itself.
 startDate: 2026-04-19
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act III: The Comeback"
-  - "Article"
+- A-Series
+- 'Act III: The Comeback'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 11
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Comeback"
-track: "articles"
-tag: "Expert Systems"
+roman: III
+part: part-three
+partLabel: Part III · The Comeback
+track: articles
+tag: Expert Systems
 connectsTo:
-  - "e7-the-rise-of-expert-systems-1980"
-  - "a12-japans-billion-dollar-bet-on-ai"
+- e7-the-rise-of-expert-systems-1980
 ---
 
 *Stanford, California. 1974. A young physician named Ted Shortliffe is working on a problem that has nothing to do with medicine in the conventional sense. He is writing a computer program. The program, which he calls MYCIN, will eventually know more about bacterial infections than any physician who has not spent their career specialising in exactly this area. It will be able to diagnose the likely cause of a patient's infection, recommend an antibiotic treatment, and explain its reasoning in a way that a clinician can follow and evaluate. It will be evaluated against the recommendations of expert physicians and found to perform at or above their level.*

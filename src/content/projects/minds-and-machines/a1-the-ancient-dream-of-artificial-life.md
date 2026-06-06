@@ -1,20 +1,25 @@
 ---
-title: "A1 — The Ancient Dream of Artificial Life"
-description: "Before there were computers, before there were circuits, before there was even electricity — there was the dream. The dream that one day, human hands might shape something that thinks, feels, and breathes. That dream is older than you might imagine."
+title: A1 — The Ancient Dream of Artificial Life
+description: Before there were computers, before there were circuits, before there
+  was even electricity — there was the dream. The dream that one day, human hands
+  might shape something that thinks, feels, and breathes. That dream is older than
+  you might imagine.
 startDate: 2026-03-28
-status: "active"
-techStack: ["A-Series", "Act I: The Dream", "Article"]
+status: active
+techStack:
+- A-Series
+- 'Act I: The Dream'
+- Article
 featured: true
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 1
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Dream"
-track: "articles"
-tag: "Key Article"
+roman: I
+part: part-one
+partLabel: Part I · The Dream
+track: articles
+tag: Key Article
 connectsTo:
-  - "p1-ada-lovelace"
-  - "a2-clockwork-wonders-the-automata-era"
+- p1-ada-lovelace
 ---
 # The Ancient Dream of Artificial Life
 ### *Minds & Machines: The Story of AI — Article 1*

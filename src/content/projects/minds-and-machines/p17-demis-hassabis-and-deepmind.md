@@ -1,23 +1,29 @@
 ---
-title: "P17 — Demis Hassabis & DeepMind: Science as the Goal"
-description: "The neuroscience-inspired AI lab founded in London, acquired by Google, responsible for AlphaGo and AlphaFold, and committed to a vision of AI as a tool for scientific discovery. The full story of DeepMind — the research culture, the extraordinary victories, the tensions of operating inside one of the world's most powerful companies, and the vision of one of the most intellectually ambitious people in the history of AI."
+title: 'P17 — Demis Hassabis & DeepMind: Science as the Goal'
+description: The neuroscience-inspired AI lab founded in London, acquired by Google,
+  responsible for AlphaGo and AlphaFold, and committed to a vision of AI as a tool
+  for scientific discovery. The full story of DeepMind — the research culture, the
+  extraordinary victories, the tensions of operating inside one of the world's most
+  powerful companies, and the vision of one of the most intellectually ambitious people
+  in the history of AI.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "P-Series"
-  - "Act IV: The Builders"
-  - "Figure"
+- P-Series
+- 'Act IV: The Builders'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 17
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Builders"
-track: "profiles"
-tag: "Key Figure"
+roman: IV
+part: part-four
+partLabel: Part IV · The Builders
+track: profiles
+tag: Key Figure
 connectsTo:
-  - "e16-alphago-vs-lee-sedol-2016"
-  - "e17-alphafold-2020-the-protein-folding-revolution"
+- e16-alphago-vs-lee-sedol-2016
+- e17-alphafold-2020-the-protein-folding-revolution
+- a17-the-race-to-agi
 ---
 
 *London, 2010. A small office near King's Cross station. Three people are discussing what they want to build. One of them — Demis Hassabis, thirty-three years old — has been thinking about this conversation for most of his life.*

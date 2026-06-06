@@ -1,23 +1,25 @@
 ---
-title: "A9 — The Optimists: When AI Was Going to Solve Everything"
-description: "The audacious, exhilarating, ultimately tragic story of the AI optimists of the 1960s — the people who genuinely believed that machine intelligence was years away, who made predictions that have made them famous for being wrong, and who were right about the destination even as they were spectacularly wrong about the distance."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'A9 — The Optimists: When AI Was Going to Solve Everything'
+description: The audacious, exhilarating, ultimately tragic story of the AI optimists
+  of the 1960s — the people who genuinely believed that machine intelligence was years
+  away, who made predictions that have made them famous for being wrong, and who were
+  right about the destination even as they were spectacularly wrong about the distance.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act II: The Birth"
-  - "Article"
+- A-Series
+- 'Act II: The Birth'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 9
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Birth"
-track: "articles"
-tag: "Key Article"
+roman: II
+part: part-two
+partLabel: Part II · The Birth
+track: articles
+tag: Key Article
 connectsTo:
-  - "e5-the-lighthill-report-1973"
-  - "a10-the-first-ai-winter-when-the-dream-crashed"
+- e5-the-lighthill-report-1973
 ---
 
 *There is a photograph taken in 1965 that captures something essential about the spirit of early AI. It shows a group of researchers gathered in a conference room at MIT. They are young — most of them in their twenties or thirties — and they are animated with the particular excitement of people who believe they are on the verge of something historic. One of them is writing on a blackboard. Another is gesturing expansively. Several are laughing.*

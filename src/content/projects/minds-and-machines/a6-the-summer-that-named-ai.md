@@ -1,24 +1,27 @@
 ---
-title: "A6 — The Summer That Named AI"
-description: "The 1956 Dartmouth Conference in full narrative detail — who was in the room, what they argued about in the evenings, what they agreed on, what they were spectacularly wrong about, and how a single summer's conversation gave a field its name, its mission, and the overconfidence that would eventually send it into its first winter."
-startDate: "2026-04-18"
-status: "upcoming"
+title: A6 — The Summer That Named AI
+description: The 1956 Dartmouth Conference in full narrative detail — who was in the
+  room, what they argued about in the evenings, what they agreed on, what they were
+  spectacularly wrong about, and how a single summer's conversation gave a field its
+  name, its mission, and the overconfidence that would eventually send it into its
+  first winter.
+startDate: '2026-04-18'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act II: The Birth"
-  - "Article"
+- A-Series
+- 'Act II: The Birth'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 6
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Birth"
-track: "articles"
-tag: "Key Article"
+roman: II
+part: part-two
+partLabel: Part II · The Birth
+track: articles
+tag: Key Article
 connectsTo:
-  - "e1-the-dartmouth-conference-1956"
-  - "p4-norbert-wiener"
-  - "a7-the-first-ai-programs-teaching-machines-to-play-games"
+- e1-the-dartmouth-conference-1956
+- p4-norbert-wiener
 ---
 
 *There is a photograph taken at Dartmouth College in the summer of 1956 that has become one of the most reproduced images in the history of artificial intelligence. It shows a group of men — there are no women — standing in front of a building on the Dartmouth campus. They are dressed in the manner of American academics of the period: suits, ties, a general air of purposeful informality. Some are looking at the camera. Others are looking away, engaged in conversation with each other, distracted by whatever they were thinking about.*

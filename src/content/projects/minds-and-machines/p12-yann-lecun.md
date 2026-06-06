@@ -1,21 +1,25 @@
 ---
-title: "P12 — Yann LeCun: The Rebel with a Vision"
-description: "He invented convolutional neural networks, built the first AI system to process real-world visual data at scale, and became the architect of Meta's AI empire. The most argumentative of the Godfathers of Deep Learning — and why his arguments, however combative the delivery, usually turn out to be right."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'P12 — Yann LeCun: The Rebel with a Vision'
+description: He invented convolutional neural networks, built the first AI system
+  to process real-world visual data at scale, and became the architect of Meta's AI
+  empire. The most argumentative of the Godfathers of Deep Learning — and why his
+  arguments, however combative the delivery, usually turn out to be right.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "P-Series"
-  - "Act III: The Survivors"
-  - "Figure"
+- P-Series
+- 'Act III: The Survivors'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 12
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Survivors"
-track: "profiles"
-tag: "Key Figure"
-connectsTo: []
+roman: III
+part: part-three
+partLabel: Part III · The Survivors
+track: profiles
+tag: Key Figure
+connectsTo:
+- a14-the-godfathers-go-underground
 ---
 
 *New York City. 2023. A Twitter thread is going viral, as Yann LeCun's Twitter threads often do — not because they are uncontroversial, but because they are provocative in exactly the right way to generate maximum engagement. LeCun, the Chief AI Scientist at Meta, is arguing with several prominent AI researchers about the nature of large language models.*

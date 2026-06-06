@@ -1,23 +1,28 @@
 ---
-title: "P10 — Frank Rosenblatt: The Forgotten Father of Neural Networks"
-description: "He built the Perceptron — the first machine that could learn. The press called it a thinking machine. Marvin Minsky called it a dead end. History called Minsky right for fifteen years and then spent the next fifty years proving Rosenblatt correct. The most underrated figure in the history of AI, whose ideas now run the world."
+title: 'P10 — Frank Rosenblatt: The Forgotten Father of Neural Networks'
+description: He built the Perceptron — the first machine that could learn. The press
+  called it a thinking machine. Marvin Minsky called it a dead end. History called
+  Minsky right for fifteen years and then spent the next fifty years proving Rosenblatt
+  correct. The most underrated figure in the history of AI, whose ideas now run the
+  world.
 startDate: 2026-04-19
-status: "active"
+status: active
 techStack:
-  - "P-Series"
-  - "Act II: The Founders"
-  - "Figure"
+- P-Series
+- 'Act II: The Founders'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 10
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Founders"
-track: "profiles"
-tag: "Key Figure"
+roman: II
+part: part-two
+partLabel: Part II · The Founders
+track: profiles
+tag: Key Figure
 connectsTo:
-  - "p7-marvin-minsky"
-  - "e10-backpropagation-goes-mainstream-1986"
+- p7-marvin-minsky
+- e10-backpropagation-goes-mainstream-1986
+- p11-geoffrey-hinton
 ---
 
 *Ithaca, New York. July 11, 1971. A forty-three-year-old psychologist and computer scientist named Frank Rosenblatt drowns in the Chesapeake Bay while sailing on his birthday. The circumstances are unclear — he was an experienced sailor, the sea was not particularly rough, and no one saw what happened. The death is ruled accidental.*

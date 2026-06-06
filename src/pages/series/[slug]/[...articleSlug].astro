@@ -45,11 +45,14 @@ const prevInTrack = trackIndex > 0 ? sameTrackArticles[trackIndex - 1] : null;
 const nextInTrack = trackIndex < sameTrackArticles.length - 1 ? sameTrackArticles[trackIndex + 1] : null;
 const hasTrackNav = prevInTrack || nextInTrack;
 
-// ──── Read alongside: cross-track articles from connectsTo ────
+// ──── Read alongside: curated connections from connectsTo ────
+// Same-track entries are allowed (e.g. P7↔P10 Minsky/Rosenblatt rivalry,
+// E14→E13 AlexNet/ImageNet) — only editorially meaningful thematic links,
+// never sequential prev/next which is handled by the track navigation above.
 const connectsToSlugs = (article.data.connectsTo || []) as string[];
 const readAlongside = connectsToSlugs
   .map((slug) => allSeriesArticles.find((a) => a.id === `${seriesSlug}/${slug}` || a.id.endsWith(slug)))
-  .filter((a): a is typeof allSeriesArticles[number] => !!a && a.data.track !== currentTrack);
+  .filter((a): a is typeof allSeriesArticles[number] => !!a);
 
 // IDs of articles already shown in "Read alongside" (to deduplicate from "Other tracks")
 const alongsideIds = new Set(readAlongside.map((a) => a.id));

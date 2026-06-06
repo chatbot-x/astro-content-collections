@@ -1,21 +1,27 @@
 ---
-title: "E9 — The Second AI Winter, 1987–1993: Lightning Strikes Twice"
-description: "The expert systems boom collapsed almost as quickly as it had risen. The LISP machine market imploded overnight. DARPA cut funding. And for the second time in AI's history, the field contracted, researchers left, and the most pessimistic observers began to wonder whether the project was fundamentally misguided. The full story of AI's second near-death experience — and the underground movement that kept the neural network flame alive through the cold."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'E9 — The Second AI Winter, 1987–1993: Lightning Strikes Twice'
+description: The expert systems boom collapsed almost as quickly as it had risen.
+  The LISP machine market imploded overnight. DARPA cut funding. And for the second
+  time in AI's history, the field contracted, researchers left, and the most pessimistic
+  observers began to wonder whether the project was fundamentally misguided. The full
+  story of AI's second near-death experience — and the underground movement that kept
+  the neural network flame alive through the cold.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "E-Series"
-  - "Act II: The Crashes & Comebacks"
-  - "Event"
+- E-Series
+- 'Act II: The Crashes & Comebacks'
+- Event
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 9
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Crashes & Comebacks"
-track: "events"
-tag: "Key Event"
-connectsTo: []
+roman: II
+part: part-two
+partLabel: Part II · The Crashes & Comebacks
+track: events
+tag: Key Event
+connectsTo:
+- a13-the-second-ai-winter-lightning-strikes-twice
 ---
 
 *Cambridge, Massachusetts. January 1987. A company called Symbolics Incorporated, which manufactures the most powerful AI workstations in the world, is laying off employees. Not a few. A significant fraction of its workforce. The LISP machines that Symbolics makes — the sleek, powerful, expensive workstations that every serious AI researcher in America has been using for the past five years — are suddenly in trouble.*

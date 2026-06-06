@@ -1,25 +1,29 @@
 ---
-title: "A14 — The Godfathers Go Underground"
-description: "The personal story of Hinton, LeCun, Bengio, and their collaborators during the years when neural network research was marginalised, underfunded, and dismissed. The decades of intellectual courage, the specific ideas that kept the research programme alive, and the slow accumulation of results that eventually made the field pay attention. How the most important research programme in modern AI survived by going underground."
+title: A14 — The Godfathers Go Underground
+description: The personal story of Hinton, LeCun, Bengio, and their collaborators
+  during the years when neural network research was marginalised, underfunded, and
+  dismissed. The decades of intellectual courage, the specific ideas that kept the
+  research programme alive, and the slow accumulation of results that eventually made
+  the field pay attention. How the most important research programme in modern AI
+  survived by going underground.
 startDate: 2026-04-19
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act III: The Comeback"
-  - "Article"
+- A-Series
+- 'Act III: The Comeback'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 14
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Comeback"
-track: "articles"
-tag: "Deep Learning History"
+roman: III
+part: part-three
+partLabel: Part III · The Comeback
+track: articles
+tag: Deep Learning History
 connectsTo:
-  - "p11-geoffrey-hinton"
-  - "p12-yann-lecun"
-  - "p13-yoshua-bengio"
-  - "a15-the-rise-of-the-thinking-machine"
+- p11-geoffrey-hinton
+- p12-yann-lecun
+- p13-yoshua-bengio
 ---
 
 *Pittsburgh, Pennsylvania. 1988. Geoffrey Hinton is at a dinner party with colleagues from Carnegie Mellon's computer science department. He has been at Carnegie Mellon for two years, having moved there from UC San Diego, where he had been part of the cognitive science community that produced the backpropagation paper. He is one of the most intellectually respected researchers in the building.*

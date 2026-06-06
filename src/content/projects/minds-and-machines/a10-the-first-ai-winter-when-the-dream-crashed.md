@@ -1,23 +1,27 @@
 ---
-title: "A10 — The First AI Winter: When the Dream Crashed"
-description: "The dream of machine intelligence collided with reality in the early 1970s. Government funding collapsed. Research groups dissolved. Careers were redirected. This is the full narrative of AI's first great crisis — told from the inside, through the experiences of the people who built the dream and watched it crash — and the deeper questions about ambition, honesty, and institutional courage that the crisis forced."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'A10 — The First AI Winter: When the Dream Crashed'
+description: The dream of machine intelligence collided with reality in the early
+  1970s. Government funding collapsed. Research groups dissolved. Careers were redirected.
+  This is the full narrative of AI's first great crisis — told from the inside, through
+  the experiences of the people who built the dream and watched it crash — and the
+  deeper questions about ambition, honesty, and institutional courage that the crisis
+  forced.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act II: The Birth"
-  - "Article"
+- A-Series
+- 'Act II: The Birth'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 10
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Birth"
-track: "articles"
-tag: "Key Article"
+roman: II
+part: part-two
+partLabel: Part II · The Birth
+track: articles
+tag: Key Article
 connectsTo:
-  - "e5-the-lighthill-report-1973"
-  - "a11-expert-systems-ai-learns-to-be-a-specialist"
+- e5-the-lighthill-report-1973
 ---
 
 *Boston, Massachusetts. 1974. A researcher at MIT's Artificial Intelligence Laboratory sits in his office and reads a letter from DARPA — the Defence Advanced Research Projects Agency that has been funding the lab's work since the early 1960s. The letter is polite, precise, and devastating. The unconstrained research contract that has supported the lab's most ambitious work — the contract that has allowed researchers to follow their intellectual instincts without reporting to specific deliverables or timelines — is being restructured. The new arrangement will require explicit justification of every project against specific defence applications.*

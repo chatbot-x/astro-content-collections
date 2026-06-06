@@ -1,24 +1,27 @@
 ---
-title: "A8 — ELIZA and the Illusion of Understanding"
-description: "The deeper story behind the world's first chatbot — what ELIZA revealed about human psychology, the nature of language, and the gap between the appearance of understanding and its reality. We go beyond the famous chatbot story to the philosophical questions it raised, and why those questions matter more than ever in the age of large language models."
-startDate: "2026-04-19"
-status: "upcoming"
+title: A8 — ELIZA and the Illusion of Understanding
+description: The deeper story behind the world's first chatbot — what ELIZA revealed
+  about human psychology, the nature of language, and the gap between the appearance
+  of understanding and its reality. We go beyond the famous chatbot story to the philosophical
+  questions it raised, and why those questions matter more than ever in the age of
+  large language models.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act II: The Birth"
-  - "Article"
+- A-Series
+- 'Act II: The Birth'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 8
-roman: "II"
-part: "part-two"
-partLabel: "Part II · The Birth"
-track: "articles"
-tag: "Key Article"
+roman: II
+part: part-two
+partLabel: Part II · The Birth
+track: articles
+tag: Key Article
 connectsTo:
-  - "e4-eliza-1966"
-  - "e2-the-turing-test-1950"
-  - "a9-the-optimists-when-ai-was-going-to-solve-everything"
+- e4-eliza-1966
+- e2-the-turing-test-1950
 ---
 
 *There is a thought experiment, famous in philosophy of mind, about what it would mean to truly understand a language. Suppose you are given a book of rules — a very large book, covering every possible string of Chinese characters and specifying, for each one, what string of Chinese characters to write in response. You receive a string of characters through a slot in a box you are sitting inside. You look up the input in your book. You copy out the response. You pass it back through the slot.*

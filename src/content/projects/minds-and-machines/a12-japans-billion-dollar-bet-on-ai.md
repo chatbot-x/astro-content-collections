@@ -1,23 +1,27 @@
 ---
-title: "A12 — Japan's Billion-Dollar Bet on AI"
-description: "The full narrative of Japan's Fifth Generation Computer Project — the announcement that alarmed the world, the decade of work inside ICOT, the scientific contributions that were real, and the quiet failure that nobody wanted to acknowledge. The most audacious national AI programme in history, and what it revealed about the relationship between industrial policy, scientific vision, and the unpredictability of technological progress."
-startDate: "2026-04-19"
-status: "upcoming"
+title: A12 — Japan's Billion-Dollar Bet on AI
+description: The full narrative of Japan's Fifth Generation Computer Project — the
+  announcement that alarmed the world, the decade of work inside ICOT, the scientific
+  contributions that were real, and the quiet failure that nobody wanted to acknowledge.
+  The most audacious national AI programme in history, and what it revealed about
+  the relationship between industrial policy, scientific vision, and the unpredictability
+  of technological progress.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act III: The Comeback"
-  - "Article"
+- A-Series
+- 'Act III: The Comeback'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 12
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Comeback"
-track: "articles"
-tag: "Key Article"
+roman: III
+part: part-three
+partLabel: Part III · The Comeback
+track: articles
+tag: Key Article
 connectsTo:
-  - "e8-japans-fifth-generation-project-1982"
-  - "a13-the-second-ai-winter-lightning-strikes-twice"
+- e8-japans-fifth-generation-project-1982
 ---
 
 *Tokyo, October 1981. The conference room at the Hotel New Otani is filled with computer scientists from Europe and North America who have been flown to Japan at MITI's expense. They came because they were curious, because the invitation was unexpected, and because they had heard rumours about what was going to be announced. Now they are here, listening, and the rumours were not exaggerated.*

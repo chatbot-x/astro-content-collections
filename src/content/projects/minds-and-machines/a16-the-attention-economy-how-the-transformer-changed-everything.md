@@ -1,23 +1,27 @@
 ---
-title: "A16 — The Attention Economy: How the Transformer Changed Everything"
-description: "The full intellectual story of the Transformer architecture — why self-attention was the right idea, how it enabled the pre-training revolution, and why scaling Transformer models produced capabilities that nobody predicted and nobody fully understands. The architecture at the heart of every large language model in existence, and what it reveals about the nature of language, intelligence, and learning at scale."
+title: 'A16 — The Attention Economy: How the Transformer Changed Everything'
+description: The full intellectual story of the Transformer architecture — why self-attention
+  was the right idea, how it enabled the pre-training revolution, and why scaling
+  Transformer models produced capabilities that nobody predicted and nobody fully
+  understands. The architecture at the heart of every large language model in existence,
+  and what it reveals about the nature of language, intelligence, and learning at
+  scale.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act IV: The Revolution"
-  - "Article"
+- A-Series
+- 'Act IV: The Revolution'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 16
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Revolution"
-track: "articles"
-tag: "Transformer"
+roman: IV
+part: part-four
+partLabel: Part IV · The Revolution
+track: articles
+tag: Transformer
 connectsTo:
-  - "e15-the-transformer-2017-attention-is-all-you-need"
-  - "a17-the-race-to-agi"
+- e15-the-transformer-2017-attention-is-all-you-need
 ---
 
 *There is a thought experiment, proposed by the philosopher Dan Dennett, about what it would mean to understand a text. Suppose you have a book — a long, complex book, full of ideas and arguments and references to other books and to events in the world. To understand the book, you need to do more than decode the words on the page. You need to know what those words refer to. You need to know which ideas the author is responding to, which traditions the book is embedded in, what happened in the world that the book is commenting on. Understanding a text is understanding a web of relationships — between words, between ideas, between the text and the world.*

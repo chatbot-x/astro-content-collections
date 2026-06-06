@@ -1,21 +1,28 @@
 ---
-title: "P11 — Geoffrey Hinton: The Stubborn Godfather"
-description: "He kept working on neural networks when everyone told him it was a dead end. He developed backpropagation, built the research group that produced AlexNet, and triggered the deep learning revolution. Then he quit Google to warn the world that he was afraid of what he had built. The full story of the most important AI researcher of his generation — and the journey from stubborn optimist to frightened sage."
-startDate: "2026-04-19"
-status: "upcoming"
+title: 'P11 — Geoffrey Hinton: The Stubborn Godfather'
+description: He kept working on neural networks when everyone told him it was a dead
+  end. He developed backpropagation, built the research group that produced AlexNet,
+  and triggered the deep learning revolution. Then he quit Google to warn the world
+  that he was afraid of what he had built. The full story of the most important AI
+  researcher of his generation — and the journey from stubborn optimist to frightened
+  sage.
+startDate: '2026-04-19'
+status: upcoming
 techStack:
-  - "P-Series"
-  - "Act III: The Survivors"
-  - "Figure"
+- P-Series
+- 'Act III: The Survivors'
+- Figure
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 11
-roman: "III"
-part: "part-three"
-partLabel: "Part III · The Survivors"
-track: "profiles"
-tag: "Key Figure"
-connectsTo: []
+roman: III
+part: part-three
+partLabel: Part III · The Survivors
+track: profiles
+tag: Key Figure
+connectsTo:
+- a14-the-godfathers-go-underground
+- e14-alexnet-2012-the-breakthrough-nobody-saw-coming
 ---
 
 *Toronto, Canada. May 2023. A seventy-five-year-old man sits at a table in his home and reads a statement he has prepared. His name is Geoffrey Hinton, and until last month he was a Distinguished Researcher at Google, one of the most senior and most respected AI scientists in the world. He has resigned.*

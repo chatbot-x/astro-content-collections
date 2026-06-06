@@ -1,24 +1,26 @@
 ---
-title: "A5 — Alan Turing: The Man Who Imagined Everything"
-description: "A thematic synthesis of Alan Turing's entire intellectual journey — from the Turing Machine to Bletchley Park to the 1950 paper to morphogenesis — and why one mind, working across mathematics, philosophy, biology, and engineering, laid the conceptual foundations of an entire civilisation's technology."
-startDate: "2026-04-18"
-status: "upcoming"
+title: 'A5 — Alan Turing: The Man Who Imagined Everything'
+description: A thematic synthesis of Alan Turing's entire intellectual journey — from
+  the Turing Machine to Bletchley Park to the 1950 paper to morphogenesis — and why
+  one mind, working across mathematics, philosophy, biology, and engineering, laid
+  the conceptual foundations of an entire civilisation's technology.
+startDate: '2026-04-18'
+status: upcoming
 techStack:
-  - "A-Series"
-  - "Act I: The Dream"
-  - "Article"
+- A-Series
+- 'Act I: The Dream'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 5
-roman: "I"
-part: "part-one"
-partLabel: "Part I · The Dream"
-track: "articles"
-tag: "Key Article"
+roman: I
+part: part-one
+partLabel: Part I · The Dream
+track: articles
+tag: Key Article
 connectsTo:
-  - "p2-alan-turing"
-  - "e2-the-turing-test-1950"
-  - "a6-the-summer-that-named-ai"
+- p2-alan-turing
+- e2-the-turing-test-1950
 ---
 
 *There is a thought experiment that philosophers sometimes use to test intuitions about personal identity. Suppose you could take the mind of one person from history — their knowledge, their methods, their characteristic way of approaching problems — and drop it into the present. Which mind, encountering the world as it is today, would be most at home? Which mind would find the most that was familiar, most that connected directly to what they had spent their life working on?*

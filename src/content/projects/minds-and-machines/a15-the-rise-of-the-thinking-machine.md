@@ -1,24 +1,27 @@
 ---
-title: "A15 — The Rise of the Thinking Machine: Deep Learning Takes Over"
-description: "The story of the deep learning revolution from the AlexNet moment through the development of the Transformer, told as a narrative of rapid, cascading discovery in which one breakthrough enabled the next. The fastest scientific revolution in the history of AI — and what it actually means that machines can now do what only humans could do before."
+title: 'A15 — The Rise of the Thinking Machine: Deep Learning Takes Over'
+description: The story of the deep learning revolution from the AlexNet moment through
+  the development of the Transformer, told as a narrative of rapid, cascading discovery
+  in which one breakthrough enabled the next. The fastest scientific revolution in
+  the history of AI — and what it actually means that machines can now do what only
+  humans could do before.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act IV: The Revolution"
-  - "Article"
+- A-Series
+- 'Act IV: The Revolution'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 15
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Revolution"
-track: "articles"
-tag: "Deep Learning"
+roman: IV
+part: part-four
+partLabel: Part IV · The Revolution
+track: articles
+tag: Deep Learning
 connectsTo:
-  - "e14-alexnet-2012-the-breakthrough-nobody-saw-coming"
-  - "e15-the-transformer-2017-attention-is-all-you-need"
-  - "a16-the-attention-economy-how-the-transformer-changed-everything"
+- e14-alexnet-2012-the-breakthrough-nobody-saw-coming
+- e15-the-transformer-2017-attention-is-all-you-need
 ---
 
 *Mountain View, California. June 2015. Jeff Dean is standing at a whiteboard inside Google's headquarters, drawing a diagram for a visitor. Dean is one of the most respected software engineers in Silicon Valley — the person most responsible for the infrastructure that makes Google Search work at planetary scale. He is not an AI researcher by training. But he has spent the past three years watching what deep learning has done to the technology problems Google cares about, and he is trying to explain to his visitor what the transformation looks like from the inside.*

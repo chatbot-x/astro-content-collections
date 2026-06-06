@@ -1,23 +1,26 @@
 ---
-title: "A19 — The Bias Problem: When AI Reflects Our Worst Selves"
-description: "How AI systems trained on human-generated data encode and amplify the biases, inequities, and prejudices of the societies that generated that data — and the researchers who are trying to understand, measure, and mitigate these harms. The most practically urgent problem in deployed AI, the hardest to solve, and the one with the most direct consequences for the most people."
+title: 'A19 — The Bias Problem: When AI Reflects Our Worst Selves'
+description: How AI systems trained on human-generated data encode and amplify the
+  biases, inequities, and prejudices of the societies that generated that data — and
+  the researchers who are trying to understand, measure, and mitigate these harms.
+  The most practically urgent problem in deployed AI, the hardest to solve, and the
+  one with the most direct consequences for the most people.
 startDate: 2026-04-26
-status: "active"
+status: active
 techStack:
-  - "A-Series"
-  - "Act V: The Explosion"
-  - "Article"
+- A-Series
+- 'Act V: The Explosion'
+- Article
 featured: false
-series: "minds-and-machines"
+series: minds-and-machines
 episodeNumber: 19
-roman: "V"
-part: "part-five"
-partLabel: "Part V · The Explosion"
-track: "articles"
-tag: "AI Bias"
+roman: V
+part: part-five
+partLabel: Part V · The Explosion
+track: articles
+tag: AI Bias
 connectsTo:
-  - "a18-the-alignment-problem"
-  - "a20-what-ai-cannot-do"
+- p11-geoffrey-hinton
 ---
 
 *Cambridge, Massachusetts. 2018. A researcher named Joy Buolamwini is sitting at a computer in MIT's Media Lab, running tests on a commercial facial recognition system. She is a computer science researcher with a specific interest in how AI systems perform across different demographic groups. She has been testing several commercial facial recognition systems from major technology companies — systems that are being used, or considered for use, in real-world applications including law enforcement.*
