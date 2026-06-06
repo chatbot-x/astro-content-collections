@@ -25,10 +25,16 @@ const { Content } = await render(article);
 const seriesSlug = article.id.split('/')[0];
 const currentTrack = article.data.track || 'articles';
 
-// All articles in this series
+// All articles in this series — sorted by track order then episodeNumber
+const trackOrder: Record<string, number> = { articles: 0, profiles: 1, events: 2 };
 const allSeriesArticles = allEntries
   .filter((e: any) => e.id.startsWith(`${seriesSlug}/`) && e.id.includes('/'))
-  .sort((a: any, b: any) => a.data.title.localeCompare(b.data.title));
+  .sort((a: any, b: any) => {
+    const aTrack = trackOrder[a.data.track ?? 'articles'] ?? 99;
+    const bTrack = trackOrder[b.data.track ?? 'articles'] ?? 99;
+    if (aTrack !== bTrack) return aTrack - bTrack;
+    return (a.data.episodeNumber ?? 0) - (b.data.episodeNumber ?? 0);
+  });
 
 // Group by track
 const articlesByTrack: Record<string, typeof allSeriesArticles> = {};

@@ -18,9 +18,16 @@ const { seriesEntry, allEntries } = Astro.props;
 const { Content } = await render(seriesEntry);
 
 // Get all articles belonging to this series (entries in subfolders matching the series slug)
+// Sort by track order (articles → profiles → events), then by episodeNumber
+const trackOrder: Record<string, number> = { articles: 0, profiles: 1, events: 2 };
 const seriesArticles = allEntries
   .filter((entry) => entry.id.startsWith(`${seriesEntry.id}/`))
-  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+  .sort((a, b) => {
+    const aTrack = trackOrder[a.data.track ?? 'articles'] ?? 99;
+    const bTrack = trackOrder[b.data.track ?? 'articles'] ?? 99;
+    if (aTrack !== bTrack) return aTrack - bTrack;
+    return (a.data.episodeNumber ?? 0) - (b.data.episodeNumber ?? 0);
+  });
 
 // Group articles by track
 const articlesByTrack: Record<string, typeof seriesArticles> = {};
