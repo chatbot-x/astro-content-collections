@@ -1,0 +1,57 @@
+---
+/**
+ * ReadingProgress — a thin gradient bar fixed at the top of the viewport
+ * that fills from left to right as the reader scrolls through the article.
+ *
+ * Uses the [data-pagefind-body] element as the article boundary.
+ * Pure CSS transition for smooth visual updates; no layout thrash.
+ */
+---
+
+<div
+  id="reading-progress"
+  class="fixed top-0 left-0 z-[60] h-[3px] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition-[width] duration-100 ease-out will-change-width"
+  style="width: 0%;"
+  role="progressbar"
+  aria-valuenow="0"
+  aria-valuemin="0"
+  aria-valuemax="100"
+></div>
+
+<script>
+  function initReadingProgress() {
+    const bar = document.getElementById('reading-progress');
+    const article = document.querySelector('[data-pagefind-body]');
+    if (!bar || !article) return;
+
+    // Hide the bar until the user starts scrolling the article
+    bar.style.opacity = '0';
+
+    const controller = new AbortController();
+
+    function updateProgress() {
+      const rect = article.getBoundingClientRect();
+      const articleTop = rect.top + window.scrollY;
+      const articleHeight = rect.height;
+      const scrolled = window.scrollY - articleTop;
+      const progress = Math.min(Math.max(scrolled / (articleHeight - window.innerHeight), 0), 1) * 100;
+
+      bar.style.width = `${progress}%`;
+      bar.style.opacity = progress > 0 ? '1' : '0';
+      bar.setAttribute('aria-valuenow', String(Math.round(progress)));
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true, signal: controller.signal });
+    window.addEventListener('resize', updateProgress, { passive: true, signal: controller.signal });
+    updateProgress();
+
+    return () => controller.abort();
+  }
+
+  let cleanup: (() => void) | undefined;
+  function reInit() {
+    cleanup?.();
+    cleanup = initReadingProgress();
+  }
+  document.addEventListener('astro:page-load', reInit);
+</script>
