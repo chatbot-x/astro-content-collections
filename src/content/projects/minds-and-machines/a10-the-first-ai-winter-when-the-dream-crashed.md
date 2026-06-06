@@ -1,9 +1,12 @@
 ---
 title: "A10 — The First AI Winter: When the Dream Crashed"
 description: "The dream of machine intelligence collided with reality in the early 1970s. Government funding collapsed. Research groups dissolved. Careers were redirected. This is the full narrative of AI's first great crisis — told from the inside, through the experiences of the people who built the dream and watched it crash — and the deeper questions about ambition, honesty, and institutional courage that the crisis forced."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["A-Series", "Act II: The Birth", "Article"]
+techStack:
+  - "A-Series"
+  - "Act II: The Birth"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 10

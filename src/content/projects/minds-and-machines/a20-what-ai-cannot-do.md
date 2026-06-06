@@ -1,18 +1,22 @@
 ---
 title: "A20 — What AI Cannot Do"
 description: "The limits of artificial intelligence — what it cannot do, what it may never do, and why understanding those limits is as important as celebrating its achievements."
-startDate: 2026-04-26
+startDate: "2026-04-26"
 status: "upcoming"
-techStack: ["A-Series", "Act IV: The Revolution", "Article"]
+techStack:
+  - "A-Series"
+  - "Act V: The Explosion"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 20
-roman: "IV"
-part: "part-four"
-partLabel: "Part IV · The Revolution"
+roman: "V"
+part: "part-five"
+partLabel: "Part V · The Explosion"
 track: "articles"
 tag: "Key Article"
-connectsTo: []
+connectsTo:
+  - "a19-the-bias-problem"
 ---
 
 *There is a small image that circulates in AI research circles, usually shown as a demonstration of the limits of computer vision systems. It is a photograph of a banana in front of a toaster. The image has been slightly modified — a few dozen pixels changed in a systematic way that is imperceptible to any human eye. To a human, it is unambiguously a banana in front of a toaster.*

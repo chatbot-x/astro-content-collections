@@ -1,9 +1,12 @@
 ---
 title: "P4 — Norbert Wiener: The Father of Cybernetics"
 description: "He invented cybernetics, the science of communication and control in machines and animals. He warned the world about automation destroying human labour — in 1950. He predicted the ethical crises of AI before the field had a name. And almost nobody listened. The forgotten genius who saw everything coming."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act I: The Pioneers"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 4

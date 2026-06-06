@@ -7,7 +7,7 @@ techStack: ["Articles", "Profiles", "Events"]
 featured: true
 tagline: "From ancient myth to modern intelligence"
 hook: "Stories across three tracks — no code, just the human journey."
-articleCount: 38
+articleCount: 58
 wordCount: "~600,000 words"
 tracks:
   - name: "Articles"
@@ -58,4 +58,4 @@ The series is published across three parallel tracks, rotating weekly:
 
 ## Currently Publishing
 
-38 articles are live, spanning all five acts and all three tracks. The series covers the full arc of AI history: The Dream, The Birth, The Comeback, The Revolution, and The Explosion — mapping every major turning point from ancient myth to the modern era.
+58 articles are live, spanning all five acts and all three tracks. The series covers the full arc of AI history: The Dream, The Birth, The Comeback, The Revolution, and The Explosion — mapping every major turning point from ancient myth to the modern era.

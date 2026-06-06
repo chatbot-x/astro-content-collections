@@ -1,9 +1,12 @@
 ---
 title: "P3 — John von Neumann: The Man Who Designed the Modern Computer"
 description: "He spoke eight languages, memorized entire books, and solved differential equations in his head for fun. He designed the architecture every computer in the world still uses today, helped build the atomic bomb, and died at fifty-three still dictating equations from his hospital bed. The astonishing, troubling, irreplaceable life of John von Neumann."
-startDate: 2026-04-12
+startDate: "2026-04-12"
 status: "active"
-techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act I: The Pioneers"
+  - "Figure"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 3

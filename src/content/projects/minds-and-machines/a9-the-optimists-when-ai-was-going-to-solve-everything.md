@@ -1,9 +1,12 @@
 ---
 title: "A9 — The Optimists: When AI Was Going to Solve Everything"
 description: "The audacious, exhilarating, ultimately tragic story of the AI optimists of the 1960s — the people who genuinely believed that machine intelligence was years away, who made predictions that have made them famous for being wrong, and who were right about the destination even as they were spectacularly wrong about the distance."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["A-Series", "Act II: The Birth", "Article"]
+techStack:
+  - "A-Series"
+  - "Act II: The Birth"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 9

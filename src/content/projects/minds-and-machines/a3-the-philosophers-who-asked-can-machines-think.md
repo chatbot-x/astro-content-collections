@@ -1,9 +1,12 @@
 ---
 title: "A3 — The Philosophers Who Asked 'Can Machines Think?"
 description: "Before the engineers came the philosophers. Leibniz dreamed of a calculus of thought. Pascal built the first mechanical calculator. Descartes asked whether mechanism had limits. The thinkers who laid the conceptual groundwork for everything that followed — and the questions they left unanswered that we are still wrestling with today."
-startDate: 2026-04-11
+startDate: "2026-04-11"
 status: "active"
-techStack: ["A-Series", "Act I: The Dream", "Article"]
+techStack:
+  - "A-Series"
+  - "Act I: The Dream"
+  - "Article"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 3

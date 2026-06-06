@@ -1,9 +1,12 @@
 ---
 title: "P6 — John McCarthy: The Man Who Named AI"
 description: "He organised the Dartmouth Conference, coined the term artificial intelligence, invented LISP, and founded the Stanford AI Laboratory. For half a century he was the field's most important institution-builder and its most stubborn defender of symbolic reasoning. The complicated legacy of the man who gave AI its name and its mission."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["P-Series", "Act II: The Founders", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act II: The Founders"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 6

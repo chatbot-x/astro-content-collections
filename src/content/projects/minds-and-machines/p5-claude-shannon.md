@@ -1,9 +1,12 @@
 ---
 title: "P5 — Claude Shannon: The Man Who Invented Information"
 description: "In 1948 a Bell Labs engineer published a paper that invented information theory and gave the entire digital age its mathematical foundation. He then spent his later years building juggling robots, riding a unicycle through the corridors, and playing chess against early computers. The remarkable, playful, essential life of Claude Shannon."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act I: The Pioneers"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 5

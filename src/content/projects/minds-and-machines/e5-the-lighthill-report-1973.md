@@ -1,9 +1,12 @@
 ---
 title: "E5 — The Lighthill Report, 1973: The Document That Killed AI"
 description: "In 1973 a distinguished mathematician named James Lighthill wrote a review of AI research that was so devastating it caused governments across the world to pull their funding and sent the entire field into its first winter. How one document changed the course of AI history — and whether it was right."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["E-Series", "Act I: The Dream", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act I: The Origins"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 5

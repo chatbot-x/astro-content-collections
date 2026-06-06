@@ -1,9 +1,12 @@
 ---
 title: "E3 — The Logic Theorist, 1956: The First AI Program"
 description: "On a winter night in 1955, a program running on a primitive computer proved a mathematical theorem for the first time in history. Its creators believed they had cracked the secret of human intelligence. They were wrong about that — but right about something more important. The full story of the Logic Theorist: the first AI program ever built."
-startDate: 2026-04-13
+startDate: "2026-04-13"
 status: "active"
-techStack: ["E-Series", "Act I: The Dream", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act I: The Origins"
+  - "Event"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 3

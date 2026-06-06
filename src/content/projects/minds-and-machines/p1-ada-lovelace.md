@@ -1,9 +1,12 @@
 ---
 title: "P1 — Ada Lovelace: The First Programmer the World Forgot"
 description: "She wrote the world's first computer program in 1843 — for a machine that didn't exist yet. Then history forgot her for a hundred years. The extraordinary life of Ada Lovelace, the woman who saw the future before anyone else."
-startDate: 2026-03-27
+startDate: "2026-03-27"
 status: "active"
-techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act I: The Pioneers"
+  - "Figure"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 1

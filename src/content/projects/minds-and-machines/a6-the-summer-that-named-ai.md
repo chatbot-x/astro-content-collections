@@ -1,9 +1,12 @@
 ---
 title: "A6 — The Summer That Named AI"
 description: "The 1956 Dartmouth Conference in full narrative detail — who was in the room, what they argued about in the evenings, what they agreed on, what they were spectacularly wrong about, and how a single summer's conversation gave a field its name, its mission, and the overconfidence that would eventually send it into its first winter."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["A-Series", "Act II: The Birth", "Article"]
+techStack:
+  - "A-Series"
+  - "Act II: The Birth"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 6

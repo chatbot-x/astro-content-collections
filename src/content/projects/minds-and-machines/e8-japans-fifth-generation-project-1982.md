@@ -1,9 +1,12 @@
 ---
 title: "E8 — Japan's Fifth Generation Project, 1982: The Billion-Dollar Gamble"
 description: "In 1982, Japan announced the most audacious AI project in history: a ten-year programme to build a new generation of computers based on artificial intelligence. The announcement triggered global panic. The United States and Britain launched emergency responses. And then, quietly, over the next decade, the project failed. How national ambition, geopolitical anxiety, and genuine scientific vision combined to produce one of the great misadventures of the technology era."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["E-Series", "Act II: The Crashes & Comebacks", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act II: The Crashes & Comebacks"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 8

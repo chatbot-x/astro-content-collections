@@ -1,9 +1,12 @@
 ---
 title: "P19 — Ilya Sutskever: The Mind That Saw the Future"
 description: "The co-founder of OpenAI, the architect of GPT, the chief scientist who voted to fire Sam Altman and then reversed course, and the founder of Safe Superintelligence Inc. The most technically gifted and most philosophically serious of the deep learning generation's leaders — and the figure whose trajectory tracks the field's own ambivalence about what it is building."
-startDate: 2026-04-26
+startDate: "2026-04-26"
 status: "upcoming"
-techStack: ["P-Series", "Act IV: The Builders", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act IV: The Builders"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 19

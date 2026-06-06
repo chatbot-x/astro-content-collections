@@ -1,9 +1,12 @@
 ---
 title: "A7 — The First AI Programs: Teaching Machines to Play Games"
 description: "The exhilarating early years when Arthur Samuel's checkers program learned to beat its creator, when chess programs first challenged amateur players, and when every new demonstration felt like proof that general machine intelligence was just around the corner. What those early programs actually did, why they were so impressive, and why the gap between their performance and genuine intelligence was wider than it appeared."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["A-Series", "Act II: The Birth", "Article"]
+techStack:
+  - "A-Series"
+  - "Act II: The Birth"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 7

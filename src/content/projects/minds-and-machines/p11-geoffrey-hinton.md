@@ -1,9 +1,12 @@
 ---
 title: "P11 — Geoffrey Hinton: The Stubborn Godfather"
 description: "He kept working on neural networks when everyone told him it was a dead end. He developed backpropagation, built the research group that produced AlexNet, and triggered the deep learning revolution. Then he quit Google to warn the world that he was afraid of what he had built. The full story of the most important AI researcher of his generation — and the journey from stubborn optimist to frightened sage."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["P-Series", "Act III: The Survivors", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act III: The Survivors"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 11

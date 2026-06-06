@@ -1,9 +1,12 @@
 ---
 title: "A2 — Clockwork Wonders: The Automata Era"
 description: "Before computers, before electricity, before Ada Lovelace wrote the first program — craftsmen across Europe built mechanical marvels that walked, wrote, played music, and digested food. The extraordinary story of the automata era and the question it forced the world to ask."
-startDate: 2026-04-04
+startDate: "2026-04-04"
 status: "active"
-techStack: ["A-Series", "Act I: The Dream", "Article"]
+techStack:
+  - "A-Series"
+  - "Act I: The Dream"
+  - "Article"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 2

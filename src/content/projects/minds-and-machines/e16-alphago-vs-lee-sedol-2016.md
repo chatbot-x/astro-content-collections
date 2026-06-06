@@ -1,9 +1,12 @@
 ---
 title: "E16 — AlphaGo vs. Lee Sedol, 2016: The Game That Humbled Humanity"
 description: "The full story of the five-game match between the world's greatest Go player and DeepMind's AI system in Seoul, March 2016 — the move 37 that changed the match, Lee Sedol's astonishing comeback in Game 4, the existential questions the match raised about human intuition and machine reasoning, and why one professional Go player retired because of what he witnessed."
-startDate: 2026-04-26
+startDate: "2026-04-26"
 status: "upcoming"
-techStack: ["E-Series", "Act IV: The Modern Era", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act IV: The Modern Era"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 16

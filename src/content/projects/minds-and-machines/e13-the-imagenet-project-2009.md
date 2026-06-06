@@ -1,9 +1,12 @@
 ---
 title: "E13 — The ImageNet Project, 2009: Teaching Machines to See"
 description: "How Fei-Fei Li assembled fourteen million labelled images over three years of painstaking work, created the most important dataset in the history of AI, and built the benchmark that made the deep learning revolution possible. The full story of ImageNet — the years of labour, the unconventional methodology, the competition that changed everything in 2012, and why one woman's conviction that data was as important as algorithms turned out to be exactly right."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["E-Series", "Act III: The Turning Points", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act III: The Turning Points"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 13

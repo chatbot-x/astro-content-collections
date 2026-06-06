@@ -1,9 +1,12 @@
 ---
 title: "A5 — Alan Turing: The Man Who Imagined Everything"
 description: "A thematic synthesis of Alan Turing's entire intellectual journey — from the Turing Machine to Bletchley Park to the 1950 paper to morphogenesis — and why one mind, working across mathematics, philosophy, biology, and engineering, laid the conceptual foundations of an entire civilisation's technology."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["A-Series", "Act I: The Dream", "Article"]
+techStack:
+  - "A-Series"
+  - "Act I: The Dream"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 5

@@ -1,9 +1,12 @@
 ---
 title: "P12 — Yann LeCun: The Rebel with a Vision"
 description: "He invented convolutional neural networks, built the first AI system to process real-world visual data at scale, and became the architect of Meta's AI empire. The most argumentative of the Godfathers of Deep Learning — and why his arguments, however combative the delivery, usually turn out to be right."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["P-Series", "Act III: The Survivors", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act III: The Survivors"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 12

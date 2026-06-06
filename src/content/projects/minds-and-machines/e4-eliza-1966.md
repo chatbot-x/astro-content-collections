@@ -1,9 +1,12 @@
 ---
 title: "E4 — ELIZA, 1966: The Chatbot That Made People Cry"
 description: "In 1966 a simple pattern-matching program became the world's first chatbot — and people fell in love with it, told it their secrets, and begged not to have it turned off. Its creator was horrified. The story of ELIZA, the DOCTOR persona, and what a program that understood nothing revealed about the human need to be heard."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["E-Series", "Act I: The Dream", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act I: The Origins"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 4

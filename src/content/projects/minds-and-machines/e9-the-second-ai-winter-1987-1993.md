@@ -1,9 +1,12 @@
 ---
 title: "E9 — The Second AI Winter, 1987–1993: Lightning Strikes Twice"
 description: "The expert systems boom collapsed almost as quickly as it had risen. The LISP machine market imploded overnight. DARPA cut funding. And for the second time in AI's history, the field contracted, researchers left, and the most pessimistic observers began to wonder whether the project was fundamentally misguided. The full story of AI's second near-death experience — and the underground movement that kept the neural network flame alive through the cold."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["E-Series", "Act II: The Crashes & Comebacks", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act II: The Crashes & Comebacks"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 9

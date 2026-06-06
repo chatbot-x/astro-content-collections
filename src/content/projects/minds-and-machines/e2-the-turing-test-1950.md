@@ -1,9 +1,12 @@
 ---
 title: "E2 — The Turing Test, 1950: The Question That Still Has No Answer"
 description: "In October 1950, a mathematician published a thirty-page paper in a philosophy journal that asked a deceptively simple question: can machines think? The paper proposed a test. The test sparked a debate. The debate has never ended. This is the story of the most important thought experiment in the history of AI."
-startDate: 2026-04-06
+startDate: "2026-04-06"
 status: "active"
-techStack: ["E-Series", "Act I: The Dream", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act I: The Origins"
+  - "Event"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 2

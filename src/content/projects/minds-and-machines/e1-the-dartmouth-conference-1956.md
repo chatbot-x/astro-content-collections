@@ -1,9 +1,12 @@
 ---
 title: "E1 — The Dartmouth Conference, 1956: The Summer AI Was Born"
 description: "In the summer of 1956, ten men gathered at a small New Hampshire college and gave a name to the dream of thinking machines. They were wildly overconfident, occasionally wrong, and completely right about the one thing that mattered most. This is the story of the week Artificial Intelligence was born."
-startDate: 2026-03-28
+startDate: "2026-03-28"
 status: "active"
-techStack: ["E-Series", "Act I: The Dream", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act I: The Origins"
+  - "Event"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 1

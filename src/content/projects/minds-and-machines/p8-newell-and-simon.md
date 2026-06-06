@@ -1,9 +1,12 @@
 ---
 title: "P8 — Allen Newell & Herbert Simon: The Dynamic Duo of Early AI"
 description: "The Logic Theorist, the General Problem Solver, the cognitive revolution, and a Nobel Prize. The most consequential scientific partnership in the history of AI — two men who were convinced they had found the key to human intelligence, built programs that demonstrated it, and spent the rest of their careers working out what they had actually discovered."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["P-Series", "Act II: The Founders", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act II: The Founders"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 8

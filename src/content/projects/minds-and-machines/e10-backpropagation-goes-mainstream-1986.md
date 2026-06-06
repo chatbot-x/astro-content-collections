@@ -1,9 +1,12 @@
 ---
 title: "E10 — Backpropagation Goes Mainstream, 1986: The Algorithm That Refused to Die"
 description: "The most important algorithm in modern AI was discovered at least three times before anyone paid attention. The full story of backpropagation — its multiple independent inventions, the decades it spent in the shadows of the symbolic AI winter, and the specific confluence of people, ideas, and timing that produced the 1986 paper that changed everything. How an algorithm refused to die, and what happened when the world finally listened."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["E-Series", "Act II: The Crashes & Comebacks", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act II: The Crashes & Comebacks"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 10

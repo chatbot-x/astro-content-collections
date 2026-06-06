@@ -1,9 +1,12 @@
 ---
 title: "A4 — Ada Lovelace & The First Algorithm"
 description: "She wrote the world's first computer program in 1843 — but what did it actually say? We go deep into the mathematics of Ada Lovelace's Notes on the Analytical Engine, what the Bernoulli number algorithm actually did, and why the ideas buried in those footnotes were more radical than even most computer scientists realise."
-startDate: 2026-04-18
+startDate: "2026-04-18"
 status: "upcoming"
-techStack: ["A-Series", "Act I: The Dream", "Article"]
+techStack:
+  - "A-Series"
+  - "Act I: The Dream"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 4

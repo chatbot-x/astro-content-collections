@@ -1,9 +1,12 @@
 ---
 title: "A12 — Japan's Billion-Dollar Bet on AI"
 description: "The full narrative of Japan's Fifth Generation Computer Project — the announcement that alarmed the world, the decade of work inside ICOT, the scientific contributions that were real, and the quiet failure that nobody wanted to acknowledge. The most audacious national AI programme in history, and what it revealed about the relationship between industrial policy, scientific vision, and the unpredictability of technological progress."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["A-Series", "Act III: The Comeback", "Article"]
+techStack:
+  - "A-Series"
+  - "Act III: The Comeback"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 12

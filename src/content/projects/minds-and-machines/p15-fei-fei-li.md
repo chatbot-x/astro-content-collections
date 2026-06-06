@@ -1,9 +1,12 @@
 ---
 title: "P15 — Fei-Fei Li: The Woman Who Taught Machines to See"
 description: "The Stanford professor who assembled fourteen million labelled images when everyone told her the project was impossible, built the benchmark that made the deep learning revolution possible, went to Google as Chief AI Scientist, returned to academia to lead the movement for human-centered AI, and became one of the most important voices connecting technical capability to human values. The complete portrait of the creator of ImageNet."
-startDate: 2026-04-26
+startDate: "2026-04-26"
 status: "upcoming"
-techStack: ["P-Series", "Act III: The Survivors", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act III: The Survivors"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 15

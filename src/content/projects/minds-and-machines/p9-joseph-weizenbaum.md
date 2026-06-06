@@ -1,9 +1,12 @@
 ---
 title: "P9 — Joseph Weizenbaum: The Man Who Built ELIZA and Regretted It"
 description: "He built the world's first chatbot as a demonstration of how shallow conversation could be — and watched in horror as people fell in love with it. The story of Joseph Weizenbaum: the man who understood, earlier and more clearly than almost anyone, what was dangerous about our relationship with intelligent machines, and who spent the rest of his life trying to make the world hear the warning."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["P-Series", "Act II: The Founders", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act II: The Founders"
+  - "Figure"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 9

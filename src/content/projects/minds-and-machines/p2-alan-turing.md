@@ -1,9 +1,12 @@
 ---
 title: "P2 — Alan Turing: The Man Who Invented the Future"
 description: "He broke the Nazi's unbreakable code, designed the architecture of the modern computer, asked whether machines could think, and was then chemically castrated by the government he had saved. The full, extraordinary, heartbreaking life of Alan Turing."
-startDate: 2026-04-05
+startDate: "2026-04-05"
 status: "active"
-techStack: ["P-Series", "Act I: The Dream", "Key Figure"]
+techStack:
+  - "P-Series"
+  - "Act I: The Pioneers"
+  - "Figure"
 featured: true
 series: "minds-and-machines"
 episodeNumber: 2

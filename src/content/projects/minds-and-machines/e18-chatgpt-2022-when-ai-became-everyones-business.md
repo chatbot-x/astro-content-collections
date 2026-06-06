@@ -1,9 +1,12 @@
 ---
 title: "E18 — ChatGPT, 2022: When AI Became Everyone's Business"
 description: "The full story of the ChatGPT launch — the five days to a million users, the hundred million users in two months, the panic in schools and universities, the excitement in offices, the existential dread in newsrooms, and what it meant that AI had crossed the threshold from specialised tool to mainstream reality. The moment AI became everyone's business."
-startDate: 2026-04-26
+startDate: "2026-04-26"
 status: "upcoming"
-techStack: ["E-Series", "Act IV: The Modern Era", "Key Event"]
+techStack:
+  - "E-Series"
+  - "Act IV: The Modern Era"
+  - "Event"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 18

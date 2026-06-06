@@ -1,9 +1,12 @@
 ---
 title: "A8 — ELIZA and the Illusion of Understanding"
 description: "The deeper story behind the world's first chatbot — what ELIZA revealed about human psychology, the nature of language, and the gap between the appearance of understanding and its reality. We go beyond the famous chatbot story to the philosophical questions it raised, and why those questions matter more than ever in the age of large language models."
-startDate: 2026-04-19
+startDate: "2026-04-19"
 status: "upcoming"
-techStack: ["A-Series", "Act II: The Birth", "Article"]
+techStack:
+  - "A-Series"
+  - "Act II: The Birth"
+  - "Article"
 featured: false
 series: "minds-and-machines"
 episodeNumber: 8
