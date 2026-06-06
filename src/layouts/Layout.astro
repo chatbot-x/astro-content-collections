@@ -128,8 +128,8 @@ const graph = buildSchemaGraph({
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         // FIX: RSS auto-discovery — enables RSS readers and browsers to find the feed
-        // at /blog/rss.xml without the user needing to know the URL.
-        { rel: 'alternate', type: 'application/rss+xml', title: 'isHistory Blog', href: '/blog/rss.xml' },
+        // at /rss.xml without the user needing to know the URL.
+        { rel: 'alternate', type: 'application/rss+xml', title: 'isHistory', href: '/rss.xml' },
         // NOTE: Preconnect hints for Google Fonts were removed (AUD-013).
         // This project uses system font stacks, not Google Fonts.
         // Re-add if Google Fonts are introduced in the future.
