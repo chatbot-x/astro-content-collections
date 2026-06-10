@@ -1,7 +1,5 @@
 # isHistory — Mapping the Digital Past
 
-![](https://raw.githubusercontent.com/chatbot-x/isHistory-CMS-v1.7/main/images/2026/06/22526-mq8pximqicm.png)
-
 > A curated digital archive of the stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age.
 
 Built with **Astro v6**, **TailwindCSS v4**, and type-safe **Content Collections**. isHistory is not a developer's manual — it's a history book for the digital age, built for anyone who has ever wondered *how did we actually get here?*
