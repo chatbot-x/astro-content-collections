@@ -1,35 +1,37 @@
 # isHistory — Mapping the Digital Past
 
+![](https://raw.githubusercontent.com/chatbot-x/isHistory-CMS-v1.7/main/images/2026/06/22526-mq8pximqicm.png)
+
 > A curated digital archive of the stories behind technology — how ideas sparked, why systems failed or succeeded, and the people who shaped the digital age.
 
 Built with **Astro v6**, **TailwindCSS v4**, and type-safe **Content Collections**. isHistory is not a developer's manual — it's a history book for the digital age, built for anyone who has ever wondered *how did we actually get here?*
 
----
+***
 
 ## Features
 
 ### Content & Storytelling
 
-- **Series-based narratives** — Multi-track, multi-act long-form content (e.g., 75-article *Minds & Machines* on AI history)
-- **Three-track structure** — Each series is organized into **A-Series** (analytical articles), **P-Series** (people profiles), and **E-Series** (events timeline)
-- **Read Alongside** — Curated cross-track links between thematically related articles (e.g., a profile of Minsky connects to an article on the AI Winter)
-- **Track-aware navigation** — Previous/Next navigation stays within the same track, so readers follow a coherent narrative path
-- **Blog** — Standalone posts on web development, tooling, and content workflows
+* **Series-based narratives** — Multi-track, multi-act long-form content (e.g., 75-article *Minds & Machines* on AI history)
+* **Three-track structure** — Each series is organized into **A-Series** (analytical articles), **P-Series** (people profiles), and **E-Series** (events timeline)
+* **Read Alongside** — Curated cross-track links between thematically related articles (e.g., a profile of Minsky connects to an article on the AI Winter)
+* **Track-aware navigation** — Previous/Next navigation stays within the same track, so readers follow a coherent narrative path
+* **Blog** — Standalone posts on web development, tooling, and content workflows
 
 ### Technical
 
-- **Astro v6** — Island architecture with zero JavaScript by default; Content Layer API for type-safe content
-- **TailwindCSS v4** — CSS-first configuration via `@tailwindcss/vite`; no JavaScript config file needed
-- **Content Collections** — Zod-validated frontmatter with full TypeScript autocompletion and build-time validation
-- **Dark Mode** — 3-mode theme system (Light / Dark / System) with FOUC prevention, cross-tab sync, and WAI-ARIA keyboard navigation
-- **Full-Text Search** — Pagefind-powered search with `Cmd/Ctrl+K` shortcut, themed for both light and dark modes
-- **OG Images** — Auto-generated Open Graph images via `astro-og-canvas`
-- **AI-Ready SEO** — Schema.org knowledge graph with JSON-LD, `llms.txt` for LLM discoverability, build-time SEO validators, and IndexNow instant re-indexing
-- **Security** — CSP meta tags (pending upstream fix for HTTP header CSP), SRI hash injection, security headers via Cloudflare Pages `_headers`
-- **Compression** — Pre-compressed static files (gzip + brotli + zstd) via `astro-compressor`
-- **Markdown** — GitHub-style callouts via `rehype-callouts` and `[[wiki-link]]` syntax via `@flowershow/remark-wiki-link`
+* **Astro v6** — Island architecture with zero JavaScript by default; Content Layer API for type-safe content
+* **TailwindCSS v4** — CSS-first configuration via `@tailwindcss/vite`; no JavaScript config file needed
+* **Content Collections** — Zod-validated frontmatter with full TypeScript autocompletion and build-time validation
+* **Dark Mode** — 3-mode theme system (Light / Dark / System) with FOUC prevention, cross-tab sync, and WAI-ARIA keyboard navigation
+* **Full-Text Search** — Pagefind-powered search with `Cmd/Ctrl+K` shortcut, themed for both light and dark modes
+* **OG Images** — Auto-generated Open Graph images via `astro-og-canvas`
+* **AI-Ready SEO** — Schema.org knowledge graph with JSON-LD, `llms.txt` for LLM discoverability, build-time SEO validators, and IndexNow instant re-indexing
+* **Security** — CSP meta tags (pending upstream fix for HTTP header CSP), SRI hash injection, security headers via Cloudflare Pages `_headers`
+* **Compression** — Pre-compressed static files (gzip + brotli + zstd) via `astro-compressor`
+* **Markdown** — GitHub-style callouts via `rehype-callouts` and `[[wiki-link]]` syntax via `@flowershow/remark-wiki-link`
 
----
+***
 
 ## Project Structure
 
@@ -107,14 +109,14 @@ isHistory/
 └── vitest.config.ts
 ```
 
----
+***
 
 ## Quick Start
 
 ### Prerequisites
 
-- **Node.js** >= 22.12.0 (specified in `.nvmrc`)
-- **npm** (comes with Node.js)
+* **Node.js** >\= 22.12.0 (specified in `.nvmrc`)
+* **npm** (comes with Node.js)
 
 ### Installation
 
@@ -146,21 +148,21 @@ This runs `astro build` followed by `scripts/inject-sri.mjs` which injects Subre
 npm run preview
 ```
 
----
+***
 
 ## Commands
 
-| Command               | Action                                           |
-| :-------------------- | :----------------------------------------------- |
-| `npm install`         | Installs dependencies                            |
-| `npm run dev`         | Starts local dev server at `localhost:4321`      |
-| `npm run build`       | Build production site + inject SRI hashes        |
-| `npm run preview`     | Preview the production build locally             |
-| `npm run lint`        | Run ESLint on the project                        |
-| `npm test`            | Run Vitest test suite                            |
-| `npm run test:watch`  | Run Vitest in watch mode                         |
+| Command              | Action                                      |
+| :------------------- | :------------------------------------------ |
+| `npm install`        | Installs dependencies                       |
+| `npm run dev`        | Starts local dev server at `localhost:4321` |
+| `npm run build`      | Build production site + inject SRI hashes   |
+| `npm run preview`    | Preview the production build locally        |
+| `npm run lint`       | Run ESLint on the project                   |
+| `npm test`           | Run Vitest test suite                       |
+| `npm run test:watch` | Run Vitest in watch mode                    |
 
----
+***
 
 ## Content Collections
 
@@ -238,33 +240,33 @@ connectsTo:                 # optional — curated cross-track links
 
 The `connectsTo` field powers the **Read Alongside** feature, which surfaces thematically related articles from other tracks on every article page.
 
----
+***
 
 ## Current Series
 
-| Series | Status | Articles | Description |
-|--------|--------|----------|-------------|
-| **Minds & Machines** | Active | 75+ | The complete story of artificial intelligence — from ancient dreams of artificial life to the race toward AGI |
-| **The Wire** | Upcoming | — | The history of the internet and global connectivity |
-| **Console Wars** | Upcoming | — | The battles that defined the gaming industry |
+| Series               | Status   | Articles | Description                                                                                                   |
+| -------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| **Minds & Machines** | Active   | 75+      | The complete story of artificial intelligence — from ancient dreams of artificial life to the race toward AGI |
+| **The Wire**         | Upcoming | —        | The history of the internet and global connectivity                                                           |
+| **Console Wars**     | Upcoming | —        | The battles that defined the gaming industry                                                                  |
 
----
+***
 
 ## Architecture Decisions
 
 Key architectural decisions are documented in [CONTRIBUTING.md](./CONTRIBUTING.md):
 
-- **ADR-001: Custom Dark Mode** — A custom 3-mode system instead of community integrations, for full WAI-ARIA support and cross-tab sync
-- **ADR-002: SITE_URL Single Source of Truth** — `astro.config.mjs` is the sole source; `src/utils/site.ts` reads via `import.meta.env.SITE`
-- **ADR-003: External Code Examples** — Loaded from files via `?raw` imports rather than hardcoded string literals
+* **ADR-001: Custom Dark Mode** — A custom 3-mode system instead of community integrations, for full WAI-ARIA support and cross-tab sync
+* **ADR-002: SITE\_URL Single Source of Truth** — `astro.config.mjs` is the sole source; `src/utils/site.ts` reads via `import.meta.env.SITE`
+* **ADR-003: External Code Examples** — Loaded from files via `?raw` imports rather than hardcoded string literals
 
----
+***
 
 ## Environment Variables
 
-| Variable         | Description                                         | Required |
-| :--------------- | :-------------------------------------------------- | :------- |
-| `INDEXNOW_KEY`   | API key for IndexNow instant search engine indexing  | No       |
+| Variable       | Description                                         | Required |
+| :------------- | :-------------------------------------------------- | :------- |
+| `INDEXNOW_KEY` | API key for IndexNow instant search engine indexing | No       |
 
 Copy `.env.example` to `.env` and fill in the values:
 
@@ -273,11 +275,12 @@ cp .env.example .env
 ```
 
 Generate an IndexNow key with:
+
 ```bash
 node -e "console.log(require('crypto').randomBytes(16).toString('hex'))"
 ```
 
----
+***
 
 ## Deployment
 
@@ -289,32 +292,32 @@ The project is configured for **Cloudflare Pages** with a GitHub Actions CI pipe
 
 Security headers are configured in `public/_headers` (X-Frame-Options, HSTS, CSP workaround notes, etc.).
 
----
+***
 
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for security boundaries, architecture decision records, and code style guidelines.
 
----
+***
 
 ## Tech Stack
 
-| Category       | Technology                                         |
-| :------------- | :------------------------------------------------- |
-| Framework      | [Astro](https://astro.build/) v6.4                |
-| Styling        | [TailwindCSS](https://tailwindcss.com/) v4.3       |
-| Content        | Astro Content Layer API + Zod schemas              |
-| Search         | [Pagefind](https://pagefind.app/)                  |
-| SEO            | [@jdevalk/astro-seo-graph](https://github.com/jdevalk/astro-seo-graph) |
-| OG Images      | [astro-og-canvas](https://github.com/delucis/astro-og-canvas) |
-| Compression    | [astro-compressor](https://github.com/nicokant/astro-compressor) |
-| Markdown       | rehype-callouts, @flowershow/remark-wiki-link      |
-| Testing        | [Vitest](https://vitest.dev/)                      |
-| Linting        | [ESLint](https://eslint.org/) v9                   |
-| CI/CD          | GitHub Actions + Cloudflare Pages                  |
-| Runtime        | Node.js >= 22.12                                   |
+| Category    | Technology                                                             |
+| :---------- | :--------------------------------------------------------------------- |
+| Framework   | [Astro](https://astro.build/) v6.4                                     |
+| Styling     | [TailwindCSS](https://tailwindcss.com/) v4.3                           |
+| Content     | Astro Content Layer API + Zod schemas                                  |
+| Search      | [Pagefind](https://pagefind.app/)                                      |
+| SEO         | [@jdevalk/astro-seo-graph](https://github.com/jdevalk/astro-seo-graph) |
+| OG Images   | [astro-og-canvas](https://github.com/delucis/astro-og-canvas)          |
+| Compression | [astro-compressor](https://github.com/nicokant/astro-compressor)       |
+| Markdown    | rehype-callouts, @flowershow/remark-wiki-link                          |
+| Testing     | [Vitest](https://vitest.dev/)                                          |
+| Linting     | [ESLint](https://eslint.org/) v9                                       |
+| CI/CD       | GitHub Actions + Cloudflare Pages                                      |
+| Runtime     | Node.js >\= 22.12                                                      |
 
----
+***
 
 ## License
 
